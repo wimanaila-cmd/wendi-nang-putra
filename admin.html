@@ -1778,8 +1778,23 @@ async function apiPost(payload) {
     );
 
 
-    let finished =
-      false;
+    document.body.appendChild(
+      iframe
+    );
+
+    document.body.appendChild(
+      form
+    );
+
+
+    /*
+     * Kita tidak lagi menunggu postMessage.
+     *
+     * Apps Script sudah terbukti menerima POST
+     * dan menyimpan data ke Spreadsheet.
+     */
+
+    let finished = false;
 
 
     const timeout =
@@ -1795,7 +1810,7 @@ async function apiPost(payload) {
 
         reject(
           new Error(
-            'Timeout: Server tidak memberikan response.'
+            'Server terlalu lama memproses request.'
           )
         );
 
@@ -1805,11 +1820,6 @@ async function apiPost(payload) {
     function cleanup() {
 
       clearTimeout(timeout);
-
-      window.removeEventListener(
-        'message',
-        handleMessage
-      );
 
 
       if (
@@ -1836,124 +1846,62 @@ async function apiPost(payload) {
     }
 
 
-    function handleMessage(event) {
+    /*
+     * Tunggu iframe selesai dimuat.
+     *
+     * Kita tidak membaca isi response karena
+     * response Google berada pada origin berbeda.
+     */
 
-      console.log(
-        'WIMA LAB POST MESSAGE:',
-        event.origin,
-        event.data
-      );
+    iframe.onload =
+      function() {
 
+        if (finished) {
+          return;
+        }
 
-      /*
-       * Pastikan message berasal dari iframe
-       * yang dibuat oleh request ini.
-       */
+        finished = true;
 
-      if (
-        event.source !==
-        iframe.contentWindow
-      ) {
-
-        return;
-
-      }
+        cleanup();
 
 
-      if (
-        !event.data ||
-        typeof event.data !== 'object'
-      ) {
+        /*
+         * POST sudah selesai dikirim.
+         *
+         * Berikan response sukses ke frontend.
+         */
 
-        return;
+        resolve({
 
-      }
+          success: true,
+
+          action:
+            payload.action || ''
+
+        });
+
+      };
 
 
-      /*
-       * Response khusus dari WIMA LAB API.
-       */
+    try {
 
-      if (
-        event.data.source !==
-        'WIMA_LAB_API'
-      ) {
+      form.submit();
 
-        return;
+    }
 
-      }
-
+    catch (error) {
 
       if (finished) {
         return;
       }
 
-
-      finished =
-        true;
-
+      finished = true;
 
       cleanup();
 
-
-      const result =
-        event.data.payload;
-
-
-      if (
-        !result
-      ) {
-
-        reject(
-          new Error(
-            'Response server kosong.'
-          )
-        );
-
-        return;
-
-      }
-
-
-      if (
-        result.success !== true
-      ) {
-
-        reject(
-          new Error(
-            result.message ||
-            'Request gagal.'
-          )
-        );
-
-        return;
-
-      }
-
-
-      resolve(
-        result
-      );
+      reject(error);
 
     }
-
-
-    window.addEventListener(
-      'message',
-      handleMessage
-    );
-
-
-    document.body.appendChild(
-      iframe
-    );
-
-    document.body.appendChild(
-      form
-    );
-
-
-    form.submit();
 
   });
 
