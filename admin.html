@@ -1733,6 +1733,7 @@ async function apiPost(payload) {
         Math.random() * 100000
       );
 
+
     const iframe =
       document.createElement('iframe');
 
@@ -1741,6 +1742,7 @@ async function apiPost(payload) {
 
     iframe.style.display =
       'none';
+
 
     const form =
       document.createElement('form');
@@ -1757,6 +1759,7 @@ async function apiPost(payload) {
     form.style.display =
       'none';
 
+
     const payloadInput =
       document.createElement('input');
 
@@ -1769,12 +1772,15 @@ async function apiPost(payload) {
     payloadInput.value =
       JSON.stringify(payload);
 
+
     form.appendChild(
       payloadInput
     );
 
+
     let finished =
       false;
+
 
     const timeout =
       setTimeout(function() {
@@ -1805,6 +1811,7 @@ async function apiPost(payload) {
         handleMessage
       );
 
+
       if (
         iframe.parentNode
       ) {
@@ -1814,6 +1821,7 @@ async function apiPost(payload) {
         );
 
       }
+
 
       if (
         form.parentNode
@@ -1831,17 +1839,16 @@ async function apiPost(payload) {
     function handleMessage(event) {
 
       /*
-       * Google Apps Script dapat melakukan
-       * redirect ke script.googleusercontent.com.
+       * Response harus berasal dari iframe
+       * yang kita buat sendiri.
        *
-       * Karena itu kita menerima kedua origin.
+       * Jangan bergantung pada event.origin
+       * karena Google Apps Script dapat melakukan
+       * redirect dan sandbox iframe.
        */
 
       if (
-        event.origin !==
-          'https://script.google.com' &&
-        event.origin !==
-          'https://script.googleusercontent.com'
+        event.source !== iframe.contentWindow
       ) {
 
         return;
@@ -1866,6 +1873,7 @@ async function apiPost(payload) {
 
       finished =
         true;
+
 
       cleanup();
 
@@ -1913,7 +1921,7 @@ async function apiPost(payload) {
   });
 
 }
-
+   
 /* =====================================================
    VERIFY ADMIN
 ===================================================== */
