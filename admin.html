@@ -1,0 +1,3727 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="robots" content="noindex,nofollow">
+
+  <title>WIMA LAB — Admin Dashboard</title>
+
+  <style>
+
+    :root {
+      --bg: #08090b;
+      --bg-soft: #0d0f12;
+      --card: #111318;
+      --card-soft: #15181e;
+
+      --text: #f5f6f7;
+      --muted: #9299a3;
+
+      --line: #272b33;
+
+      --accent: #b9ff5c;
+      --danger: #ff6868;
+      --warning: #ffc857;
+
+      --radius: 18px;
+
+      --max: 1250px;
+    }
+
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+    body {
+
+      background:
+        radial-gradient(
+          circle at 85% 0%,
+          rgba(185,255,92,.08),
+          transparent 28rem
+        ),
+        var(--bg);
+
+      color: var(--text);
+
+      font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      line-height: 1.6;
+
+      min-height: 100vh;
+    }
+
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+
+    button {
+      cursor: pointer;
+    }
+
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+
+    .hidden {
+      display: none !important;
+    }
+
+
+    /* =================================================
+       LOGIN
+    ================================================= */
+
+    #loginScreen {
+
+      min-height: 100vh;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 25px;
+    }
+
+
+    .login-card {
+
+      width: min(430px, 100%);
+
+      background:
+        linear-gradient(
+          145deg,
+          #15181d,
+          #0c0e11
+        );
+
+      border: 1px solid var(--line);
+
+      border-radius: 26px;
+
+      padding: 36px;
+
+      box-shadow:
+        0 30px 90px rgba(0,0,0,.45);
+    }
+
+
+    .brand {
+
+      font-size: 14px;
+
+      font-weight: 900;
+
+      letter-spacing: -.04em;
+
+      margin-bottom: 34px;
+    }
+
+
+    .brand span {
+      color: var(--accent);
+    }
+
+
+    .login-icon {
+
+      width: 54px;
+      height: 54px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border-radius: 15px;
+
+      background: rgba(185,255,92,.1);
+
+      border: 1px solid rgba(185,255,92,.2);
+
+      color: var(--accent);
+
+      font-size: 24px;
+
+      margin-bottom: 22px;
+    }
+
+
+    .login-card h1 {
+
+      font-size: 32px;
+
+      letter-spacing: -.055em;
+
+      line-height: 1;
+
+      margin-bottom: 10px;
+    }
+
+
+    .login-card p {
+
+      color: var(--muted);
+
+      font-size: 13px;
+
+      margin-bottom: 25px;
+    }
+
+
+    .login-button {
+
+      width: 100%;
+
+      border: 0;
+
+      border-radius: 12px;
+
+      padding: 14px 18px;
+
+      background: var(--accent);
+
+      color: #080b07;
+
+      font-weight: 850;
+
+      font-size: 12px;
+
+      transition: .2s;
+    }
+
+
+    .login-button:hover {
+      transform: translateY(-2px);
+    }
+
+
+    .login-status {
+
+      margin-top: 18px;
+
+      padding: 12px;
+
+      border-radius: 10px;
+
+      background: #111318;
+
+      border: 1px solid var(--line);
+
+      color: var(--muted);
+
+      font-size: 11px;
+
+      text-align: center;
+    }
+
+
+    /* =================================================
+       APP
+    ================================================= */
+
+    #app {
+      min-height: 100vh;
+    }
+
+
+    .topbar {
+
+      height: 72px;
+
+      position: sticky;
+
+      top: 0;
+
+      z-index: 50;
+
+      background:
+        rgba(8,9,11,.86);
+
+      backdrop-filter: blur(18px);
+
+      border-bottom: 1px solid rgba(255,255,255,.05);
+    }
+
+
+    .topbar-inner {
+
+      width: min(
+        var(--max),
+        calc(100% - 32px)
+      );
+
+      height: 100%;
+
+      margin: auto;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+    }
+
+
+    .topbar-brand {
+
+      font-weight: 900;
+
+      font-size: 17px;
+
+      letter-spacing: -.05em;
+    }
+
+
+    .topbar-brand span {
+      color: var(--accent);
+    }
+
+
+    .topbar-right {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+    }
+
+
+    .admin-badge {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      padding: 7px 10px;
+
+      border-radius: 999px;
+
+      border: 1px solid var(--line);
+
+      color: var(--muted);
+
+      font-size: 10px;
+    }
+
+
+    .admin-dot {
+
+      width: 7px;
+      height: 7px;
+
+      background: var(--accent);
+
+      border-radius: 50%;
+
+      box-shadow:
+        0 0 12px var(--accent);
+    }
+
+
+    .logout-button {
+
+      border: 1px solid var(--line);
+
+      background: transparent;
+
+      color: var(--muted);
+
+      border-radius: 9px;
+
+      padding: 8px 11px;
+
+      font-size: 10px;
+    }
+
+
+    .logout-button:hover {
+      color: var(--text);
+    }
+
+
+    /* =================================================
+       MAIN
+    ================================================= */
+
+    .main {
+
+      width: min(
+        var(--max),
+        calc(100% - 32px)
+      );
+
+      margin: auto;
+
+      padding: 55px 0 80px;
+    }
+
+
+    .page-header {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: end;
+
+      gap: 30px;
+
+      margin-bottom: 35px;
+    }
+
+
+    .kicker {
+
+      color: var(--accent);
+
+      font-size: 10px;
+
+      font-weight: 850;
+
+      letter-spacing: .18em;
+
+      margin-bottom: 8px;
+    }
+
+
+    .page-header h1 {
+
+      font-size:
+        clamp(36px, 6vw, 62px);
+
+      line-height: .95;
+
+      letter-spacing: -.07em;
+    }
+
+
+    .page-header p {
+
+      max-width: 430px;
+
+      color: var(--muted);
+
+      font-size: 13px;
+    }
+
+
+    /* =================================================
+       STATS
+    ================================================= */
+
+    .stats-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 12px;
+
+      margin-bottom: 35px;
+    }
+
+
+    .stat-card {
+
+      background: var(--card);
+
+      border: 1px solid var(--line);
+
+      border-radius: 15px;
+
+      padding: 18px;
+    }
+
+
+    .stat-card span {
+
+      color: var(--muted);
+
+      font-size: 10px;
+    }
+
+
+    .stat-card strong {
+
+      display: block;
+
+      font-size: 27px;
+
+      margin-top: 3px;
+
+      letter-spacing: -.04em;
+    }
+
+
+    /* =================================================
+       TOOLBAR
+    ================================================= */
+
+    .toolbar {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      gap: 15px;
+
+      margin-bottom: 15px;
+    }
+
+
+    .toolbar-left {
+
+      display: flex;
+
+      gap: 8px;
+
+      flex-wrap: wrap;
+    }
+
+
+    .filter-button {
+
+      border: 1px solid var(--line);
+
+      background: var(--card);
+
+      color: var(--muted);
+
+      padding: 9px 12px;
+
+      border-radius: 9px;
+
+      font-size: 10px;
+    }
+
+
+    .filter-button.active {
+
+      background: var(--accent);
+
+      border-color: var(--accent);
+
+      color: #080b07;
+
+      font-weight: 800;
+    }
+
+
+    .primary-button {
+
+      border: 1px solid var(--accent);
+
+      background: var(--accent);
+
+      color: #080b07;
+
+      border-radius: 10px;
+
+      padding: 11px 15px;
+
+      font-size: 11px;
+
+      font-weight: 850;
+    }
+
+
+    .secondary-button {
+
+      border: 1px solid var(--line);
+
+      background: var(--card);
+
+      color: var(--text);
+
+      border-radius: 10px;
+
+      padding: 10px 14px;
+
+      font-size: 11px;
+    }
+
+
+    /* =================================================
+       PROJECT TABLE
+    ================================================= */
+
+    .project-list {
+
+      border: 1px solid var(--line);
+
+      border-radius: 18px;
+
+      overflow: hidden;
+
+      background: var(--card);
+    }
+
+
+    .project-row {
+
+      display: grid;
+
+      grid-template-columns:
+        1.6fr
+        .8fr
+        .55fr
+        .65fr
+        130px;
+
+      gap: 15px;
+
+      align-items: center;
+
+      padding: 17px 20px;
+
+      border-bottom: 1px solid var(--line);
+    }
+
+
+    .project-row:last-child {
+      border-bottom: 0;
+    }
+
+
+    .project-head {
+
+      background: var(--card-soft);
+
+      color: var(--muted);
+
+      font-size: 9px;
+
+      font-weight: 800;
+
+      letter-spacing: .08em;
+
+      text-transform: uppercase;
+    }
+
+
+    .project-title {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      min-width: 0;
+    }
+
+
+    .project-thumb {
+
+      width: 52px;
+      height: 42px;
+
+      flex: 0 0 auto;
+
+      border-radius: 8px;
+
+      overflow: hidden;
+
+      border: 1px solid var(--line);
+
+      background: #090b0d;
+    }
+
+
+    .project-thumb img {
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+    }
+
+
+    .project-thumb-placeholder {
+
+      width: 100%;
+      height: 100%;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      color: #59606b;
+
+      font-size: 13px;
+    }
+
+
+    .project-title-text {
+
+      min-width: 0;
+    }
+
+
+    .project-title-text strong {
+
+      display: block;
+
+      white-space: nowrap;
+
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+
+      font-size: 13px;
+    }
+
+
+    .project-title-text small {
+
+      color: var(--muted);
+
+      font-size: 9px;
+    }
+
+
+    .category {
+
+      color: var(--muted);
+
+      font-size: 10px;
+    }
+
+
+    .year {
+
+      color: var(--muted);
+
+      font-size: 10px;
+    }
+
+
+    .status {
+
+      display: inline-flex;
+
+      width: fit-content;
+
+      padding: 5px 8px;
+
+      border-radius: 999px;
+
+      font-size: 9px;
+
+      font-weight: 800;
+    }
+
+
+    .status.published {
+
+      color: var(--accent);
+
+      background:
+        rgba(185,255,92,.09);
+
+      border:
+        1px solid rgba(185,255,92,.2);
+    }
+
+
+    .status.draft {
+
+      color: var(--warning);
+
+      background:
+        rgba(255,200,87,.08);
+
+      border:
+        1px solid rgba(255,200,87,.2);
+    }
+
+
+    .actions {
+
+      display: flex;
+
+      justify-content: flex-end;
+
+      gap: 6px;
+    }
+
+
+    .icon-button {
+
+      border: 1px solid var(--line);
+
+      background: #0d0f12;
+
+      color: var(--muted);
+
+      border-radius: 8px;
+
+      width: 31px;
+      height: 31px;
+    }
+
+
+    .icon-button:hover {
+      color: var(--text);
+      border-color: #444a53;
+    }
+
+
+    .icon-button.delete:hover {
+      color: var(--danger);
+
+      border-color:
+        rgba(255,104,104,.4);
+    }
+
+
+    .empty {
+
+      padding: 55px 20px;
+
+      text-align: center;
+
+      color: var(--muted);
+
+      font-size: 12px;
+    }
+
+
+    /* =================================================
+       MODAL
+    ================================================= */
+
+    .modal {
+
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 100;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 20px;
+
+      background:
+        rgba(0,0,0,.72);
+
+      backdrop-filter: blur(10px);
+    }
+
+
+    .modal-card {
+
+      width:
+        min(760px, 100%);
+
+      max-height:
+        calc(100vh - 40px);
+
+      overflow-y: auto;
+
+      background:
+        linear-gradient(
+          145deg,
+          #15181d,
+          #0b0d10
+        );
+
+      border: 1px solid var(--line);
+
+      border-radius: 22px;
+
+      box-shadow:
+        0 40px 100px rgba(0,0,0,.6);
+    }
+
+
+    .modal-header {
+
+      position: sticky;
+
+      top: 0;
+
+      z-index: 2;
+
+      background:
+        rgba(15,17,21,.96);
+
+      backdrop-filter: blur(15px);
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      padding: 19px 22px;
+
+      border-bottom: 1px solid var(--line);
+    }
+
+
+    .modal-header h2 {
+
+      font-size: 19px;
+
+      letter-spacing: -.04em;
+    }
+
+
+    .close-button {
+
+      width: 32px;
+      height: 32px;
+
+      border: 1px solid var(--line);
+
+      background: #0c0e11;
+
+      color: var(--muted);
+
+      border-radius: 8px;
+    }
+
+
+    .modal-body {
+
+      padding: 23px;
+    }
+
+
+    .form-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
+      gap: 16px;
+    }
+
+
+    .form-group {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 6px;
+    }
+
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+
+    .form-group label {
+
+      color: var(--muted);
+
+      font-size: 10px;
+
+      font-weight: 750;
+
+      text-transform: uppercase;
+
+      letter-spacing: .06em;
+    }
+
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+
+      width: 100%;
+
+      border: 1px solid var(--line);
+
+      background: #0b0d10;
+
+      color: var(--text);
+
+      border-radius: 10px;
+
+      padding: 11px 12px;
+
+      outline: none;
+
+      font-size: 12px;
+    }
+
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+
+      border-color:
+        rgba(185,255,92,.55);
+
+      box-shadow:
+        0 0 0 3px
+        rgba(185,255,92,.05);
+    }
+
+
+    .form-group textarea {
+
+      min-height: 130px;
+
+      resize: vertical;
+    }
+
+
+    .hint {
+
+      color: #68707b;
+
+      font-size: 9px;
+    }
+
+
+    .check-row {
+
+      display: flex;
+
+      gap: 10px;
+
+      align-items: center;
+
+      padding-top: 22px;
+    }
+
+
+    .check-row input {
+
+      accent-color:
+        var(--accent);
+
+      width: 15px;
+      height: 15px;
+    }
+
+
+    .check-row label {
+
+      color: var(--text);
+
+      font-size: 11px;
+    }
+
+
+    .upload-box {
+
+      border: 1px dashed #3a4048;
+
+      border-radius: 12px;
+
+      padding: 15px;
+
+      background: #0b0d10;
+    }
+
+
+    .upload-box input {
+
+      border: 0;
+
+      padding: 0;
+
+      background: transparent;
+    }
+
+
+    .image-preview {
+
+      margin-top: 12px;
+
+      display: none;
+
+      width: 100%;
+
+      max-height: 220px;
+
+      object-fit: cover;
+
+      border-radius: 10px;
+
+      border: 1px solid var(--line);
+    }
+
+
+    .upload-status {
+
+      color: var(--muted);
+
+      font-size: 10px;
+
+      margin-top: 7px;
+    }
+
+
+    .modal-footer {
+
+      position: sticky;
+
+      bottom: 0;
+
+      background:
+        rgba(15,17,21,.96);
+
+      backdrop-filter: blur(15px);
+
+      display: flex;
+
+      justify-content: flex-end;
+
+      gap: 8px;
+
+      padding: 16px 22px;
+
+      border-top: 1px solid var(--line);
+    }
+
+
+    /* =================================================
+       TOAST
+    ================================================= */
+
+    #toast {
+
+      position: fixed;
+
+      right: 20px;
+
+      bottom: 20px;
+
+      z-index: 200;
+
+      max-width: 350px;
+
+      padding: 12px 15px;
+
+      border-radius: 10px;
+
+      background: #16191e;
+
+      border: 1px solid var(--line);
+
+      color: var(--text);
+
+      font-size: 11px;
+
+      box-shadow:
+        0 15px 40px rgba(0,0,0,.4);
+
+      transform:
+        translateY(20px);
+
+      opacity: 0;
+
+      pointer-events: none;
+
+      transition: .25s;
+    }
+
+
+    #toast.show {
+
+      transform:
+        translateY(0);
+
+      opacity: 1;
+    }
+
+
+    #toast.success {
+      border-color:
+        rgba(185,255,92,.3);
+    }
+
+
+    #toast.error {
+      border-color:
+        rgba(255,104,104,.35);
+    }
+
+
+    /* =================================================
+       LOADING
+    ================================================= */
+
+    .loading {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 8px;
+    }
+
+
+    .spinner {
+
+      width: 13px;
+      height: 13px;
+
+      border: 2px solid #343942;
+
+      border-top-color:
+        var(--accent);
+
+      border-radius: 50%;
+
+      animation:
+        spin .7s linear infinite;
+    }
+
+
+    @keyframes spin {
+
+      to {
+        transform: rotate(360deg);
+      }
+
+    }
+
+
+    /* =================================================
+       RESPONSIVE
+    ================================================= */
+
+    @media(max-width: 900px) {
+
+      .stats-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+
+      .project-row {
+
+        grid-template-columns:
+          1fr 100px 70px;
+
+      }
+
+
+      .project-row .category,
+      .project-row .year {
+
+        display: none;
+
+      }
+
+
+      .project-head {
+        display: none;
+      }
+
+    }
+
+
+    @media(max-width: 650px) {
+
+      .main {
+
+        padding-top: 35px;
+
+      }
+
+
+      .page-header {
+
+        display: block;
+
+      }
+
+
+      .page-header p {
+
+        margin-top: 15px;
+
+      }
+
+
+      .stats-grid {
+
+        grid-template-columns:
+          repeat(2, 1fr);
+
+      }
+
+
+      .toolbar {
+
+        align-items: stretch;
+
+        flex-direction: column;
+
+      }
+
+
+      .toolbar-left {
+
+        width: 100%;
+
+      }
+
+
+      .project-row {
+
+        grid-template-columns:
+          1fr 100px;
+
+        padding: 14px;
+
+      }
+
+
+      .project-row .status {
+
+        display: none;
+
+      }
+
+
+      .actions {
+
+        justify-content: flex-end;
+
+      }
+
+
+      .form-grid {
+
+        grid-template-columns: 1fr;
+
+      }
+
+
+      .form-group.full {
+
+        grid-column: auto;
+
+      }
+
+
+      .login-card {
+
+        padding: 27px;
+
+      }
+
+    }
+
+
+    @media(max-width: 420px) {
+
+      .admin-badge span {
+
+        display: none;
+
+      }
+
+
+      .stats-grid {
+
+        gap: 8px;
+
+      }
+
+
+      .stat-card {
+
+        padding: 14px;
+
+      }
+
+
+      .stat-card strong {
+
+        font-size: 22px;
+
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     LOGIN SCREEN
+===================================================== -->
+
+<div id="loginScreen">
+
+  <div class="login-card">
+
+    <div class="brand">
+      WIMA<span>.</span>LAB
+    </div>
+
+    <div class="login-icon">
+      🔐
+    </div>
+
+    <h1>
+      Admin Dashboard
+    </h1>
+
+    <p>
+      Panel pribadi untuk mengelola
+      project WIMA LAB.
+    </p>
+
+    <button
+      class="login-button"
+      id="loginButton"
+      onclick="checkAdmin()"
+    >
+      MASUK SEBAGAI ADMIN →
+    </button>
+
+    <div
+      class="login-status"
+      id="loginStatus"
+    >
+      Klik tombol di atas untuk memverifikasi
+      akun Google kamu.
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     APP
+===================================================== -->
+
+<div
+  id="app"
+  class="hidden"
+>
+
+
+  <!-- TOPBAR -->
+
+  <header class="topbar">
+
+    <div class="topbar-inner">
+
+      <a
+        href="wima-lab.html"
+        class="topbar-brand"
+      >
+        WIMA<span>.</span>LAB
+      </a>
+
+
+      <div class="topbar-right">
+
+        <div class="admin-badge">
+
+          <span class="admin-dot"></span>
+
+          <span id="adminName">
+            ADMIN
+          </span>
+
+        </div>
+
+
+        <button
+          class="logout-button"
+          onclick="logout()"
+        >
+          LOGOUT
+        </button>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+
+  <!-- MAIN -->
+
+  <main class="main">
+
+
+    <!-- HEADER -->
+
+    <div class="page-header">
+
+      <div>
+
+        <div class="kicker">
+          WIMA LAB / ADMIN
+        </div>
+
+        <h1>
+          Project<br>
+          Management.
+        </h1>
+
+      </div>
+
+
+      <p>
+        Kelola seluruh project,
+        gambar, deskripsi,
+        teknologi, dan status publikasi
+        WIMA LAB dari satu dashboard.
+      </p>
+
+    </div>
+
+
+
+    <!-- STATS -->
+
+    <div class="stats-grid">
+
+      <div class="stat-card">
+
+        <span>
+          TOTAL PROJECT
+        </span>
+
+        <strong id="totalProjects">
+          0
+        </strong>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <span>
+          PUBLISHED
+        </span>
+
+        <strong id="publishedProjects">
+          0
+        </strong>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <span>
+          DRAFT
+        </span>
+
+        <strong id="draftProjects">
+          0
+        </strong>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <span>
+          FEATURED
+        </span>
+
+        <strong id="featuredProjects">
+          0
+        </strong>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- TOOLBAR -->
+
+    <div class="toolbar">
+
+      <div class="toolbar-left">
+
+        <button
+          class="filter-button active"
+          data-filter="all"
+          onclick="setFilter('all', this)"
+        >
+          ALL
+        </button>
+
+        <button
+          class="filter-button"
+          data-filter="published"
+          onclick="setFilter('published', this)"
+        >
+          PUBLISHED
+        </button>
+
+        <button
+          class="filter-button"
+          data-filter="draft"
+          onclick="setFilter('draft', this)"
+        >
+          DRAFT
+        </button>
+
+      </div>
+
+
+      <button
+        class="primary-button"
+        onclick="openCreateModal()"
+      >
+        + NEW PROJECT
+      </button>
+
+    </div>
+
+
+
+    <!-- PROJECT LIST -->
+
+    <div class="project-list">
+
+      <div class="project-row project-head">
+
+        <div>
+          PROJECT
+        </div>
+
+        <div>
+          CATEGORY
+        </div>
+
+        <div>
+          YEAR
+        </div>
+
+        <div>
+          STATUS
+        </div>
+
+        <div>
+          ACTION
+        </div>
+
+      </div>
+
+
+      <div id="projectList">
+
+        <div class="empty">
+          <div class="loading">
+            <span class="spinner"></span>
+            Loading projects...
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </main>
+
+</div>
+
+
+
+<!-- =====================================================
+     PROJECT MODAL
+===================================================== -->
+
+<div
+  id="projectModal"
+  class="modal hidden"
+>
+
+  <div class="modal-card">
+
+
+    <div class="modal-header">
+
+      <h2 id="modalTitle">
+        New Project
+      </h2>
+
+      <button
+        class="close-button"
+        onclick="closeModal()"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+
+    <form
+      id="projectForm"
+      onsubmit="saveProject(event)"
+    >
+
+      <div class="modal-body">
+
+        <div class="form-grid">
+
+
+          <!-- TITLE -->
+
+          <div class="form-group full">
+
+            <label>
+              Project Title *
+            </label>
+
+            <input
+              type="text"
+              id="title"
+              required
+              placeholder="Contoh: Future Archive System"
+            >
+
+          </div>
+
+
+
+          <!-- CATEGORY -->
+
+          <div class="form-group">
+
+            <label>
+              Category
+            </label>
+
+            <input
+              type="text"
+              id="category"
+              placeholder="Digital System"
+            >
+
+          </div>
+
+
+
+          <!-- YEAR -->
+
+          <div class="form-group">
+
+            <label>
+              Year
+            </label>
+
+            <input
+              type="text"
+              id="year"
+              placeholder="2026"
+            >
+
+          </div>
+
+
+
+          <!-- DESCRIPTION -->
+
+          <div class="form-group full">
+
+            <label>
+              Description
+            </label>
+
+            <textarea
+              id="description"
+              placeholder="Jelaskan project, masalah yang diselesaikan, fitur, dan hasilnya..."
+            ></textarea>
+
+          </div>
+
+
+
+          <!-- IMAGE -->
+
+          <div class="form-group full">
+
+            <label>
+              Main Image
+            </label>
+
+
+            <div class="upload-box">
+
+              <input
+                type="file"
+                id="imageFile"
+                accept="image/*"
+                onchange="previewImage(event)"
+              >
+
+              <img
+                id="imagePreview"
+                class="image-preview"
+                alt="Preview"
+              >
+
+              <div
+                class="upload-status"
+                id="uploadStatus"
+              >
+                Pilih gambar JPG, PNG, WEBP, atau format gambar lainnya.
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- GALLERY -->
+
+          <div class="form-group full">
+
+            <label>
+              Gallery URLs
+            </label>
+
+            <textarea
+              id="gallery"
+              placeholder="Satu URL per baris&#10;https://...&#10;https://..."
+            ></textarea>
+
+            <span class="hint">
+              Opsional. Satu URL gambar per baris.
+            </span>
+
+          </div>
+
+
+
+          <!-- TECHNOLOGIES -->
+
+          <div class="form-group full">
+
+            <label>
+              Technologies
+            </label>
+
+            <input
+              type="text"
+              id="technologies"
+              placeholder="Google Sheets, Apps Script, Dashboard"
+            >
+
+            <span class="hint">
+              Pisahkan dengan koma.
+            </span>
+
+          </div>
+
+
+
+          <!-- DEMO -->
+
+          <div class="form-group">
+
+            <label>
+              Demo URL
+            </label>
+
+            <input
+              type="url"
+              id="demoUrl"
+              placeholder="https://..."
+            >
+
+          </div>
+
+
+
+          <!-- GITHUB -->
+
+          <div class="form-group">
+
+            <label>
+              GitHub URL
+            </label>
+
+            <input
+              type="url"
+              id="githubUrl"
+              placeholder="https://github.com/..."
+            >
+
+          </div>
+
+
+
+          <!-- STATUS -->
+
+          <div class="form-group">
+
+            <label>
+              Status
+            </label>
+
+            <select id="status">
+
+              <option value="Draft">
+                Draft
+              </option>
+
+              <option value="Published">
+                Published
+              </option>
+
+            </select>
+
+          </div>
+
+
+
+          <!-- FEATURED -->
+
+          <div class="form-group">
+
+            <div class="check-row">
+
+              <input
+                type="checkbox"
+                id="featured"
+              >
+
+              <label for="featured">
+                Jadikan Featured Project
+              </label>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+
+      <div class="modal-footer">
+
+        <button
+          type="button"
+          class="secondary-button"
+          onclick="closeModal()"
+        >
+          CANCEL
+        </button>
+
+
+        <button
+          type="submit"
+          class="primary-button"
+          id="saveButton"
+        >
+          SAVE PROJECT
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+
+<!-- TOAST -->
+
+<div id="toast"></div>
+
+
+
+<script>
+
+/* =====================================================
+   CONFIGURATION
+===================================================== */
+
+/*
+ * GANTI dengan URL Web App Apps Script kamu.
+ *
+ * Contoh:
+ * https://script.google.com/macros/s/XXXXXXXXXXXX/exec
+ */
+
+const API_URL =
+  'PASTE_WEB_APP_URL_DI_SINI';
+
+
+
+/* =====================================================
+   STATE
+===================================================== */
+
+let projects = [];
+
+let currentFilter = 'all';
+
+let editingProjectId = null;
+
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const loginScreen =
+  document.getElementById('loginScreen');
+
+const app =
+  document.getElementById('app');
+
+const loginStatus =
+  document.getElementById('loginStatus');
+
+const loginButton =
+  document.getElementById('loginButton');
+
+
+
+/* =====================================================
+   API VALIDATION
+===================================================== */
+
+function validateApiUrl() {
+
+  if (
+    !API_URL ||
+    API_URL ===
+      'PASTE_WEB_APP_URL_DI_SINI'
+  ) {
+
+    throw new Error(
+      'API_URL belum diisi. Masukkan URL Web App Apps Script ke dalam admin.html.'
+    );
+
+  }
+
+}
+
+
+
+/* =====================================================
+   API GET
+===================================================== */
+
+async function apiGet(
+  params = {}
+) {
+
+  validateApiUrl();
+
+  const url =
+    new URL(API_URL);
+
+  Object.keys(params).forEach(
+    function(key) {
+
+      url.searchParams.set(
+        key,
+        params[key]
+      );
+
+    }
+  );
+
+  const response =
+    await fetch(
+      url.toString(),
+      {
+        method: 'GET',
+
+        credentials: 'include'
+      }
+    );
+
+  if (!response.ok) {
+
+    throw new Error(
+      'HTTP Error ' +
+      response.status
+    );
+
+  }
+
+  return response.json();
+
+}
+
+
+
+/* =====================================================
+   API POST
+===================================================== */
+
+async function apiPost(
+  payload
+) {
+
+  validateApiUrl();
+
+  const response =
+    await fetch(
+      API_URL,
+      {
+        method: 'POST',
+
+        credentials: 'include',
+
+        headers: {
+          'Content-Type':
+            'text/plain;charset=utf-8'
+        },
+
+        body:
+          JSON.stringify(payload)
+      }
+    );
+
+  if (!response.ok) {
+
+    throw new Error(
+      'HTTP Error ' +
+      response.status
+    );
+
+  }
+
+  return response.json();
+
+}
+
+
+
+/* =====================================================
+   CHECK ADMIN
+===================================================== */
+
+async function checkAdmin() {
+
+  loginButton.disabled = true;
+
+  loginButton.innerHTML =
+    '<span class="loading">' +
+    '<span class="spinner"></span>' +
+    ' MEMVERIFIKASI...' +
+    '</span>';
+
+  loginStatus.textContent =
+    'Memeriksa akun Google kamu...';
+
+
+  try {
+
+    const result =
+      await apiGet({
+        action:
+          'checkAdmin'
+      });
+
+
+    if (
+      result.success &&
+      result.isAdmin
+    ) {
+
+      const admin =
+        result.admin || {};
+
+      const name =
+        admin.name ||
+        admin.email ||
+        'ADMIN';
+
+
+      sessionStorage.setItem(
+        'wimaLabAdmin',
+        JSON.stringify(admin)
+      );
+
+
+      showDashboard(
+        admin
+      );
+
+      return;
+
+    }
+
+
+    throw new Error(
+      'Akun Google ini bukan Admin WIMA LAB.'
+    );
+
+  }
+
+  catch (error) {
+
+    loginStatus.textContent =
+      error.message ||
+      'Gagal memverifikasi admin.';
+
+    loginStatus.style.color =
+      'var(--danger)';
+
+  }
+
+
+  loginButton.disabled = false;
+
+  loginButton.textContent =
+    'COBA LAGI →';
+
+}
+
+
+
+/* =====================================================
+   SHOW DASHBOARD
+===================================================== */
+
+function showDashboard(
+  admin
+) {
+
+  loginScreen.classList.add(
+    'hidden'
+  );
+
+  app.classList.remove(
+    'hidden'
+  );
+
+
+  document.getElementById(
+    'adminName'
+  ).textContent =
+    admin.name ||
+    admin.email ||
+    'ADMIN';
+
+
+  loadProjects();
+
+}
+
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+function logout() {
+
+  sessionStorage.removeItem(
+    'wimaLabAdmin'
+  );
+
+  projects = [];
+
+  app.classList.add(
+    'hidden'
+  );
+
+  loginScreen.classList.remove(
+    'hidden'
+  );
+
+  loginStatus.textContent =
+    'Klik tombol di atas untuk memverifikasi akun Google kamu.';
+
+  loginStatus.style.color =
+    'var(--muted)';
+
+  loginButton.disabled = false;
+
+  loginButton.textContent =
+    'MASUK SEBAGAI ADMIN →';
+
+}
+
+
+
+/* =====================================================
+   LOAD PROJECTS
+===================================================== */
+
+async function loadProjects() {
+
+  const list =
+    document.getElementById(
+      'projectList'
+    );
+
+  list.innerHTML =
+    '<div class="empty">' +
+      '<div class="loading">' +
+        '<span class="spinner"></span>' +
+        ' Loading projects...' +
+      '</div>' +
+    '</div>';
+
+
+  try {
+
+    /*
+     * Backend sengaja hanya memberikan
+     * project Published untuk public.
+     *
+     * Karena endpoint GET tidak menyediakan
+     * akses draft berdasarkan email,
+     * dashboard mengambil data admin melalui
+     * endpoint admin yang akan kita tambahkan
+     * bila diperlukan.
+     *
+     * Untuk versi Code.gs kamu saat ini,
+     * GET projects tetap public.
+     */
+
+    const result =
+      await apiGet({
+        action:
+          'projects'
+      });
+
+
+    if (!result.success) {
+
+      throw new Error(
+        result.message ||
+        'Gagal mengambil project.'
+      );
+
+    }
+
+
+    projects =
+      Array.isArray(result.data)
+        ? result.data
+        : [];
+
+
+    /*
+     * Endpoint public hanya mengembalikan
+     * Published. Dashboard tetap berfungsi
+     * untuk project yang sudah published.
+     */
+
+    renderProjects();
+
+    updateStats();
+
+  }
+
+  catch (error) {
+
+    list.innerHTML =
+      '<div class="empty">' +
+        escapeHtml(
+          error.message
+        ) +
+      '</div>';
+
+    showToast(
+      error.message,
+      'error'
+    );
+
+  }
+
+}
+
+
+
+/* =====================================================
+   RENDER PROJECTS
+===================================================== */
+
+function renderProjects() {
+
+  const list =
+    document.getElementById(
+      'projectList'
+    );
+
+
+  let filtered =
+    projects.filter(
+      function(project) {
+
+        const status =
+          String(
+            project.status || ''
+          ).toLowerCase();
+
+
+        if (
+          currentFilter ===
+          'published'
+        ) {
+
+          return status ===
+            'published';
+
+        }
+
+
+        if (
+          currentFilter ===
+          'draft'
+        ) {
+
+          return status ===
+            'draft';
+
+        }
+
+
+        return true;
+
+      }
+    );
+
+
+  if (!filtered.length) {
+
+    list.innerHTML =
+      '<div class="empty">' +
+      'Belum ada project pada filter ini.' +
+      '</div>';
+
+    return;
+
+  }
+
+
+  list.innerHTML =
+    filtered
+      .map(
+        createProjectRow
+      )
+      .join('');
+
+}
+
+
+
+/* =====================================================
+   PROJECT ROW
+===================================================== */
+
+function createProjectRow(
+  project
+) {
+
+  const status =
+    String(
+      project.status || 'Draft'
+    );
+
+
+  const statusClass =
+    status.toLowerCase() ===
+    'published'
+      ? 'published'
+      : 'draft';
+
+
+  const image =
+    project.imageUrl
+      ? `
+        <img
+          src="${escapeAttribute(project.imageUrl)}"
+          alt=""
+          loading="lazy"
+          onerror="this.style.display='none'"
+        >
+      `
+      : `
+        <div class="project-thumb-placeholder">
+          ◇
+        </div>
+      `;
+
+
+  return `
+
+    <div class="project-row">
+
+      <div class="project-title">
+
+        <div class="project-thumb">
+          ${image}
+        </div>
+
+        <div class="project-title-text">
+
+          <strong>
+            ${escapeHtml(project.title || 'Untitled')}
+          </strong>
+
+          <small>
+            ${escapeHtml(project.id || '')}
+          </small>
+
+        </div>
+
+      </div>
+
+
+      <div class="category">
+
+        ${escapeHtml(
+          project.category || '—'
+        )}
+
+      </div>
+
+
+      <div class="year">
+
+        ${escapeHtml(
+          project.year || '—'
+        )}
+
+      </div>
+
+
+      <div>
+
+        <span class="status ${statusClass}">
+          ${escapeHtml(status)}
+        </span>
+
+      </div>
+
+
+      <div class="actions">
+
+        <button
+          class="icon-button"
+          title="Edit"
+          onclick="openEditModal('${escapeAttribute(project.id)}')"
+        >
+          ✎
+        </button>
+
+
+        <button
+          class="icon-button delete"
+          title="Delete"
+          onclick="confirmDelete('${escapeAttribute(project.id)}')"
+        >
+          ×
+        </button>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+
+/* =====================================================
+   STATS
+===================================================== */
+
+function updateStats() {
+
+  const total =
+    projects.length;
+
+
+  const published =
+    projects.filter(
+      function(p) {
+
+        return String(
+          p.status || ''
+        ).toLowerCase()
+        === 'published';
+
+      }
+    ).length;
+
+
+  const draft =
+    projects.filter(
+      function(p) {
+
+        return String(
+          p.status || ''
+        ).toLowerCase()
+        === 'draft';
+
+      }
+    ).length;
+
+
+  const featured =
+    projects.filter(
+      function(p) {
+
+        return p.featured === true;
+
+      }
+    ).length;
+
+
+  document.getElementById(
+    'totalProjects'
+  ).textContent =
+    total;
+
+
+  document.getElementById(
+    'publishedProjects'
+  ).textContent =
+    published;
+
+
+  document.getElementById(
+    'draftProjects'
+  ).textContent =
+    draft;
+
+
+  document.getElementById(
+    'featuredProjects'
+  ).textContent =
+    featured;
+
+}
+
+
+
+/* =====================================================
+   FILTER
+===================================================== */
+
+function setFilter(
+  filter,
+  button
+) {
+
+  currentFilter =
+    filter;
+
+
+  document
+    .querySelectorAll(
+      '.filter-button'
+    )
+    .forEach(
+      function(btn) {
+
+        btn.classList.remove(
+          'active'
+        );
+
+      }
+    );
+
+
+  button.classList.add(
+    'active'
+  );
+
+
+  renderProjects();
+
+}
+
+
+
+/* =====================================================
+   OPEN CREATE
+===================================================== */
+
+function openCreateModal() {
+
+  editingProjectId = null;
+
+
+  document.getElementById(
+    'modalTitle'
+  ).textContent =
+    'New Project';
+
+
+  document.getElementById(
+    'projectForm'
+  ).reset();
+
+
+  document.getElementById(
+    'imagePreview'
+  ).style.display =
+    'none';
+
+
+  document.getElementById(
+    'imagePreview'
+  ).src = '';
+
+
+  document.getElementById(
+    'uploadStatus'
+  ).textContent =
+    'Pilih gambar JPG, PNG, WEBP, atau format gambar lainnya.';
+
+
+  document.getElementById(
+    'projectModal'
+  ).classList.remove(
+    'hidden'
+  );
+
+}
+
+
+
+/* =====================================================
+   OPEN EDIT
+===================================================== */
+
+function openEditModal(
+  id
+) {
+
+  const project =
+    projects.find(
+      function(p) {
+
+        return String(p.id)
+          === String(id);
+
+      }
+    );
+
+
+  if (!project) {
+
+    showToast(
+      'Project tidak ditemukan.',
+      'error'
+    );
+
+    return;
+
+  }
+
+
+  editingProjectId =
+    project.id;
+
+
+  document.getElementById(
+    'modalTitle'
+  ).textContent =
+    'Edit Project';
+
+
+  document.getElementById(
+    'title'
+  ).value =
+    project.title || '';
+
+
+  document.getElementById(
+    'category'
+  ).value =
+    project.category || '';
+
+
+  document.getElementById(
+    'year'
+  ).value =
+    project.year || '';
+
+
+  document.getElementById(
+    'description'
+  ).value =
+    project.description || '';
+
+
+  document.getElementById(
+    'technologies'
+  ).value =
+    Array.isArray(
+      project.technologies
+    )
+      ? project.technologies.join(', ')
+      : project.technologies || '';
+
+
+  document.getElementById(
+    'gallery'
+  ).value =
+    Array.isArray(
+      project.gallery
+    )
+      ? project.gallery.join('\n')
+      : project.gallery || '';
+
+
+  document.getElementById(
+    'demoUrl'
+  ).value =
+    project.demoUrl || '';
+
+
+  document.getElementById(
+    'githubUrl'
+  ).value =
+    project.githubUrl || '';
+
+
+  document.getElementById(
+    'status'
+  ).value =
+    project.status || 'Draft';
+
+
+  document.getElementById(
+    'featured'
+  ).checked =
+    project.featured === true;
+
+
+  document.getElementById(
+    'imageFile'
+  ).value = '';
+
+
+  const preview =
+    document.getElementById(
+      'imagePreview'
+    );
+
+
+  if (project.imageUrl) {
+
+    preview.src =
+      project.imageUrl;
+
+    preview.style.display =
+      'block';
+
+  }
+
+  else {
+
+    preview.src = '';
+
+    preview.style.display =
+      'none';
+
+  }
+
+
+  document.getElementById(
+    'uploadStatus'
+  ).textContent =
+    project.imageUrl
+      ? 'Gambar saat ini tetap digunakan jika tidak memilih gambar baru.'
+      : 'Belum ada gambar utama.';
+
+
+  document.getElementById(
+    'projectModal'
+  ).classList.remove(
+    'hidden'
+  );
+
+}
+
+
+
+/* =====================================================
+   CLOSE MODAL
+===================================================== */
+
+function closeModal() {
+
+  document.getElementById(
+    'projectModal'
+  ).classList.add(
+    'hidden'
+  );
+
+}
+
+
+
+/* =====================================================
+   IMAGE PREVIEW
+===================================================== */
+
+function previewImage(
+  event
+) {
+
+  const file =
+    event.target.files[0];
+
+
+  const preview =
+    document.getElementById(
+      'imagePreview'
+    );
+
+
+  if (!file) {
+
+    preview.src = '';
+
+    preview.style.display =
+      'none';
+
+    return;
+
+  }
+
+
+  if (
+    !file.type.startsWith(
+      'image/'
+    )
+  ) {
+
+    showToast(
+      'File harus berupa gambar.',
+      'error'
+    );
+
+    event.target.value = '';
+
+    return;
+
+  }
+
+
+  const reader =
+    new FileReader();
+
+
+  reader.onload =
+    function(e) {
+
+      preview.src =
+        e.target.result;
+
+      preview.style.display =
+        'block';
+
+    };
+
+
+  reader.readAsDataURL(
+    file
+  );
+
+}
+
+
+
+/* =====================================================
+   READ FILE BASE64
+===================================================== */
+
+function readFileAsBase64(
+  file
+) {
+
+  return new Promise(
+    function(resolve, reject) {
+
+      const reader =
+        new FileReader();
+
+
+      reader.onload =
+        function() {
+
+          const result =
+            String(
+              reader.result
+            );
+
+
+          const commaIndex =
+            result.indexOf(',');
+
+
+          resolve(
+            result.substring(
+              commaIndex + 1
+            )
+          );
+
+        };
+
+
+      reader.onerror =
+        function() {
+
+          reject(
+            new Error(
+              'Gagal membaca file.'
+            )
+          );
+
+        };
+
+
+      reader.readAsDataURL(
+        file
+      );
+
+    }
+  );
+
+}
+
+
+
+/* =====================================================
+   UPLOAD IMAGE
+===================================================== */
+
+async function uploadImage(
+  file
+) {
+
+  if (!file) {
+    return null;
+  }
+
+
+  const status =
+    document.getElementById(
+      'uploadStatus'
+    );
+
+
+  status.textContent =
+    'Mengupload gambar...';
+
+
+  const base64 =
+    await readFileAsBase64(
+      file
+    );
+
+
+  const result =
+    await apiPost({
+
+      action:
+        'uploadImage',
+
+      file: {
+
+        name:
+          file.name,
+
+        mimeType:
+          file.type,
+
+        data:
+          base64
+
+      }
+
+    });
+
+
+  if (
+    !result.success
+  ) {
+
+    throw new Error(
+      result.message ||
+      'Upload gambar gagal.'
+    );
+
+  }
+
+
+  status.textContent =
+    '✓ Gambar berhasil diupload.';
+
+
+  return result.data.imageUrl;
+
+}
+
+
+
+/* =====================================================
+   SAVE PROJECT
+===================================================== */
+
+async function saveProject(
+  event
+) {
+
+  event.preventDefault();
+
+
+  const saveButton =
+    document.getElementById(
+      'saveButton'
+    );
+
+
+  saveButton.disabled =
+    true;
+
+
+  saveButton.innerHTML =
+    '<span class="loading">' +
+      '<span class="spinner"></span>' +
+      ' SAVING...' +
+    '</span>';
+
+
+  try {
+
+    const title =
+      document.getElementById(
+        'title'
+      ).value.trim();
+
+
+    if (!title) {
+
+      throw new Error(
+        'Judul project wajib diisi.'
+      );
+
+    }
+
+
+    let imageUrl;
+
+
+    /*
+     * Jika edit dan tidak memilih
+     * gambar baru, pertahankan gambar lama.
+     */
+
+    if (
+      editingProjectId
+    ) {
+
+      const oldProject =
+        projects.find(
+          function(p) {
+
+            return String(p.id)
+              === String(
+                editingProjectId
+              );
+
+          }
+        );
+
+
+      imageUrl =
+        oldProject
+          ? oldProject.imageUrl || ''
+          : '';
+
+    }
+
+    else {
+
+      imageUrl = '';
+
+    }
+
+
+    const file =
+      document.getElementById(
+        'imageFile'
+      ).files[0];
+
+
+    if (file) {
+
+      /*
+       * Batas aman sisi browser.
+       *
+       * 10 MB.
+       */
+
+      if (
+        file.size >
+        10 * 1024 * 1024
+      ) {
+
+        throw new Error(
+          'Ukuran gambar terlalu besar. Maksimal 10 MB.'
+        );
+
+      }
+
+
+      imageUrl =
+        await uploadImage(
+          file
+        );
+
+    }
+
+
+    const technologies =
+      document.getElementById(
+        'technologies'
+      ).value
+      .split(',')
+      .map(
+        function(item) {
+
+          return item.trim();
+
+        }
+      )
+      .filter(
+        function(item) {
+
+          return item !== '';
+
+        }
+      );
+
+
+    const gallery =
+      document.getElementById(
+        'gallery'
+      ).value
+      .split('\n')
+      .map(
+        function(item) {
+
+          return item.trim();
+
+        }
+      )
+      .filter(
+        function(item) {
+
+          return item !== '';
+
+        }
+      );
+
+
+    const project = {
+
+      title:
+        title,
+
+      category:
+        document.getElementById(
+          'category'
+        ).value.trim(),
+
+      year:
+        document.getElementById(
+          'year'
+        ).value.trim(),
+
+      description:
+        document.getElementById(
+          'description'
+        ).value.trim(),
+
+      imageUrl:
+        imageUrl,
+
+      gallery:
+        gallery,
+
+      technologies:
+        technologies,
+
+      demoUrl:
+        document.getElementById(
+          'demoUrl'
+        ).value.trim(),
+
+      githubUrl:
+        document.getElementById(
+          'githubUrl'
+        ).value.trim(),
+
+      status:
+        document.getElementById(
+          'status'
+        ).value,
+
+      featured:
+        document.getElementById(
+          'featured'
+        ).checked
+
+    };
+
+
+    let result;
+
+
+    if (
+      editingProjectId
+    ) {
+
+      project.id =
+        editingProjectId;
+
+
+      result =
+        await apiPost({
+
+          action:
+            'updateProject',
+
+          project:
+            project
+
+        });
+
+    }
+
+    else {
+
+      result =
+        await apiPost({
+
+          action:
+            'createProject',
+
+          project:
+            project
+
+        });
+
+    }
+
+
+    if (
+      !result.success
+    ) {
+
+      throw new Error(
+        result.message ||
+        'Gagal menyimpan project.'
+      );
+
+    }
+
+
+    closeModal();
+
+
+    showToast(
+      editingProjectId
+        ? 'Project berhasil diperbarui.'
+        : 'Project berhasil dibuat.',
+      'success'
+    );
+
+
+    await loadProjects();
+
+  }
+
+  catch (error) {
+
+    showToast(
+      error.message ||
+      'Terjadi kesalahan.',
+      'error'
+    );
+
+  }
+
+
+  saveButton.disabled =
+    false;
+
+  saveButton.textContent =
+    'SAVE PROJECT';
+
+}
+
+
+
+/* =====================================================
+   DELETE
+===================================================== */
+
+async function confirmDelete(
+  id
+) {
+
+  const project =
+    projects.find(
+      function(p) {
+
+        return String(p.id)
+          === String(id);
+
+      }
+    );
+
+
+  if (!project) {
+
+    showToast(
+      'Project tidak ditemukan.',
+      'error'
+    );
+
+    return;
+
+  }
+
+
+  const confirmed =
+    confirm(
+      'Hapus project "' +
+      project.title +
+      '"?\n\nTindakan ini akan menghapus data project dari database.'
+    );
+
+
+  if (!confirmed) {
+    return;
+  }
+
+
+  try {
+
+    const result =
+      await apiPost({
+
+        action:
+          'deleteProject',
+
+        id:
+          id
+
+      });
+
+
+    if (
+      !result.success
+    ) {
+
+      throw new Error(
+        result.message ||
+        'Gagal menghapus project.'
+      );
+
+    }
+
+
+    showToast(
+      'Project berhasil dihapus.',
+      'success'
+    );
+
+
+    await loadProjects();
+
+  }
+
+  catch (error) {
+
+    showToast(
+      error.message,
+      'error'
+    );
+
+  }
+
+}
+
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+let toastTimer;
+
+
+function showToast(
+  message,
+  type = 'success'
+) {
+
+  const toast =
+    document.getElementById(
+      'toast'
+    );
+
+
+  toast.textContent =
+    message;
+
+
+  toast.className =
+    'show ' +
+    type;
+
+
+  clearTimeout(
+    toastTimer
+  );
+
+
+  toastTimer =
+    setTimeout(
+      function() {
+
+        toast.className = '';
+
+      },
+      3500
+    );
+
+}
+
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHtml(
+  value
+) {
+
+  return String(
+    value ?? ''
+  )
+  .replace(
+    /&/g,
+    '&amp;'
+  )
+  .replace(
+    /</g,
+    '&lt;'
+  )
+  .replace(
+    />/g,
+    '&gt;'
+  )
+  .replace(
+    /"/g,
+    '&quot;'
+  )
+  .replace(
+    /'/g,
+    '&#039;'
+  );
+
+}
+
+
+function escapeAttribute(
+  value
+) {
+
+  return escapeHtml(
+    value
+  );
+
+}
+
+
+
+/* =====================================================
+   MODAL CLICK OUTSIDE
+===================================================== */
+
+document
+  .getElementById(
+    'projectModal'
+  )
+  .addEventListener(
+    'click',
+    function(event) {
+
+      if (
+        event.target ===
+        this
+      ) {
+
+        closeModal();
+
+      }
+
+    }
+  );
+
+
+
+/* =====================================================
+   ESC KEY
+===================================================== */
+
+document.addEventListener(
+  'keydown',
+  function(event) {
+
+    if (
+      event.key === 'Escape'
+    ) {
+
+      closeModal();
+
+    }
+
+  }
+);
+
+
+
+/* =====================================================
+   INITIALIZATION
+===================================================== */
+
+(function init() {
+
+  /*
+   * Jangan menganggap sessionStorage
+   * sebagai autentikasi keamanan.
+   *
+   * Backend tetap menjadi sumber
+   * keamanan utama.
+   *
+   * Session hanya digunakan agar UI
+   * tidak perlu menampilkan login
+   * berulang kali dalam tab yang sama.
+   */
+
+  const savedAdmin =
+    sessionStorage.getItem(
+      'wimaLabAdmin'
+    );
+
+
+  if (savedAdmin) {
+
+    try {
+
+      const admin =
+        JSON.parse(
+          savedAdmin
+        );
+
+
+      if (
+        admin &&
+        admin.email
+      ) {
+
+        /*
+         * Tetap verifikasi ulang ke
+         * backend.
+         */
+
+        checkAdmin();
+
+        return;
+
+      }
+
+    }
+
+    catch (error) {
+
+      sessionStorage.removeItem(
+        'wimaLabAdmin'
+      );
+
+    }
+
+  }
+
+})();
+
+</script>
+
+</body>
+</html>
