@@ -1633,48 +1633,90 @@ document.addEventListener(
 
 async function apiGet(params) {
 
-  const url =
-    API_URL +
-    '?' +
-    new URLSearchParams(params).toString();
+  return new Promise(function(resolve, reject) {
 
-  console.log('API URL:', url);
+    const callbackName =
+      'wimaLabCallback_' +
+      Date.now() +
+      '_' +
+      Math.floor(Math.random() * 100000);
 
-  const response =
-    await fetch(url, {
-      method: 'GET',
-      cache: 'no-store'
-    });
+    const query =
+      new URLSearchParams(params);
 
-  if (!response.ok) {
-
-    throw new Error(
-      'Server mengembalikan HTTP ' +
-      response.status
+    query.set(
+      'callback',
+      callbackName
     );
 
-  }
+    const script =
+      document.createElement('script');
 
-  const text =
-    await response.text();
+    const timeout =
+      setTimeout(function() {
 
-  console.log('API Response:', text);
+        cleanup();
 
-  try {
+        reject(
+          new Error(
+            'Timeout: Google Apps Script tidak memberikan response.'
+          )
+        );
 
-    return JSON.parse(text);
+      }, 15000);
 
-  } catch (error) {
 
-    throw new Error(
-      'Response Apps Script bukan JSON yang valid: ' +
-      text.substring(0, 300)
-    );
+    function cleanup() {
 
-  }
+      clearTimeout(timeout);
 
-}
+      delete window[callbackName];
 
+      if (script.parentNode) {
+        script.parentNode.removeChild(script);
+      }
+
+    }
+
+
+    window[callbackName] =
+      function(result) {
+
+        cleanup();
+
+        resolve(result);
+
+      };
+
+
+    script.onerror =
+      function() {
+
+        cleanup();
+
+        reject(
+          new Error(
+            'Gagal menghubungi Google Apps Script.'
+          )
+        );
+
+      };
+
+
+    script.src =
+      API_URL +
+      '?' +
+      query.toString();
+
+
+    document
+      .head
+      .appendChild(script);
+
+  });
+
+} 
+   
 /* =====================================================
    API POST
 ===================================================== */
