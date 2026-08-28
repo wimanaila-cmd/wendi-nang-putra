@@ -1722,35 +1722,203 @@ async function apiGet(params) {
 ===================================================== */
 
 async function apiPost(payload) {
-    const response = await fetch(API_URL, {
-        method: "POST",
-        redirect: "follow",
-        headers: {
-            "Content-Type": "text/plain;charset=utf-8"
-        },
-        body: JSON.stringify(payload)
-    });
 
-    const text = await response.text();
+  return new Promise(function(resolve, reject) {
 
-    if (!text) {
-        throw new Error("Server tidak mengembalikan response.");
+    const iframeName =
+      'wimaLabPostFrame_' +
+      Date.now() +
+      '_' +
+      Math.floor(
+        Math.random() * 100000
+      );
+
+
+    const iframe =
+      document.createElement('iframe');
+
+    iframe.name =
+      iframeName;
+
+    iframe.style.display =
+      'none';
+
+
+    const form =
+      document.createElement('form');
+
+    form.method =
+      'POST';
+
+    form.action =
+      API_URL;
+
+    form.target =
+      iframeName;
+
+    form.style.display =
+      'none';
+
+
+    const payloadInput =
+      document.createElement('input');
+
+    payloadInput.type =
+      'hidden';
+
+    payloadInput.name =
+      'payload';
+
+    payloadInput.value =
+      JSON.stringify(payload);
+
+
+    form.appendChild(
+      payloadInput
+    );
+
+
+    let finished =
+      false;
+
+
+    const timeout =
+      setTimeout(function() {
+
+        if (finished) {
+          return;
+        }
+
+        finished = true;
+
+        cleanup();
+
+        reject(
+          new Error(
+            'Timeout: Server tidak memberikan response.'
+          )
+        );
+
+      }, 30000);
+
+
+    function cleanup() {
+
+      clearTimeout(timeout);
+
+      window.removeEventListener(
+        'message',
+        handleMessage
+      );
+
+
+      if (
+        iframe.parentNode
+      ) {
+
+        iframe.parentNode.removeChild(
+          iframe
+        );
+
+      }
+
+
+      if (
+        form.parentNode
+      ) {
+
+        form.parentNode.removeChild(
+          form
+        );
+
+      }
+
     }
 
-    let result;
 
-    try {
-        result = JSON.parse(text);
-    } catch (error) {
-        console.error("Response server:", text);
-        throw new Error("Response dari Apps Script bukan JSON yang valid.");
+    function handleMessage(event) {
+
+      /*
+       * Hanya menerima response dari
+       * Google Apps Script / domain Google.
+       */
+
+      if (
+        event.origin !==
+          'https://script.google.com' &&
+        event.origin !==
+          'https://script.googleusercontent.com'
+      ) {
+
+        return;
+
+      }
+
+
+      if (
+        !event.data ||
+        typeof event.data !== 'object'
+      ) {
+
+        return;
+
+      }
+
+
+      if (finished) {
+        return;
+      }
+
+
+      finished =
+        true;
+
+
+      cleanup();
+
+
+      if (
+        event.data.success !== true
+      ) {
+
+        reject(
+          new Error(
+            event.data.message ||
+            'Request gagal.'
+          )
+        );
+
+        return;
+
+      }
+
+
+      resolve(
+        event.data
+      );
+
     }
 
-    if (!result.success) {
-        throw new Error(result.message || "Request gagal.");
-    }
 
-    return result;
+    window.addEventListener(
+      'message',
+      handleMessage
+    );
+
+
+    document.body.appendChild(
+      iframe
+    );
+
+    document.body.appendChild(
+      form
+    );
+
+
+    form.submit();
+
+  });
+
 }
 
 /* =====================================================
