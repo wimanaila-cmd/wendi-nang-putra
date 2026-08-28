@@ -4,8 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="description"
-    content="Portfolio Wendi Nang Putra, S.A.P. — Digital Administration, System Solutions & Creative Production.">
+  <meta
+    name="description"
+    content="Portfolio Wendi Nang Putra, S.A.P. — Digital Administration, System Solutions & Creative Production."
+  >
 
   <title>Wendi Nang Putra, S.A.P. — Portfolio</title>
 
@@ -35,7 +37,7 @@
       background:
         radial-gradient(
           circle at 80% 5%,
-          rgba(185,255,92,.09),
+          rgba(185, 255, 92, .09),
           transparent 28rem
         ),
         var(--bg);
@@ -75,10 +77,10 @@
 
       z-index: 100;
 
-      background: rgba(8,9,11,.78);
+      background: rgba(8, 9, 11, .78);
       backdrop-filter: blur(16px);
 
-      border-bottom: 1px solid rgba(255,255,255,.05);
+      border-bottom: 1px solid rgba(255, 255, 255, .05);
     }
 
     .nav-inner {
@@ -258,7 +260,7 @@
 
       transform: rotate(-3deg);
 
-      box-shadow: 0 30px 70px rgba(0,0,0,.45);
+      box-shadow: 0 30px 70px rgba(0, 0, 0, .45);
     }
 
     .dashboard-top {
@@ -293,17 +295,34 @@
       border-radius: 5px 5px 2px 2px;
     }
 
-    .bar:nth-child(1) { height: 35%; }
-    .bar:nth-child(2) { height: 55%; }
-    .bar:nth-child(3) { height: 45%; }
-    .bar:nth-child(4) { height: 78%; }
-    .bar:nth-child(5) { height: 62%; }
-    .bar:nth-child(6) { height: 90%; }
+    .bar:nth-child(1) {
+      height: 35%;
+    }
+
+    .bar:nth-child(2) {
+      height: 55%;
+    }
+
+    .bar:nth-child(3) {
+      height: 45%;
+    }
+
+    .bar:nth-child(4) {
+      height: 78%;
+    }
+
+    .bar:nth-child(5) {
+      height: 62%;
+    }
+
+    .bar:nth-child(6) {
+      height: 90%;
+    }
 
     .stats {
       display: grid;
 
-      grid-template-columns: repeat(3,1fr);
+      grid-template-columns: repeat(3, 1fr);
 
       gap: 8px;
     }
@@ -335,7 +354,7 @@
     section {
       padding: 105px 0;
 
-      border-top: 1px solid rgba(255,255,255,.05);
+      border-top: 1px solid rgba(255, 255, 255, .05);
     }
 
     .section-head {
@@ -361,7 +380,7 @@
     }
 
     h2 {
-      font-size: clamp(36px,5vw,60px);
+      font-size: clamp(36px, 5vw, 60px);
 
       line-height: .98;
 
@@ -376,94 +395,43 @@
       color: var(--muted);
     }
 
-<!-- =========================
-     ABOUT
-========================= -->
+    /* =========================
+       ABOUT
+    ========================= */
 
-<section id="about">
+    .about {
+      display: grid;
 
-  <div class="container">
+      grid-template-columns: .8fr 1.2fr;
 
-    <div class="section-head">
+      gap: 75px;
 
-      <div>
-        <div class="kicker">01 / ABOUT</div>
+      align-items: start;
+    }
 
-        <h2>
-          More than<br>
-          administration.
-        </h2>
-      </div>
+    .about-intro {
+      font-size: 23px;
 
-      <p>
-        Administrasi, digital systems,
-        problem solving, dan creative production
-        dalam satu perjalanan profesional.
-      </p>
+      line-height: 1.55;
 
-    </div>
+      letter-spacing: -.025em;
+    }
 
+    .about-intro strong {
+      color: var(--text);
+    }
 
-    <div class="about">
+    .about-details {
+      color: var(--muted);
 
-      <div class="about-intro">
+      font-size: 15px;
 
-        <p>
-          Saya <strong>Wendi Nang Putra, S.A.P.</strong>,
-          biasa dipanggil <strong>Nang</strong>.
-        </p>
+      line-height: 1.8;
+    }
 
-        <br>
-
-        <p>
-          Saya memiliki latar belakang
-          <strong>Administrasi Publik</strong>
-          dan pengalaman sebagai
-          <strong>Staf Administrasi di KPU Kabupaten Karimun.</strong>
-        </p>
-
-      </div>
-
-
-      <div class="muted">
-
-        <p>
-          Bagi saya, administrasi bukan hanya tentang
-          dokumen dan pekerjaan rutin. Saya tertarik
-          mencari cara agar proses kerja menjadi
-          lebih <strong style="color:var(--text)">
-          terstruktur, sederhana, dan efisien.</strong>
-        </p>
-
-        <br>
-
-        <p>
-          Dari kebutuhan nyata di lingkungan kerja,
-          saya merancang dan membangun beberapa
-          sistem digital seperti
-          <strong style="color:var(--text)">
-          SIARTEKHUM, SIDUMAS, dan SIPENA</strong>
-          menggunakan Google Workspace dan
-          Google Apps Script.
-        </p>
-
-        <br>
-
-        <p>
-          Di luar pekerjaan administrasi, saya juga
-          memiliki pengalaman dalam
-          <strong style="color:var(--text)">
-          live streaming, recording, dan sound system</strong>
-          untuk mendukung berbagai kegiatan.
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
+    .about-details strong {
+      color: var(--text);
+    }
 
     /* =========================
        EXPERIENCE
@@ -531,7 +499,7 @@
     .project-grid {
       display: grid;
 
-      grid-template-columns: repeat(2,1fr);
+      grid-template-columns: repeat(2, 1fr);
 
       gap: 15px;
     }
@@ -622,7 +590,7 @@
     .skills {
       display: grid;
 
-      grid-template-columns: repeat(4,1fr);
+      grid-template-columns: repeat(4, 1fr);
 
       gap: 12px;
     }
@@ -656,7 +624,7 @@
     .journey {
       display: grid;
 
-      grid-template-columns: repeat(4,1fr);
+      grid-template-columns: repeat(4, 1fr);
 
       gap: 1px;
 
@@ -692,7 +660,7 @@
     .contact {
       display: grid;
 
-      grid-template-columns: repeat(2,1fr);
+      grid-template-columns: repeat(2, 1fr);
 
       gap: 15px;
     }
@@ -737,7 +705,7 @@
        RESPONSIVE
     ========================= */
 
-    @media(max-width:850px) {
+    @media (max-width: 850px) {
 
       .nav-links {
         display: none;
@@ -759,15 +727,23 @@
       }
 
       .skills {
-        grid-template-columns: repeat(2,1fr);
+        grid-template-columns: repeat(2, 1fr);
       }
 
       .journey {
-        grid-template-columns: repeat(2,1fr);
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about {
+        gap: 40px;
+      }
+
+      .experience {
+        gap: 40px;
       }
     }
 
-    @media(max-width:520px) {
+    @media (max-width: 520px) {
 
       .container {
         width: calc(100% - 28px);
@@ -781,6 +757,10 @@
         min-height: 320px;
 
         padding: 12px;
+      }
+
+      .dashboard {
+        padding: 14px;
       }
 
       .skills,
@@ -797,13 +777,13 @@
       }
 
       .about-intro {
-        font-size: 22px;
-        line-height: 1.55;
-        letter-spacing: -.025em;
+        font-size: 20px;
+
+        line-height: 1.6;
       }
 
-      .about-intro strong {
-        color: var(--text);
+      .about-details {
+        font-size: 14px;
       }
 
       footer {
@@ -821,849 +801,852 @@
 
 <body>
 
-<!-- =========================
-     NAVIGATION
-========================= -->
+  <!-- =========================
+       NAVIGATION
+  ========================= -->
 
-<nav>
-  <div class="container nav-inner">
+  <nav>
+    <div class="container nav-inner">
 
-    <a class="logo" href="#home">
-      WENDI<span>.</span>
-    </a>
-
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#journey">Journey</a>
-      <a href="#contact">Contact</a>
-    </div>
-
-  </div>
-</nav>
-
-
-<main>
-
-<!-- =========================
-     HERO
-========================= -->
-
-<section class="container hero" id="home">
-
-  <div>
-
-    <div class="eyebrow">
-      <span class="dot"></span>
-      KABUPATEN KARIMUN · INDONESIA
-    </div>
-
-    <h1>
-      Wendi<br>
-      <span class="accent">Nang Putra.</span>
-    </h1>
-
-    <p class="hero-description">
-
-      <strong>Digital Administration</strong>
-      ·
-      <strong>System Solutions</strong>
-      ·
-      <strong>Creative Production</strong>
-
-      <br><br>
-
-      I build practical digital systems
-      to solve real-world problems.
-
-    </p>
-
-    <div class="buttons">
-
-      <a class="btn btn-primary" href="#projects">
-        EXPLORE PROJECTS →
+      <a class="logo" href="#home">
+        WENDI<span>.</span>
       </a>
 
-      <a class="btn" href="#contact">
-        CONTACT ME
-      </a>
-
-    </div>
-
-  </div>
-
-
-  <div class="visual">
-
-    <div class="dashboard">
-
-      <div class="dashboard-top">
-        <span>WIMA NAILA / SYSTEM LAB</span>
-        <span>2026</span>
-      </div>
-
-      <div class="bars">
-        <i class="bar"></i>
-        <i class="bar"></i>
-        <i class="bar"></i>
-        <i class="bar"></i>
-        <i class="bar"></i>
-        <i class="bar"></i>
-      </div>
-
-      <div class="stats">
-
-        <div class="stat">
-          <strong>03</strong>
-          <small>DIGITAL SYSTEMS</small>
-        </div>
-
-        <div class="stat">
-          <strong>01</strong>
-          <small>PRODUCTION</small>
-        </div>
-
-        <div class="stat">
-          <strong>22→</strong>
-          <small>EXPERIENCE</small>
-        </div>
-
-      </div>
-
-      <p style="font-size:11px;color:#9da3ad;margin-top:17px">
-        WIMA NAILA PRODUCTION · Create · Organize · Build
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     ABOUT
-========================= -->
-
-<section id="about">
-
-  <div class="container">
-
-    <div class="section-head">
-
-      <div>
-        <div class="kicker">01 / ABOUT</div>
-
-        <h2>
-          More than<br>
-          administration.
-        </h2>
-      </div>
-
-      <p>
-        Personal profile yang menggabungkan
-        administrasi, sistem digital,
-        problem solving, dan production teknis.
-      </p>
-
-    </div>
-
-
-    <div class="about">
-
-      <div class="about-intro">
-
-        Saya <strong>Wendi Nang Putra, S.A.P</strong>,
-        biasa dipanggil Nang.
-
-        Saya memiliki latar belakang
-        Administrasi Publik dan pengalaman
-        sebagai Staf Administrasi di
-        KPU Kabupaten Karimun.
-
-      </div>
-
-
-      <div class="muted">
-
-        Saya tertarik mencari cara agar
-        pekerjaan dapat menjadi lebih
-        terstruktur dan efisien melalui teknologi.
-
-        <br><br>
-
-        Dari kebutuhan nyata di tempat kerja,
-        saya merancang dan membangun
-        SIARTEKHUM, SIDUMAS, dan SIPENA
-        menggunakan Google Workspace dan
-        Google Apps Script.
-
-        <br><br>
-
-        Saya juga dipercaya mendukung
-        live streaming menggunakan OBS Studio
-        serta kebutuhan sound system kegiatan.
-
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#journey">Journey</a>
+        <a href="#contact">Contact</a>
       </div>
 
     </div>
-
-  </div>
-
-</section>
+  </nav>
 
 
-<!-- =========================
-     EXPERIENCE
-========================= -->
+  <main>
 
-<section id="experience">
+    <!-- =========================
+         HERO
+    ========================= -->
 
-  <div class="container">
-
-    <div class="section-head">
-
-      <div>
-        <div class="kicker">02 / EXPERIENCE</div>
-
-        <h2>
-          Work<br>
-          experience.
-        </h2>
-      </div>
-
-    </div>
-
-
-    <div class="experience">
+    <section class="container hero" id="home">
 
       <div>
 
-        <div class="role">
-
-          Staf Administrasi
-
-          <br>
-
-          <span class="muted">
-            KPU Kabupaten Karimun
-          </span>
-
+        <div class="eyebrow">
+          <span class="dot"></span>
+          KABUPATEN KARIMUN · INDONESIA
         </div>
 
-        <p class="muted">
-          2022 — Present
+        <h1>
+          Wendi<br>
+          <span class="accent">Nang Putra.</span>
+        </h1>
+
+        <p class="hero-description">
+
+          <strong>Digital Administration</strong>
+          ·
+          <strong>System Solutions</strong>
+          ·
+          <strong>Creative Production</strong>
+
+          <br><br>
+
+          I build practical digital systems
+          to solve real-world problems.
+
         </p>
 
+        <div class="buttons">
+
+          <a class="btn btn-primary" href="#projects">
+            EXPLORE PROJECTS →
+          </a>
+
+          <a class="btn" href="#contact">
+            CONTACT ME
+          </a>
+
+        </div>
+
       </div>
 
 
-      <div class="timeline">
+      <div class="visual">
 
-        <div class="timeline-item">
+        <div class="dashboard">
 
-          <h3>
-            Administrasi Teknis & Hukum
-          </h3>
+          <div class="dashboard-top">
+            <span>WIMA NAILA / SYSTEM LAB</span>
+            <span>2026</span>
+          </div>
 
-          <p>
-            Mengelola administrasi dan
-            pengarsipan pada Subbagian
-            Teknis dan Hukum.
-          </p>
+          <div class="bars">
+            <i class="bar"></i>
+            <i class="bar"></i>
+            <i class="bar"></i>
+            <i class="bar"></i>
+            <i class="bar"></i>
+            <i class="bar"></i>
+          </div>
 
-        </div>
+          <div class="stats">
 
+            <div class="stat">
+              <strong>03</strong>
+              <small>DIGITAL SYSTEMS</small>
+            </div>
 
-        <div class="timeline-item">
+            <div class="stat">
+              <strong>01</strong>
+              <small>PRODUCTION</small>
+            </div>
 
-          <h3>
-            Digital System Initiatives
-          </h3>
+            <div class="stat">
+              <strong>22→</strong>
+              <small>EXPERIENCE</small>
+            </div>
 
-          <p>
-            Merancang dan membangun
-            sistem digital untuk pengarsipan,
-            pengaduan, dan pencatatan
-            nomor dokumen.
-          </p>
+          </div>
 
-        </div>
-
-
-        <div class="timeline-item">
-
-          <h3>
-            Event Technical Support
-          </h3>
-
-          <p>
-            Mendukung live streaming dengan
-            OBS Studio serta kebutuhan
-            sound system kegiatan.
+          <p style="font-size:11px;color:#9da3ad;margin-top:17px">
+            WIMA NAILA PRODUCTION · Create · Organize · Build
           </p>
 
         </div>
 
       </div>
 
-    </div>
-
-  </div>
-
-</section>
+    </section>
 
 
-<!-- =========================
-     PROJECTS
-========================= -->
+    <!-- =========================
+         ABOUT
+    ========================= -->
 
-<section id="projects">
+    <section id="about">
 
-  <div class="container">
+      <div class="container">
 
-    <div class="section-head">
+        <div class="section-head">
 
-      <div>
-        <div class="kicker">
-          03 / SELECTED WORK
-        </div>
+          <div>
+            <div class="kicker">01 / ABOUT</div>
 
-        <h2>
-          Projects that<br>
-          solve problems.
-        </h2>
-      </div>
+            <h2>
+              More than<br>
+              administration.
+            </h2>
+          </div>
 
-      <p>
-        Project nyata yang dirancang dan
-        dibangun untuk kebutuhan pekerjaan
-        dan masih digunakan.
-      </p>
-
-    </div>
-
-
-    <div class="project-grid">
-
-
-      <!-- SIARTEKHUM -->
-
-      <article class="project-card">
-
-        <span class="project-number">
-          01
-        </span>
-
-        <span class="project-tag">
-          DIGITAL ARCHIVING · 2026
-        </span>
-
-        <h3>
-          SIARTEKHUM
-        </h3>
-
-        <p>
-
-          Sistem Arsip Teknis dan Hukum
-          dengan login, akses Pimpinan
-          dan Super Admin, upload dokumen,
-          pencarian, dashboard, dan
-          pengelolaan akun.
-
-        </p>
-
-        <div class="chips">
-
-          <span>Google Sheets</span>
-          <span>Google Drive</span>
-          <span>Apps Script</span>
-          <span>Dashboard</span>
-          <span>Access Control</span>
+          <p>
+            Administrasi, digital systems,
+            problem solving, dan creative production
+            dalam satu perjalanan profesional.
+          </p>
 
         </div>
 
-      </article>
+
+        <div class="about">
+
+          <div class="about-intro">
+
+            <p>
+              Saya <strong>Wendi Nang Putra, S.A.P.</strong>,
+              biasa dipanggil <strong>Nang</strong>.
+            </p>
+
+            <br>
+
+            <p>
+              Saya memiliki latar belakang
+              <strong>Administrasi Publik</strong>
+              dan pengalaman sebagai
+              <strong>Staf Administrasi di KPU Kabupaten Karimun.</strong>
+            </p>
+
+          </div>
 
 
-      <!-- SIDUMAS -->
+          <div class="about-details">
 
-      <article class="project-card">
+            <p>
+              Bagi saya, administrasi bukan hanya tentang
+              dokumen dan pekerjaan rutin. Saya tertarik
+              mencari cara agar proses kerja menjadi lebih
+              <strong>terstruktur, sederhana, dan efisien.</strong>
+            </p>
 
-        <span class="project-number">
-          02
-        </span>
+            <br>
 
-        <span class="project-tag">
-          PUBLIC SERVICE · 2026
-        </span>
+            <p>
+              Dari kebutuhan nyata di lingkungan kerja,
+              saya merancang dan membangun beberapa
+              sistem digital seperti
+              <strong>SIARTEKHUM, SIDUMAS, dan SIPENA</strong>
+              menggunakan Google Workspace dan
+              Google Apps Script.
+            </p>
 
-        <h3>
-          SIDUMAS
-        </h3>
+            <br>
 
-        <p>
+            <p>
+              Di luar pekerjaan administrasi, saya juga
+              memiliki pengalaman dalam
+              <strong>live streaming, recording, dan sound system</strong>
+              untuk mendukung berbagai kegiatan.
+            </p>
 
-          Sistem Pengaduan Masyarakat
-          dengan login dan alur
-          verifikasi setiap aduan
-          oleh admin.
-
-        </p>
-
-        <div class="chips">
-
-          <span>Google Sheets</span>
-          <span>Apps Script</span>
-          <span>Dashboard</span>
-          <span>Verification</span>
-
-        </div>
-
-      </article>
-
-
-      <!-- SIPENA -->
-
-      <article class="project-card">
-
-        <span class="project-number">
-          03
-        </span>
-
-        <span class="project-tag">
-          AUTOMATION · 2026
-        </span>
-
-        <h3>
-          SIPENA
-        </h3>
-
-        <p>
-
-          Sistem pencatatan nomor
-          surat keluar, surat tugas,
-          dan berita acara secara
-          otomatis dengan database
-          terpusat.
-
-        </p>
-
-        <div class="chips">
-
-          <span>Google Sheets</span>
-          <span>Apps Script</span>
-          <span>Automation</span>
-          <span>Database</span>
+          </div>
 
         </div>
 
-      </article>
+      </div>
+
+    </section>
 
 
-      <!-- LIVE STREAMING -->
+    <!-- =========================
+         EXPERIENCE
+    ========================= -->
 
-      <article class="project-card">
+    <section id="experience">
 
-        <span class="project-number">
-          04
-        </span>
+      <div class="container">
 
-        <span class="project-tag">
-          PRODUCTION · 2024—NOW
-        </span>
+        <div class="section-head">
 
-        <h3>
-          LIVE STREAMING
-        </h3>
+          <div>
+            <div class="kicker">02 / EXPERIENCE</div>
 
-        <p>
-
-          Dipercaya mendukung
-          live streaming kegiatan
-          menggunakan OBS Studio
-          serta kebutuhan sound system.
-
-        </p>
-
-        <div class="chips">
-
-          <span>OBS Studio</span>
-          <span>Streaming</span>
-          <span>Recording</span>
-          <span>Sound System</span>
+            <h2>
+              Work<br>
+              experience.
+            </h2>
+          </div>
 
         </div>
 
-      </article>
+
+        <div class="experience">
+
+          <div>
+
+            <div class="role">
+
+              Staf Administrasi
+
+              <br>
+
+              <span class="muted">
+                KPU Kabupaten Karimun
+              </span>
+
+            </div>
+
+            <p class="muted">
+              2022 — Present
+            </p>
+
+          </div>
 
 
-    </div>
+          <div class="timeline">
 
-  </div>
+            <div class="timeline-item">
 
-</section>
+              <h3>
+                Administrasi Teknis & Hukum
+              </h3>
+
+              <p>
+                Mengelola administrasi dan
+                pengarsipan pada Subbagian
+                Teknis dan Hukum.
+              </p>
+
+            </div>
 
 
-<!-- =========================
-     SKILLS
-========================= -->
+            <div class="timeline-item">
 
-<section id="skills">
+              <h3>
+                Digital System Initiatives
+              </h3>
 
-  <div class="container">
+              <p>
+                Merancang dan membangun
+                sistem digital untuk pengarsipan,
+                pengaduan, dan pencatatan
+                nomor dokumen.
+              </p>
 
-    <div class="section-head">
+            </div>
 
-      <div>
 
-        <div class="kicker">
-          04 / SKILLS
+            <div class="timeline-item">
+
+              <h3>
+                Event Technical Support
+              </h3>
+
+              <p>
+                Mendukung live streaming dengan
+                OBS Studio serta kebutuhan
+                sound system kegiatan.
+              </p>
+
+            </div>
+
+          </div>
+
         </div>
 
-        <h2>
-          What I<br>
-          work with.
-        </h2>
-
       </div>
 
-      <p>
-        Skill dapat terus bertambah
-        seiring project dan pembelajaran baru.
-      </p>
-
-    </div>
+    </section>
 
 
-    <div class="skills">
+    <!-- =========================
+         PROJECTS
+    ========================= -->
 
+    <section id="projects">
 
-      <div class="skill">
+      <div class="container">
 
-        <strong>
-          Administration
-        </strong>
+        <div class="section-head">
 
-        <span>
-          Administrative management,
-          document management, archiving.
-        </span>
+          <div>
+            <div class="kicker">
+              03 / SELECTED WORK
+            </div>
 
-      </div>
+            <h2>
+              Projects that<br>
+              solve problems.
+            </h2>
+          </div>
 
+          <p>
+            Project nyata yang dirancang dan
+            dibangun untuk kebutuhan pekerjaan
+            dan masih digunakan.
+          </p>
 
-      <div class="skill">
-
-        <strong>
-          Google Workspace
-        </strong>
-
-        <span>
-          Sheets, Drive, Forms,
-          Spreadsheet & Apps Script.
-        </span>
-
-      </div>
-
-
-      <div class="skill">
-
-        <strong>
-          System Design
-        </strong>
-
-        <span>
-          Workflow, user access,
-          dashboard & process automation.
-        </span>
-
-      </div>
-
-
-      <div class="skill">
-
-        <strong>
-          Data Management
-        </strong>
-
-        <span>
-          Database, search,
-          structured records & reporting.
-        </span>
-
-      </div>
-
-
-      <div class="skill">
-
-        <strong>
-          Live Streaming
-        </strong>
-
-        <span>
-          OBS Studio, live production
-          & technical support.
-        </span>
-
-      </div>
-
-
-      <div class="skill">
-
-        <strong>
-          Audio & Sound
-        </strong>
-
-        <span>
-          Sound system support
-          for events and activities.
-        </span>
-
-      </div>
-
-
-      <div class="skill">
-
-        <strong>
-          Recording & Editing
-        </strong>
-
-        <span>
-          Recording workflow
-          and basic editing.
-        </span>
-
-      </div>
-
-
-      <div class="skill">
-
-        <strong>
-          AI-Assisted Development
-        </strong>
-
-        <span>
-          Using AI as a coding
-          and problem-solving assistant.
-        </span>
-
-      </div>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     JOURNEY
-========================= -->
-
-<section id="journey">
-
-  <div class="container">
-
-    <div class="section-head">
-
-      <div>
-
-        <div class="kicker">
-          05 / JOURNEY
         </div>
 
-        <h2>
-          Building<br>
-          as I go.
-        </h2>
 
-      </div>
-
-    </div>
+        <div class="project-grid">
 
 
-    <div class="journey">
+          <!-- SIARTEKHUM -->
+
+          <article class="project-card">
+
+            <span class="project-number">
+              01
+            </span>
+
+            <span class="project-tag">
+              DIGITAL ARCHIVING · 2026
+            </span>
+
+            <h3>
+              SIARTEKHUM
+            </h3>
+
+            <p>
+              Sistem Arsip Teknis dan Hukum
+              dengan login, akses Pimpinan
+              dan Super Admin, upload dokumen,
+              pencarian, dashboard, dan
+              pengelolaan akun.
+            </p>
+
+            <div class="chips">
+
+              <span>Google Sheets</span>
+              <span>Google Drive</span>
+              <span>Apps Script</span>
+              <span>Dashboard</span>
+              <span>Access Control</span>
+
+            </div>
+
+          </article>
 
 
-      <div class="journey-item">
+          <!-- SIDUMAS -->
 
-        <b>2022</b>
+          <article class="project-card">
 
-        <h3>
-          Education
-        </h3>
+            <span class="project-number">
+              02
+            </span>
 
-        <p class="muted">
-          S1 Administrasi Publik
-          · Universitas Terbuka
-        </p>
+            <span class="project-tag">
+              PUBLIC SERVICE · 2026
+            </span>
 
-      </div>
+            <h3>
+              SIDUMAS
+            </h3>
 
+            <p>
+              Sistem Pengaduan Masyarakat
+              dengan login dan alur
+              verifikasi setiap aduan
+              oleh admin.
+            </p>
 
-      <div class="journey-item">
+            <div class="chips">
 
-        <b>
-          2022 — NOW
-        </b>
+              <span>Google Sheets</span>
+              <span>Apps Script</span>
+              <span>Dashboard</span>
+              <span>Verification</span>
 
-        <h3>
-          KPU Kabupaten Karimun
-        </h3>
+            </div>
 
-        <p class="muted">
-          Staf Administrasi
-        </p>
-
-      </div>
-
-
-      <div class="journey-item">
-
-        <b>
-          2024 — NOW
-        </b>
-
-        <h3>
-          Creative Production
-        </h3>
-
-        <p class="muted">
-          Live streaming &
-          sound system
-        </p>
-
-      </div>
+          </article>
 
 
-      <div class="journey-item">
+          <!-- SIPENA -->
 
-        <b>
-          2026
-        </b>
+          <article class="project-card">
 
-        <h3>
-          Digital Systems
-        </h3>
+            <span class="project-number">
+              03
+            </span>
 
-        <p class="muted">
-          SIARTEKHUM · SIDUMAS · SIPENA
-        </p>
+            <span class="project-tag">
+              AUTOMATION · 2026
+            </span>
 
-      </div>
+            <h3>
+              SIPENA
+            </h3>
+
+            <p>
+              Sistem pencatatan nomor
+              surat keluar, surat tugas,
+              dan berita acara secara
+              otomatis dengan database
+              terpusat.
+            </p>
+
+            <div class="chips">
+
+              <span>Google Sheets</span>
+              <span>Apps Script</span>
+              <span>Automation</span>
+              <span>Database</span>
+
+            </div>
+
+          </article>
 
 
-    </div>
+          <!-- LIVE STREAMING -->
 
-  </div>
+          <article class="project-card">
 
-</section>
+            <span class="project-number">
+              04
+            </span>
+
+            <span class="project-tag">
+              PRODUCTION · 2024—NOW
+            </span>
+
+            <h3>
+              LIVE STREAMING
+            </h3>
+
+            <p>
+              Dipercaya mendukung
+              live streaming kegiatan
+              menggunakan OBS Studio
+              serta kebutuhan sound system.
+            </p>
+
+            <div class="chips">
+
+              <span>OBS Studio</span>
+              <span>Streaming</span>
+              <span>Recording</span>
+              <span>Sound System</span>
+
+            </div>
+
+          </article>
 
 
-<!-- =========================
-     CONTACT
-========================= -->
-
-<section id="contact">
-
-  <div class="container">
-
-    <div class="section-head">
-
-      <div>
-
-        <div class="kicker">
-          06 / CONTACT
         </div>
 
-        <h2>
-          Let's connect.
-        </h2>
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         SKILLS
+    ========================= -->
+
+    <section id="skills">
+
+      <div class="container">
+
+        <div class="section-head">
+
+          <div>
+
+            <div class="kicker">
+              04 / SKILLS
+            </div>
+
+            <h2>
+              What I<br>
+              work with.
+            </h2>
+
+          </div>
+
+          <p>
+            Skill dapat terus bertambah
+            seiring project dan pembelajaran baru.
+          </p>
+
+        </div>
+
+
+        <div class="skills">
+
+
+          <div class="skill">
+
+            <strong>
+              Administration
+            </strong>
+
+            <span>
+              Administrative management,
+              document management, archiving.
+            </span>
+
+          </div>
+
+
+          <div class="skill">
+
+            <strong>
+              Google Workspace
+            </strong>
+
+            <span>
+              Sheets, Drive, Forms,
+              Spreadsheet & Apps Script.
+            </span>
+
+          </div>
+
+
+          <div class="skill">
+
+            <strong>
+              System Design
+            </strong>
+
+            <span>
+              Workflow, user access,
+              dashboard & process automation.
+            </span>
+
+          </div>
+
+
+          <div class="skill">
+
+            <strong>
+              Data Management
+            </strong>
+
+            <span>
+              Database, search,
+              structured records & reporting.
+            </span>
+
+          </div>
+
+
+          <div class="skill">
+
+            <strong>
+              Live Streaming
+            </strong>
+
+            <span>
+              OBS Studio, live production
+              & technical support.
+            </span>
+
+          </div>
+
+
+          <div class="skill">
+
+            <strong>
+              Audio & Sound
+            </strong>
+
+            <span>
+              Sound system support
+              for events and activities.
+            </span>
+
+          </div>
+
+
+          <div class="skill">
+
+            <strong>
+              Recording & Editing
+            </strong>
+
+            <span>
+              Recording workflow
+              and basic editing.
+            </span>
+
+          </div>
+
+
+          <div class="skill">
+
+            <strong>
+              AI-Assisted Development
+            </strong>
+
+            <span>
+              Using AI as a coding
+              and problem-solving assistant.
+            </span>
+
+          </div>
+
+
+        </div>
 
       </div>
 
-      <p>
-        Untuk kesempatan kerja,
-        kolaborasi, project,
-        atau diskusi.
-      </p>
-
-    </div>
+    </section>
 
 
-    <div class="contact">
+    <!-- =========================
+         JOURNEY
+    ========================= -->
+
+    <section id="journey">
+
+      <div class="container">
+
+        <div class="section-head">
+
+          <div>
+
+            <div class="kicker">
+              05 / JOURNEY
+            </div>
+
+            <h2>
+              Building<br>
+              as I go.
+            </h2>
+
+          </div>
+
+        </div>
 
 
-      <div class="contact-card">
-
-        <span class="muted">
-          PERSONAL EMAIL
-        </span>
-
-        <a href="mailto:wendinangputra@gmail.com">
-          wendinangputra@gmail.com
-        </a>
+        <div class="journey">
 
 
-        <span
-          class="muted"
-          style="display:block;margin-top:18px"
-        >
-          WHATSAPP
-        </span>
+          <div class="journey-item">
 
-        <a href="https://wa.me/6281277694393">
+            <b>2022</b>
 
-          +62 812-7769-4393
+            <h3>
+              Education
+            </h3>
 
-        </a>
+            <p class="muted">
+              S1 Administrasi Publik
+              · Universitas Terbuka
+            </p>
+
+          </div>
+
+
+          <div class="journey-item">
+
+            <b>
+              2022 — NOW
+            </b>
+
+            <h3>
+              KPU Kabupaten Karimun
+            </h3>
+
+            <p class="muted">
+              Staf Administrasi
+            </p>
+
+          </div>
+
+
+          <div class="journey-item">
+
+            <b>
+              2024 — NOW
+            </b>
+
+            <h3>
+              Creative Production
+            </h3>
+
+            <p class="muted">
+              Live streaming &
+              sound system
+            </p>
+
+          </div>
+
+
+          <div class="journey-item">
+
+            <b>
+              2026
+            </b>
+
+            <h3>
+              Digital Systems
+            </h3>
+
+            <p class="muted">
+              SIARTEKHUM · SIDUMAS · SIPENA
+            </p>
+
+          </div>
+
+
+        </div>
 
       </div>
 
+    </section>
 
-      <div class="contact-card">
 
-        <span class="muted">
-          WIMA NAILA PRODUCTION
-        </span>
+    <!-- =========================
+         CONTACT
+    ========================= -->
 
-        <a href="mailto:wimanailaproduction@gmail.com">
+    <section id="contact">
 
-          wimanailaproduction@gmail.com
+      <div class="container">
 
-        </a>
+        <div class="section-head">
 
-        <p class="muted">
-          Create · Organize · Build
-        </p>
+          <div>
+
+            <div class="kicker">
+              06 / CONTACT
+            </div>
+
+            <h2>
+              Let's connect.
+            </h2>
+
+          </div>
+
+          <p>
+            Untuk kesempatan kerja,
+            kolaborasi, project,
+            atau diskusi.
+          </p>
+
+        </div>
+
+
+        <div class="contact">
+
+
+          <div class="contact-card">
+
+            <span class="muted">
+              PERSONAL EMAIL
+            </span>
+
+            <a href="mailto:wendinangputra@gmail.com">
+              wendinangputra@gmail.com
+            </a>
+
+
+            <span
+              class="muted"
+              style="display:block;margin-top:18px"
+            >
+              WHATSAPP
+            </span>
+
+            <a href="https://wa.me/6281277694393">
+              +62 812-7769-4393
+            </a>
+
+          </div>
+
+
+          <div class="contact-card">
+
+            <span class="muted">
+              WIMA NAILA PRODUCTION
+            </span>
+
+            <a href="mailto:wimanailaproduction@gmail.com">
+              wimanailaproduction@gmail.com
+            </a>
+
+            <p class="muted">
+              Create · Organize · Build
+            </p>
+
+          </div>
+
+
+        </div>
 
       </div>
 
+    </section>
 
-    </div>
-
-  </div>
-
-</section>
-
-</main>
+  </main>
 
 
-<footer class="container">
+  <footer class="container">
 
-  <span>
-    © 2026 Wendi Nang Putra, S.A.P.
-  </span>
+    <span>
+      © 2026 Wendi Nang Putra, S.A.P.
+    </span>
 
-  <span>
-    WIMA NAILA PRODUCTION · Personal Portfolio
-  </span>
+    <span>
+      WIMA NAILA PRODUCTION · Personal Portfolio
+    </span>
 
-</footer>
+  </footer>
 
 </body>
 </html>
