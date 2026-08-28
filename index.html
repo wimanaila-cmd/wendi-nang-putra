@@ -2,26 +2,60 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <meta
     name="description"
-    content="Portfolio Wendi Nang Putra, S.A.P. — Digital Administration, System Solutions & Creative Production."
+    content="Portfolio Wendi Nang Putra, S.A.P. — Digital Administration, System Solutions, Creative Production & WIMA LAB."
+  >
+
+  <meta
+    name="author"
+    content="Wendi Nang Putra"
   >
 
   <title>Wendi Nang Putra, S.A.P. — Portfolio</title>
 
+
   <style>
+
+    /* =========================================================
+       ROOT
+    ========================================================= */
+
     :root {
-      --bg: #08090b;
+
+      --bg: #070809;
+      --bg-soft: #0b0d10;
+
       --card: #111318;
       --card-soft: #15181e;
+
       --text: #f5f6f7;
       --muted: #9da3ad;
+
       --line: #272b33;
+
       --accent: #b9ff5c;
+      --accent-dark: #8ecf39;
+
       --max: 1180px;
+
+      --radius: 20px;
+
+      --shadow:
+        0 25px 70px rgba(0, 0, 0, .38);
+
     }
+
+
+    /* =========================================================
+       RESET
+    ========================================================= */
 
     * {
       box-sizing: border-box;
@@ -29,17 +63,29 @@
       padding: 0;
     }
 
+
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 80px;
     }
 
+
     body {
+
       background:
+
         radial-gradient(
-          circle at 80% 5%,
-          rgba(185, 255, 92, .09),
-          transparent 28rem
+          circle at 85% 0%,
+          rgba(185, 255, 92, .10),
+          transparent 30rem
         ),
+
+        radial-gradient(
+          circle at 10% 35%,
+          rgba(185, 255, 92, .035),
+          transparent 25rem
+        ),
+
         var(--bg);
 
       color: var(--text);
@@ -53,227 +99,559 @@
         sans-serif;
 
       line-height: 1.7;
+
+      overflow-x: hidden;
     }
+
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
 
     a {
       color: inherit;
       text-decoration: none;
     }
 
+
+    button {
+      font: inherit;
+    }
+
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+
+    ::selection {
+      background: var(--accent);
+      color: #080b07;
+    }
+
+
     .container {
-      width: min(var(--max), calc(100% - 36px));
+      width: min(
+        var(--max),
+        calc(100% - 36px)
+      );
+
       margin: auto;
     }
 
-    /* =========================
-       NAVIGATION
-    ========================= */
 
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-
-      z-index: 100;
-
-      background: rgba(8, 9, 11, .78);
-      backdrop-filter: blur(16px);
-
-      border-bottom: 1px solid rgba(255, 255, 255, .05);
-    }
-
-    .nav-inner {
-      height: 74px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      font-size: 18px;
-      font-weight: 850;
-      letter-spacing: -.05em;
-    }
-
-    .logo span {
-      color: var(--accent);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 25px;
-
-      font-size: 12px;
+    .muted {
       color: var(--muted);
     }
 
-    .nav-links a {
-      transition: .2s;
-    }
-
-    .nav-links a:hover {
-      color: var(--text);
-    }
-
-    /* =========================
-       HERO
-    ========================= */
-
-    .hero {
-      min-height: 94vh;
-
-      display: grid;
-      grid-template-columns: 1.15fr .85fr;
-
-      gap: 60px;
-
-      align-items: center;
-
-      padding-top: 100px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-
-      align-items: center;
-      gap: 8px;
-
-      border: 1px solid var(--line);
-
-      border-radius: 999px;
-
-      padding: 7px 11px;
-
-      color: var(--muted);
-
-      font-size: 11px;
-    }
-
-    .dot {
-      width: 7px;
-      height: 7px;
-
-      background: var(--accent);
-
-      border-radius: 50%;
-
-      box-shadow: 0 0 18px var(--accent);
-    }
-
-    h1 {
-      font-size: clamp(52px, 8vw, 96px);
-
-      line-height: .92;
-
-      letter-spacing: -.075em;
-
-      margin: 24px 0;
-    }
 
     .accent {
       color: var(--accent);
     }
 
-    .hero-description {
-      max-width: 650px;
+
+    /* =========================================================
+       SCROLL PROGRESS
+    ========================================================= */
+
+    .scroll-progress {
+
+      position: fixed;
+
+      top: 0;
+      left: 0;
+
+      width: 0%;
+      height: 2px;
+
+      background: var(--accent);
+
+      z-index: 1000;
+
+      box-shadow:
+        0 0 15px rgba(185, 255, 92, .7);
+    }
+
+
+    /* =========================================================
+       NAVIGATION
+    ========================================================= */
+
+    nav {
+
+      position: fixed;
+
+      top: 0;
+      left: 0;
+      right: 0;
+
+      z-index: 900;
+
+      background:
+        rgba(7, 8, 9, .78);
+
+      backdrop-filter:
+        blur(18px);
+
+      -webkit-backdrop-filter:
+        blur(18px);
+
+      border-bottom:
+        1px solid rgba(255, 255, 255, .055);
+    }
+
+
+    .nav-inner {
+
+      height: 74px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+    }
+
+
+    .logo {
 
       font-size: 18px;
+
+      font-weight: 850;
+
+      letter-spacing: -.05em;
+    }
+
+
+    .logo span {
+      color: var(--accent);
+    }
+
+
+    .nav-links {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 23px;
+
+      font-size: 11px;
 
       color: var(--muted);
     }
 
-    .buttons {
-      display: flex;
 
-      flex-wrap: wrap;
+    .nav-links a {
 
-      gap: 12px;
+      position: relative;
 
-      margin-top: 28px;
+      transition:
+        color .2s ease;
     }
 
-    .btn {
-      padding: 12px 17px;
+
+    .nav-links a::after {
+
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      bottom: -7px;
+
+      width: 0;
+      height: 1px;
+
+      background: var(--accent);
+
+      transition:
+        width .2s ease;
+    }
+
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+
+    /* MOBILE MENU BUTTON */
+
+    .menu-toggle {
+
+      display: none;
+
+      width: 42px;
+      height: 42px;
 
       border: 1px solid var(--line);
 
       border-radius: 12px;
 
-      font-size: 12px;
+      background: var(--card);
 
-      font-weight: 750;
+      color: var(--text);
 
-      transition: .2s;
+      cursor: pointer;
+
+      align-items: center;
+      justify-content: center;
+
+      font-size: 19px;
     }
+
+
+    /* =========================================================
+       MOBILE NAV
+    ========================================================= */
+
+    .mobile-menu {
+
+      display: none;
+
+      position: fixed;
+
+      top: 74px;
+      left: 0;
+      right: 0;
+
+      z-index: 850;
+
+      background:
+        rgba(7, 8, 9, .97);
+
+      border-bottom:
+        1px solid var(--line);
+
+      padding: 20px;
+
+      transform:
+        translateY(-120%);
+
+      transition:
+        transform .3s ease;
+    }
+
+
+    .mobile-menu.open {
+
+      transform:
+        translateY(0);
+    }
+
+
+    .mobile-menu a {
+
+      display: block;
+
+      padding: 13px 4px;
+
+      border-bottom:
+        1px solid rgba(255, 255, 255, .05);
+
+      color: var(--muted);
+
+      font-size: 13px;
+    }
+
+
+    .mobile-menu a:hover {
+      color: var(--accent);
+    }
+
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    .hero {
+
+      min-height: 96vh;
+
+      display: grid;
+
+      grid-template-columns:
+        1.12fr .88fr;
+
+      gap: 65px;
+
+      align-items: center;
+
+      padding-top: 105px;
+    }
+
+
+    .eyebrow {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 9px;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 999px;
+
+      padding:
+        7px 12px;
+
+      color: var(--muted);
+
+      font-size: 10px;
+
+      letter-spacing: .08em;
+    }
+
+
+    .dot {
+
+      width: 7px;
+      height: 7px;
+
+      background:
+        var(--accent);
+
+      border-radius: 50%;
+
+      box-shadow:
+        0 0 18px
+        var(--accent);
+    }
+
+
+    .hero h1 {
+
+      font-size:
+        clamp(55px, 8vw, 100px);
+
+      line-height: .9;
+
+      letter-spacing:
+        -.08em;
+
+      margin:
+        25px 0;
+    }
+
+
+    .hero-description {
+
+      max-width: 650px;
+
+      color: var(--muted);
+
+      font-size: 18px;
+    }
+
+
+    .hero-description strong {
+      color: var(--text);
+    }
+
+
+    .buttons {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 11px;
+
+      margin-top: 29px;
+    }
+
+
+    .btn {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 7px;
+
+      padding:
+        12px 17px;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 12px;
+
+      font-size: 11px;
+
+      font-weight: 800;
+
+      letter-spacing: .02em;
+
+      transition:
+        transform .2s ease,
+        border-color .2s ease,
+        background .2s ease;
+    }
+
 
     .btn:hover {
-      transform: translateY(-2px);
+
+      transform:
+        translateY(-3px);
+
+      border-color:
+        #454c56;
     }
+
 
     .btn-primary {
-      background: var(--accent);
 
-      color: #080b07;
+      background:
+        var(--accent);
 
-      border-color: var(--accent);
+      color:
+        #080b07;
+
+      border-color:
+        var(--accent);
     }
 
-    /* =========================
+
+    .btn-primary:hover {
+
+      background:
+        #c8ff79;
+
+      border-color:
+        #c8ff79;
+    }
+
+
+    .btn-outline {
+      background: transparent;
+    }
+
+
+    /* =========================================================
        HERO VISUAL
-    ========================= */
+    ========================================================= */
 
     .visual {
-      min-height: 410px;
 
-      border: 1px solid var(--line);
+      min-height: 430px;
+
+      border:
+        1px solid var(--line);
 
       border-radius: 30px;
 
       padding: 22px;
 
       background:
+
         linear-gradient(
           145deg,
           #14181d,
-          #0b0d10
+          #090b0e
         );
 
       display: flex;
 
       align-items: center;
 
+      position: relative;
+
       overflow: hidden;
+
+      box-shadow:
+        var(--shadow);
     }
 
+
+    .visual::before {
+
+      content: "";
+
+      position: absolute;
+
+      width: 250px;
+      height: 250px;
+
+      border-radius: 50%;
+
+      background:
+        rgba(185, 255, 92, .06);
+
+      filter:
+        blur(50px);
+
+      top: -100px;
+      right: -80px;
+    }
+
+
     .dashboard {
+
       width: 100%;
 
-      border: 1px solid var(--line);
+      position: relative;
+
+      z-index: 2;
+
+      border:
+        1px solid var(--line);
 
       border-radius: 20px;
 
-      padding: 18px;
+      padding: 19px;
 
-      background: #090b0d;
+      background:
+        #090b0d;
 
-      transform: rotate(-3deg);
+      transform:
+        rotate(-3deg);
 
-      box-shadow: 0 30px 70px rgba(0, 0, 0, .45);
+      box-shadow:
+        0 30px 70px rgba(0,0,0,.5);
+
+      transition:
+        transform .4s ease;
     }
 
+
+    .visual:hover .dashboard {
+
+      transform:
+        rotate(0deg)
+        translateY(-5px);
+    }
+
+
     .dashboard-top {
+
       display: flex;
 
       justify-content: space-between;
 
+      gap: 20px;
+
       color: var(--muted);
 
-      font-size: 10px;
+      font-size: 9px;
+
+      letter-spacing: .08em;
     }
 
+
     .bars {
+
       height: 160px;
 
       display: flex;
@@ -285,79 +663,124 @@
       margin: 20px 0;
     }
 
+
     .bar {
+
       flex: 1;
 
-      background: var(--accent);
+      background:
+        var(--accent);
 
       opacity: .7;
 
-      border-radius: 5px 5px 2px 2px;
+      border-radius:
+        5px 5px 2px 2px;
+
+      animation:
+        barPulse 3s ease-in-out infinite;
     }
+
 
     .bar:nth-child(1) {
       height: 35%;
+      animation-delay: .1s;
     }
 
     .bar:nth-child(2) {
       height: 55%;
+      animation-delay: .2s;
     }
 
     .bar:nth-child(3) {
       height: 45%;
+      animation-delay: .3s;
     }
 
     .bar:nth-child(4) {
       height: 78%;
+      animation-delay: .4s;
     }
 
     .bar:nth-child(5) {
       height: 62%;
+      animation-delay: .5s;
     }
 
     .bar:nth-child(6) {
       height: 90%;
+      animation-delay: .6s;
     }
 
+
+    @keyframes barPulse {
+
+      0%,
+      100% {
+        opacity: .55;
+      }
+
+      50% {
+        opacity: .9;
+      }
+    }
+
+
     .stats {
+
       display: grid;
 
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns:
+        repeat(3, 1fr);
 
       gap: 8px;
     }
 
+
     .stat {
-      border: 1px solid var(--line);
+
+      border:
+        1px solid var(--line);
 
       border-radius: 10px;
 
       padding: 10px;
     }
 
+
     .stat strong {
+
       display: block;
 
       font-size: 18px;
     }
 
+
     .stat small {
+
       color: var(--muted);
 
-      font-size: 9px;
+      font-size: 8px;
+
+      letter-spacing: .04em;
     }
 
-    /* =========================
-       SECTIONS
-    ========================= */
+
+    /* =========================================================
+       GENERAL SECTIONS
+    ========================================================= */
 
     section {
-      padding: 105px 0;
 
-      border-top: 1px solid rgba(255, 255, 255, .05);
+      padding:
+        110px 0;
+
+      border-top:
+        1px solid rgba(255,255,255,.05);
     }
 
+
     .section-head {
+
       display: flex;
 
       justify-content: space-between;
@@ -366,104 +789,210 @@
 
       gap: 30px;
 
-      margin-bottom: 42px;
+      margin-bottom: 45px;
     }
+
 
     .kicker {
-      color: var(--accent);
 
-      font-size: 11px;
+      color:
+        var(--accent);
 
-      font-weight: 800;
+      font-size: 10px;
 
-      letter-spacing: .16em;
+      font-weight: 850;
+
+      letter-spacing:
+        .18em;
     }
 
+
     h2 {
-      font-size: clamp(36px, 5vw, 60px);
 
-      line-height: .98;
+      font-size:
+        clamp(38px, 5vw, 62px);
 
-      letter-spacing: -.06em;
+      line-height:
+        .96;
+
+      letter-spacing:
+        -.065em;
 
       margin-top: 8px;
     }
 
-    .section-head p {
-      max-width: 430px;
 
-      color: var(--muted);
+    .section-head > p {
+
+      max-width: 440px;
+
+      color:
+        var(--muted);
+
+      font-size: 14px;
     }
 
-    /* =========================
+
+    /* =========================================================
        ABOUT
-    ========================= */
+    ========================================================= */
 
     .about {
+
       display: grid;
 
-      grid-template-columns: .8fr 1.2fr;
+      grid-template-columns:
+        .8fr 1.2fr;
 
       gap: 75px;
 
       align-items: start;
     }
 
+
     .about-intro {
+
       font-size: 23px;
 
       line-height: 1.55;
 
-      letter-spacing: -.025em;
+      letter-spacing:
+        -.025em;
     }
+
 
     .about-intro strong {
       color: var(--text);
     }
 
+
     .about-details {
-      color: var(--muted);
+
+      color:
+        var(--muted);
 
       font-size: 15px;
 
-      line-height: 1.8;
+      line-height: 1.85;
     }
+
 
     .about-details strong {
       color: var(--text);
     }
 
-    /* =========================
-       EXPERIENCE
-    ========================= */
 
-    .experience {
+    .about-points {
+
       display: grid;
 
-      grid-template-columns: .8fr 1.2fr;
+      grid-template-columns:
+        repeat(2, 1fr);
+
+      gap: 10px;
+
+      margin-top: 28px;
+    }
+
+
+    .about-point {
+
+      border:
+        1px solid var(--line);
+
+      background:
+        var(--card);
+
+      border-radius: 13px;
+
+      padding: 15px;
+    }
+
+
+    .about-point span {
+
+      display: block;
+
+      color:
+        var(--accent);
+
+      font-size: 9px;
+
+      font-weight: 800;
+
+      letter-spacing: .12em;
+
+      margin-bottom: 5px;
+    }
+
+
+    .about-point strong {
+
+      font-size: 13px;
+    }
+
+
+    /* =========================================================
+       EXPERIENCE
+    ========================================================= */
+
+    .experience {
+
+      display: grid;
+
+      grid-template-columns:
+        .8fr 1.2fr;
 
       gap: 75px;
     }
 
+
     .role {
+
       font-size: 31px;
 
       line-height: 1.1;
+
+      letter-spacing:
+        -.04em;
     }
+
+
+    .role-meta {
+
+      margin-top: 13px;
+
+      color:
+        var(--muted);
+
+      font-size: 13px;
+    }
+
 
     .timeline {
-      border-left: 1px solid var(--line);
 
-      padding-left: 24px;
+      border-left:
+        1px solid var(--line);
+
+      padding-left: 25px;
     }
+
 
     .timeline-item {
+
       position: relative;
 
-      padding-bottom: 28px;
+      padding-bottom: 32px;
     }
 
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+
     .timeline-item::before {
+
       content: "";
 
       position: absolute;
@@ -473,97 +1002,184 @@
 
       border-radius: 50%;
 
-      background: var(--accent);
+      background:
+        var(--accent);
 
-      left: -28px;
+      left: -29px;
 
       top: 9px;
+
+      box-shadow:
+        0 0 12px
+        rgba(185,255,92,.35);
     }
+
 
     .timeline-item h3 {
-      margin-bottom: 4px;
 
-      font-size: 20px;
+      margin-bottom: 5px;
+
+      font-size: 19px;
     }
+
 
     .timeline-item p {
-      margin: 0;
 
-      color: var(--muted);
+      color:
+        var(--muted);
+
+      font-size: 14px;
     }
 
-    /* =========================
+
+    /* =========================================================
        PROJECTS
-    ========================= */
+    ========================================================= */
 
     .project-grid {
+
       display: grid;
 
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns:
+        repeat(2, 1fr);
 
       gap: 15px;
     }
 
+
     .project-card {
-      border: 1px solid var(--line);
 
-      border-radius: 21px;
+      position: relative;
 
-      padding: 26px;
+      border:
+        1px solid var(--line);
+
+      border-radius:
+        var(--radius);
+
+      padding: 27px;
 
       background:
+
         linear-gradient(
           145deg,
           var(--card),
-          #0c0e11
+          #0b0d10
         );
 
-      transition: .25s;
+      overflow: hidden;
+
+      transition:
+        transform .25s ease,
+        border-color .25s ease;
     }
+
+
+    .project-card::before {
+
+      content: "";
+
+      position: absolute;
+
+      width: 180px;
+      height: 180px;
+
+      border-radius: 50%;
+
+      background:
+        rgba(185,255,92,.045);
+
+      filter:
+        blur(35px);
+
+      right: -80px;
+      top: -80px;
+
+      opacity: 0;
+
+      transition:
+        opacity .3s ease;
+    }
+
 
     .project-card:hover {
-      transform: translateY(-5px);
 
-      border-color: #3b424a;
+      transform:
+        translateY(-6px);
+
+      border-color:
+        #424953;
     }
+
+
+    .project-card:hover::before {
+      opacity: 1;
+    }
+
 
     .project-number {
-      float: right;
 
-      color: var(--accent);
+      position: absolute;
 
-      font-size: 11px;
+      top: 24px;
+      right: 25px;
+
+      color:
+        var(--accent);
+
+      font-size: 10px;
+
+      font-weight: 800;
     }
+
 
     .project-tag {
+
       display: inline-block;
 
-      border: 1px solid var(--line);
+      border:
+        1px solid var(--line);
 
-      border-radius: 999px;
+      border-radius:
+        999px;
 
-      padding: 5px 8px;
+      padding:
+        5px 8px;
 
-      color: var(--muted);
+      color:
+        var(--muted);
 
-      font-size: 9px;
+      font-size: 8px;
 
-      margin-bottom: 32px;
+      letter-spacing: .06em;
+
+      margin-bottom: 28px;
     }
+
 
     .project-card h3 {
+
       font-size: 26px;
 
-      letter-spacing: -.03em;
+      letter-spacing:
+        -.035em;
     }
+
 
     .project-card p {
-      color: var(--muted);
 
-      margin: 8px 0 18px;
+      color:
+        var(--muted);
+
+      font-size: 13px;
+
+      margin:
+        8px 0 20px;
     }
 
+
     .chips {
+
       display: flex;
 
       flex-wrap: wrap;
@@ -571,287 +1187,985 @@
       gap: 6px;
     }
 
+
     .chips span {
-      background: #191d22;
 
-      color: #c8cdd2;
+      background:
+        #191d22;
 
-      padding: 5px 7px;
+      color:
+        #c8cdd2;
 
-      border-radius: 6px;
+      padding:
+        5px 7px;
 
-      font-size: 10px;
+      border-radius:
+        6px;
+
+      font-size: 9px;
     }
 
-    /* =========================
-       SKILLS
-    ========================= */
 
-    .skills {
+    /* =========================================================
+       CREATIVE PRODUCTION
+    ========================================================= */
+
+    .production {
+
       display: grid;
 
-      grid-template-columns: repeat(4, 1fr);
-
-      gap: 12px;
-    }
-
-    .skill {
-      border: 1px solid var(--line);
-
-      border-radius: 15px;
-
-      background: var(--card);
-
-      padding: 19px;
-    }
-
-    .skill strong {
-      display: block;
-
-      margin-bottom: 6px;
-    }
-
-    .skill span {
-      color: var(--muted);
-
-      font-size: 11px;
-    }
-
-    /* =========================
-       JOURNEY
-    ========================= */
-
-    .journey {
-      display: grid;
-
-      grid-template-columns: repeat(4, 1fr);
-
-      gap: 1px;
-
-      background: var(--line);
-
-      border: 1px solid var(--line);
-
-      border-radius: 20px;
-
-      overflow: hidden;
-    }
-
-    .journey-item {
-      background: var(--card);
-
-      padding: 23px;
-    }
-
-    .journey-item b {
-      color: var(--accent);
-
-      font-size: 11px;
-    }
-
-    .journey-item h3 {
-      margin: 8px 0 3px;
-    }
-
-    /* =========================
-       CONTACT
-    ========================= */
-
-    .contact {
-      display: grid;
-
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns:
+        1fr 1fr;
 
       gap: 15px;
     }
 
-    .contact-card {
-      border: 1px solid var(--line);
 
-      background: var(--card);
+    .production-card {
 
-      border-radius: 19px;
+      border:
+        1px solid var(--line);
 
-      padding: 26px;
+      border-radius:
+        var(--radius);
+
+      padding: 30px;
+
+      background:
+        var(--card);
+
+      transition:
+        transform .25s ease,
+        border-color .25s ease;
     }
 
-    .contact-card a {
+
+    .production-card:hover {
+
+      transform:
+        translateY(-5px);
+
+      border-color:
+        #424953;
+    }
+
+
+    .production-icon {
+
+      width: 48px;
+      height: 48px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      border:
+        1px solid var(--line);
+
+      border-radius:
+        14px;
+
+      color:
+        var(--accent);
+
+      font-size: 20px;
+
+      margin-bottom: 22px;
+    }
+
+
+    .production-card h3 {
+
+      font-size: 25px;
+
+      margin-bottom: 8px;
+    }
+
+
+    .production-card p {
+
+      color:
+        var(--muted);
+
+      font-size: 14px;
+    }
+
+
+    .production-list {
+
+      margin-top: 20px;
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 7px;
+    }
+
+
+    .production-list span {
+
+      padding:
+        6px 8px;
+
+      background:
+        #191d22;
+
+      border-radius:
+        7px;
+
+      color:
+        #c8cdd2;
+
+      font-size: 9px;
+    }
+
+
+    /* =========================================================
+       SKILLS
+    ========================================================= */
+
+    .skills {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 12px;
+    }
+
+
+    .skill {
+
+      border:
+        1px solid var(--line);
+
+      border-radius:
+        15px;
+
+      background:
+        var(--card);
+
+      padding: 20px;
+
+      transition:
+        transform .2s ease,
+        border-color .2s ease;
+    }
+
+
+    .skill:hover {
+
+      transform:
+        translateY(-4px);
+
+      border-color:
+        #424953;
+    }
+
+
+    .skill-index {
+
+      color:
+        var(--accent);
+
+      font-size: 9px;
+
+      font-weight: 800;
+
+      letter-spacing:
+        .12em;
+
+      margin-bottom: 14px;
+    }
+
+
+    .skill strong {
+
       display: block;
 
-      color: var(--accent);
+      margin-bottom: 6px;
 
-      margin-top: 5px;
+      font-size: 14px;
     }
 
-    /* =========================
-       FOOTER
-    ========================= */
 
-    footer {
-      padding: 30px 0;
+    .skill span {
 
-      border-top: 1px solid var(--line);
+      color:
+        var(--muted);
 
-      color: var(--muted);
+      font-size: 10px;
 
-      font-size: 11px;
+      line-height: 1.6;
+    }
+
+
+    /* =========================================================
+       WIMA LAB
+    ========================================================= */
+
+    .lab-intro {
+
+      max-width: 700px;
+
+      color:
+        var(--muted);
+
+      font-size: 15px;
+
+      margin-bottom: 35px;
+    }
+
+
+    .lab-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 12px;
+    }
+
+
+    .lab-card {
+
+      min-height: 230px;
+
+      border:
+        1px dashed #343942;
+
+      border-radius:
+        var(--radius);
+
+      padding: 25px;
+
+      background:
+        rgba(17, 19, 24, .65);
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: space-between;
+
+      transition:
+        transform .25s ease,
+        border-color .25s ease,
+        background .25s ease;
+    }
+
+
+    .lab-card:hover {
+
+      transform:
+        translateY(-5px);
+
+      border-color:
+        var(--accent);
+
+      background:
+        var(--card);
+    }
+
+
+    .lab-number {
+
+      color:
+        var(--accent);
+
+      font-size: 10px;
+
+      font-weight: 850;
+
+      letter-spacing:
+        .12em;
+    }
+
+
+    .lab-card h3 {
+
+      font-size: 22px;
+
+      margin:
+        15px 0 6px;
+    }
+
+
+    .lab-card p {
+
+      color:
+        var(--muted);
+
+      font-size: 12px;
+    }
+
+
+    .lab-status {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 7px;
+
+      margin-top: 20px;
+
+      color:
+        var(--muted);
+
+      font-size: 9px;
+    }
+
+
+    .lab-status i {
+
+      width: 6px;
+      height: 6px;
+
+      border-radius: 50%;
+
+      background:
+        var(--accent);
+
+      box-shadow:
+        0 0 10px
+        var(--accent);
+    }
+
+
+    /* =========================================================
+       RESUME
+    ========================================================= */
+
+    .resume {
+
+      display: grid;
+
+      grid-template-columns:
+        .85fr 1.15fr;
+
+      gap: 70px;
+
+      align-items: start;
+    }
+
+
+    .resume-title {
+
+      font-size: 32px;
+
+      line-height: 1.1;
+
+      letter-spacing:
+        -.04em;
+    }
+
+
+    .resume-title span {
+
+      display: block;
+
+      color:
+        var(--muted);
+
+      font-size: 13px;
+
+      margin-top: 12px;
+    }
+
+
+    .resume-content {
+
+      display: grid;
+
+      gap: 10px;
+    }
+
+
+    .resume-row {
 
       display: flex;
 
       justify-content: space-between;
+
+      gap: 25px;
+
+      padding:
+        17px 0;
+
+      border-bottom:
+        1px solid var(--line);
     }
 
-    /* =========================
-       RESPONSIVE
-    ========================= */
 
-    @media (max-width: 850px) {
+    .resume-row:last-child {
+      border-bottom: 0;
+    }
+
+
+    .resume-row span {
+
+      color:
+        var(--muted);
+
+      font-size: 11px;
+    }
+
+
+    .resume-row strong {
+
+      text-align: right;
+
+      font-size: 13px;
+    }
+
+
+    /* =========================================================
+       CONTACT
+    ========================================================= */
+
+    .contact {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
+      gap: 15px;
+    }
+
+
+    .contact-card {
+
+      border:
+        1px solid var(--line);
+
+      background:
+        var(--card);
+
+      border-radius:
+        var(--radius);
+
+      padding: 28px;
+    }
+
+
+    .contact-label {
+
+      color:
+        var(--muted);
+
+      font-size: 9px;
+
+      font-weight: 800;
+
+      letter-spacing:
+        .12em;
+    }
+
+
+    .contact-card a {
+
+      display: block;
+
+      color:
+        var(--accent);
+
+      margin-top: 5px;
+
+      font-size: 14px;
+
+      word-break: break-word;
+    }
+
+
+    .contact-card a:hover {
+      text-decoration:
+        underline;
+    }
+
+
+    .contact-note {
+
+      color:
+        var(--muted);
+
+      font-size: 11px;
+
+      margin-top: 16px;
+    }
+
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    footer {
+
+      padding:
+        32px 0;
+
+      border-top:
+        1px solid var(--line);
+
+      color:
+        var(--muted);
+
+      font-size: 10px;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      gap: 20px;
+    }
+
+
+    /* =========================================================
+       REVEAL ANIMATION
+    ========================================================= */
+
+    .reveal {
+
+      opacity: 0;
+
+      transform:
+        translateY(25px);
+
+      transition:
+        opacity .7s ease,
+        transform .7s ease;
+    }
+
+
+    .reveal.visible {
+
+      opacity: 1;
+
+      transform:
+        translateY(0);
+    }
+
+
+    /* =========================================================
+       RESPONSIVE — TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+
+      .nav-links {
+        gap: 15px;
+      }
+
+
+      .hero {
+
+        grid-template-columns:
+          1fr;
+
+        gap: 40px;
+
+        padding-top: 120px;
+      }
+
+
+      .visual {
+        min-height: 380px;
+      }
+
+
+      .about,
+      .experience,
+      .resume {
+
+        grid-template-columns:
+          1fr;
+
+        gap: 40px;
+      }
+
+
+      .skills {
+
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+
+      .lab-grid {
+
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+    }
+
+
+    /* =========================================================
+       RESPONSIVE — MOBILE
+    ========================================================= */
+
+    @media (max-width: 700px) {
+
+      .container {
+
+        width:
+          calc(100% - 28px);
+      }
+
 
       .nav-links {
         display: none;
       }
 
-      .hero,
-      .about,
-      .experience,
-      .contact {
-        grid-template-columns: 1fr;
+
+      .menu-toggle {
+        display: flex;
       }
+
+
+      .mobile-menu {
+        display: block;
+      }
+
 
       .hero {
-        padding-top: 115px;
+
+        min-height:
+          auto;
+
+        padding-top:
+          120px;
+
+        padding-bottom:
+          80px;
       }
 
-      .project-grid {
-        grid-template-columns: 1fr;
+
+      .hero h1 {
+
+        font-size:
+          clamp(50px, 16vw, 76px);
       }
 
-      .skills {
-        grid-template-columns: repeat(2, 1fr);
+
+      .hero-description {
+        font-size: 15px;
       }
 
-      .journey {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .about {
-        gap: 40px;
-      }
-
-      .experience {
-        gap: 40px;
-      }
-    }
-
-    @media (max-width: 520px) {
-
-      .container {
-        width: calc(100% - 28px);
-      }
-
-      .hero {
-        gap: 30px;
-      }
 
       .visual {
-        min-height: 320px;
+
+        min-height:
+          320px;
 
         padding: 12px;
       }
+
 
       .dashboard {
         padding: 14px;
       }
 
-      .skills,
-      .journey {
-        grid-template-columns: 1fr;
+
+      section {
+        padding:
+          80px 0;
       }
+
 
       .section-head {
+
         display: block;
+
+        margin-bottom:
+          32px;
       }
 
-      .section-head p {
-        margin-top: 18px;
+
+      .section-head > p {
+
+        margin-top:
+          18px;
       }
+
 
       .about-intro {
         font-size: 20px;
-
-        line-height: 1.6;
       }
 
-      .about-details {
-        font-size: 14px;
+
+      .about-points {
+
+        grid-template-columns:
+          1fr;
       }
 
-      footer {
+
+      .project-grid,
+      .production,
+      .contact {
+
+        grid-template-columns:
+          1fr;
+      }
+
+
+      .skills {
+
+        grid-template-columns:
+          1fr 1fr;
+      }
+
+
+      .lab-grid {
+
+        grid-template-columns:
+          1fr;
+      }
+
+
+      .resume-row {
+
         display: block;
       }
 
+
+      .resume-row strong {
+
+        display: block;
+
+        text-align: left;
+
+        margin-top: 4px;
+      }
+
+
+      footer {
+
+        display: block;
+      }
+
+
       footer span {
+
         display: block;
 
         margin-top: 8px;
       }
     }
+
+
+    /* =========================================================
+       SMALL PHONE
+    ========================================================= */
+
+    @media (max-width: 420px) {
+
+      .skills {
+        grid-template-columns: 1fr;
+      }
+
+
+      .stats {
+
+        grid-template-columns:
+          1fr;
+      }
+
+
+      .bars {
+        height: 125px;
+      }
+
+
+      .buttons {
+
+        flex-direction:
+          column;
+      }
+
+
+      .btn {
+        width: 100%;
+      }
+    }
+
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+
+        animation-duration:
+          .01ms !important;
+
+        animation-iteration-count:
+          1 !important;
+
+        transition-duration:
+          .01ms !important;
+      }
+    }
+
   </style>
 </head>
 
+
 <body>
 
-  <!-- =========================
+  <!-- =======================================================
+       SCROLL PROGRESS
+  ======================================================== -->
+
+  <div
+    class="scroll-progress"
+    id="scrollProgress"
+  ></div>
+
+
+  <!-- =======================================================
        NAVIGATION
-  ========================= -->
+  ======================================================== -->
 
   <nav>
+
     <div class="container nav-inner">
 
-      <a class="logo" href="#home">
+      <a
+        class="logo"
+        href="#home"
+      >
         WENDI<span>.</span>
       </a>
 
+
       <div class="nav-links">
+
         <a href="#about">About</a>
+
         <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
+
+        <a href="#projects">Portfolio</a>
+
+        <a href="#production">Production</a>
+
         <a href="#skills">Skills</a>
-        <a href="#journey">Journey</a>
+
+        <a href="#lab">WIMA Lab</a>
+
+        <a href="#resume">Resume</a>
+
         <a href="#contact">Contact</a>
+
       </div>
 
+
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Open menu"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+
     </div>
+
   </nav>
+
+
+  <!-- =======================================================
+       MOBILE MENU
+  ======================================================== -->
+
+  <div
+    class="mobile-menu"
+    id="mobileMenu"
+  >
+
+    <a href="#about">About</a>
+
+    <a href="#experience">Experience</a>
+
+    <a href="#projects">Portfolio</a>
+
+    <a href="#production">Production</a>
+
+    <a href="#skills">Skills</a>
+
+    <a href="#lab">WIMA Lab</a>
+
+    <a href="#resume">Resume</a>
+
+    <a href="#contact">Contact</a>
+
+  </div>
 
 
   <main>
 
-    <!-- =========================
-         HERO
-    ========================= -->
 
-    <section class="container hero" id="home">
+    <!-- =====================================================
+         01 / HOMEPAGE
+    ====================================================== -->
 
-      <div>
+    <section
+      class="container hero"
+      id="home"
+    >
+
+      <div class="reveal">
 
         <div class="eyebrow">
+
           <span class="dot"></span>
+
           KABUPATEN KARIMUN · INDONESIA
+
         </div>
 
+
         <h1>
+
           Wendi<br>
-          <span class="accent">Nang Putra.</span>
+
+          <span class="accent">
+            Nang Putra.
+          </span>
+
         </h1>
+
 
         <p class="hero-description">
 
-          <strong>Digital Administration</strong>
+          <strong>
+            Digital Administration
+          </strong>
+
           ·
-          <strong>System Solutions</strong>
+
+          <strong>
+            System Solutions
+          </strong>
+
           ·
-          <strong>Creative Production</strong>
+
+          <strong>
+            Creative Production
+          </strong>
 
           <br><br>
 
@@ -860,13 +2174,21 @@
 
         </p>
 
+
         <div class="buttons">
 
-          <a class="btn btn-primary" href="#projects">
-            EXPLORE PROJECTS →
+          <a
+            class="btn btn-primary"
+            href="#projects"
+          >
+            EXPLORE PORTFOLIO →
           </a>
 
-          <a class="btn" href="#contact">
+
+          <a
+            class="btn btn-outline"
+            href="#contact"
+          >
             CONTACT ME
           </a>
 
@@ -875,45 +2197,96 @@
       </div>
 
 
-      <div class="visual">
+      <!-- HERO DASHBOARD -->
+
+      <div
+        class="visual reveal"
+      >
 
         <div class="dashboard">
 
           <div class="dashboard-top">
-            <span>WIMA NAILA / SYSTEM LAB</span>
-            <span>2026</span>
+
+            <span>
+              WIMA NAILA / SYSTEM LAB
+            </span>
+
+            <span>
+              2026
+            </span>
+
           </div>
 
+
           <div class="bars">
+
             <i class="bar"></i>
+
             <i class="bar"></i>
+
             <i class="bar"></i>
+
             <i class="bar"></i>
+
             <i class="bar"></i>
+
             <i class="bar"></i>
+
           </div>
+
 
           <div class="stats">
 
             <div class="stat">
-              <strong>03</strong>
-              <small>DIGITAL SYSTEMS</small>
+
+              <strong>
+                03
+              </strong>
+
+              <small>
+                DIGITAL SYSTEMS
+              </small>
+
             </div>
 
-            <div class="stat">
-              <strong>01</strong>
-              <small>PRODUCTION</small>
-            </div>
 
             <div class="stat">
-              <strong>22→</strong>
-              <small>EXPERIENCE</small>
+
+              <strong>
+                01
+              </strong>
+
+              <small>
+                PRODUCTION
+              </small>
+
+            </div>
+
+
+            <div class="stat">
+
+              <strong>
+                22→
+              </strong>
+
+              <small>
+                EXPERIENCE
+              </small>
+
             </div>
 
           </div>
 
-          <p style="font-size:11px;color:#9da3ad;margin-top:17px">
-            WIMA NAILA PRODUCTION · Create · Organize · Build
+
+          <p
+            style="
+              font-size:11px;
+              color:#9da3ad;
+              margin-top:17px;
+            "
+          >
+            WIMA NAILA PRODUCTION
+            · Create · Organize · Build
           </p>
 
         </div>
@@ -923,29 +2296,36 @@
     </section>
 
 
-    <!-- =========================
-         ABOUT
-    ========================= -->
+
+    <!-- =====================================================
+         02 / ABOUT
+    ====================================================== -->
 
     <section id="about">
 
       <div class="container">
 
-        <div class="section-head">
+        <div class="section-head reveal">
 
           <div>
-            <div class="kicker">01 / ABOUT</div>
+
+            <div class="kicker">
+              01 / ABOUT
+            </div>
 
             <h2>
               More than<br>
               administration.
             </h2>
+
           </div>
+
 
           <p>
             Administrasi, digital systems,
-            problem solving, dan creative production
-            dalam satu perjalanan profesional.
+            problem solving, dan creative
+            production dalam satu perjalanan
+            profesional.
           </p>
 
         </div>
@@ -953,52 +2333,126 @@
 
         <div class="about">
 
-          <div class="about-intro">
+          <div
+            class="about-intro reveal"
+          >
 
             <p>
-              Saya <strong>Wendi Nang Putra, S.A.P.</strong>,
-              biasa dipanggil <strong>Nang</strong>.
+
+              Saya
+              <strong>
+                Wendi Nang Putra, S.A.P.
+              </strong>,
+              biasa dipanggil
+              <strong>Nang</strong>.
+
             </p>
+
 
             <br>
 
+
             <p>
+
               Saya memiliki latar belakang
-              <strong>Administrasi Publik</strong>
+              <strong>
+                Administrasi Publik
+              </strong>
               dan pengalaman sebagai
-              <strong>Staf Administrasi di KPU Kabupaten Karimun.</strong>
+              <strong>
+                Staf Administrasi di
+                KPU Kabupaten Karimun.
+              </strong>
+
             </p>
+
+
+            <div class="about-points">
+
+              <div class="about-point">
+
+                <span>
+                  FOCUS
+                </span>
+
+                <strong>
+                  Digital Systems
+                </strong>
+
+              </div>
+
+
+              <div class="about-point">
+
+                <span>
+                  APPROACH
+                </span>
+
+                <strong>
+                  Practical Solutions
+                </strong>
+
+              </div>
+
+            </div>
 
           </div>
 
 
-          <div class="about-details">
+          <div
+            class="about-details reveal"
+          >
 
             <p>
-              Bagi saya, administrasi bukan hanya tentang
-              dokumen dan pekerjaan rutin. Saya tertarik
-              mencari cara agar proses kerja menjadi lebih
-              <strong>terstruktur, sederhana, dan efisien.</strong>
+
+              Bagi saya, administrasi bukan
+              hanya tentang dokumen dan
+              pekerjaan rutin.
+
+              Saya tertarik mencari cara agar
+              proses kerja menjadi lebih
+              <strong>
+                terstruktur, sederhana,
+                dan efisien.
+              </strong>
+
             </p>
+
 
             <br>
 
+
             <p>
-              Dari kebutuhan nyata di lingkungan kerja,
-              saya merancang dan membangun beberapa
-              sistem digital seperti
-              <strong>SIARTEKHUM, SIDUMAS, dan SIPENA</strong>
-              menggunakan Google Workspace dan
-              Google Apps Script.
+
+              Dari kebutuhan nyata di
+              lingkungan kerja, saya merancang
+              dan membangun beberapa sistem
+              digital seperti
+              <strong>
+                SIARTEKHUM, SIDUMAS,
+                dan SIPENA
+              </strong>
+              menggunakan Google Workspace
+              dan Google Apps Script.
+
             </p>
+
 
             <br>
 
+
             <p>
-              Di luar pekerjaan administrasi, saya juga
-              memiliki pengalaman dalam
-              <strong>live streaming, recording, dan sound system</strong>
-              untuk mendukung berbagai kegiatan.
+
+              Di luar pekerjaan administrasi,
+              saya juga memiliki pengalaman
+              dalam
+              <strong>
+                live streaming, recording,
+                dan sound system
+              </strong>
+              untuk mendukung berbagai
+              kegiatan.
+
             </p>
 
           </div>
@@ -1010,23 +2464,28 @@
     </section>
 
 
-    <!-- =========================
-         EXPERIENCE
-    ========================= -->
+
+    <!-- =====================================================
+         03 / EXPERIENCE
+    ====================================================== -->
 
     <section id="experience">
 
       <div class="container">
 
-        <div class="section-head">
+        <div class="section-head reveal">
 
           <div>
-            <div class="kicker">02 / EXPERIENCE</div>
+
+            <div class="kicker">
+              02 / EXPERIENCE
+            </div>
 
             <h2>
               Work<br>
               experience.
             </h2>
+
           </div>
 
         </div>
@@ -1034,7 +2493,7 @@
 
         <div class="experience">
 
-          <div>
+          <div class="reveal">
 
             <div class="role">
 
@@ -1048,14 +2507,19 @@
 
             </div>
 
-            <p class="muted">
+
+            <div class="role-meta">
+
               2022 — Present
-            </p>
+
+            </div>
 
           </div>
 
 
-          <div class="timeline">
+          <div
+            class="timeline reveal"
+          >
 
             <div class="timeline-item">
 
@@ -1095,9 +2559,10 @@
               </h3>
 
               <p>
-                Mendukung live streaming dengan
-                OBS Studio serta kebutuhan
-                sound system kegiatan.
+                Mendukung live streaming
+                dengan OBS Studio serta
+                kebutuhan sound system
+                kegiatan.
               </p>
 
             </div>
@@ -1111,17 +2576,19 @@
     </section>
 
 
-    <!-- =========================
-         PROJECTS
-    ========================= -->
+
+    <!-- =====================================================
+         04 / PORTFOLIO
+    ====================================================== -->
 
     <section id="projects">
 
       <div class="container">
 
-        <div class="section-head">
+        <div class="section-head reveal">
 
           <div>
+
             <div class="kicker">
               03 / SELECTED WORK
             </div>
@@ -1130,12 +2597,14 @@
               Projects that<br>
               solve problems.
             </h2>
+
           </div>
 
+
           <p>
-            Project nyata yang dirancang dan
-            dibangun untuk kebutuhan pekerjaan
-            dan masih digunakan.
+            Project nyata yang dirancang
+            dan dibangun untuk kebutuhan
+            pekerjaan.
           </p>
 
         </div>
@@ -1144,9 +2613,11 @@
         <div class="project-grid">
 
 
-          <!-- SIARTEKHUM -->
+          <!-- PROJECT 01 -->
 
-          <article class="project-card">
+          <article
+            class="project-card reveal"
+          >
 
             <span class="project-number">
               01
@@ -1156,9 +2627,11 @@
               DIGITAL ARCHIVING · 2026
             </span>
 
+
             <h3>
               SIARTEKHUM
             </h3>
+
 
             <p>
               Sistem Arsip Teknis dan Hukum
@@ -1168,22 +2641,40 @@
               pengelolaan akun.
             </p>
 
+
             <div class="chips">
 
-              <span>Google Sheets</span>
-              <span>Google Drive</span>
-              <span>Apps Script</span>
-              <span>Dashboard</span>
-              <span>Access Control</span>
+              <span>
+                Google Sheets
+              </span>
+
+              <span>
+                Google Drive
+              </span>
+
+              <span>
+                Apps Script
+              </span>
+
+              <span>
+                Dashboard
+              </span>
+
+              <span>
+                Access Control
+              </span>
 
             </div>
 
           </article>
 
 
-          <!-- SIDUMAS -->
 
-          <article class="project-card">
+          <!-- PROJECT 02 -->
+
+          <article
+            class="project-card reveal"
+          >
 
             <span class="project-number">
               02
@@ -1193,9 +2684,11 @@
               PUBLIC SERVICE · 2026
             </span>
 
+
             <h3>
               SIDUMAS
             </h3>
+
 
             <p>
               Sistem Pengaduan Masyarakat
@@ -1204,21 +2697,36 @@
               oleh admin.
             </p>
 
+
             <div class="chips">
 
-              <span>Google Sheets</span>
-              <span>Apps Script</span>
-              <span>Dashboard</span>
-              <span>Verification</span>
+              <span>
+                Google Sheets
+              </span>
+
+              <span>
+                Apps Script
+              </span>
+
+              <span>
+                Dashboard
+              </span>
+
+              <span>
+                Verification
+              </span>
 
             </div>
 
           </article>
 
 
-          <!-- SIPENA -->
 
-          <article class="project-card">
+          <!-- PROJECT 03 -->
+
+          <article
+            class="project-card reveal"
+          >
 
             <span class="project-number">
               03
@@ -1228,9 +2736,11 @@
               AUTOMATION · 2026
             </span>
 
+
             <h3>
               SIPENA
             </h3>
+
 
             <p>
               Sistem pencatatan nomor
@@ -1240,47 +2750,77 @@
               terpusat.
             </p>
 
+
             <div class="chips">
 
-              <span>Google Sheets</span>
-              <span>Apps Script</span>
-              <span>Automation</span>
-              <span>Database</span>
+              <span>
+                Google Sheets
+              </span>
+
+              <span>
+                Apps Script
+              </span>
+
+              <span>
+                Automation
+              </span>
+
+              <span>
+                Database
+              </span>
 
             </div>
 
           </article>
 
 
-          <!-- LIVE STREAMING -->
 
-          <article class="project-card">
+          <!-- PROJECT 04 -->
+
+          <article
+            class="project-card reveal"
+          >
 
             <span class="project-number">
               04
             </span>
 
             <span class="project-tag">
-              PRODUCTION · 2024—NOW
+              DIGITAL WORKFLOW · ONGOING
             </span>
 
+
             <h3>
-              LIVE STREAMING
+              FUTURE SYSTEM
             </h3>
 
+
             <p>
-              Dipercaya mendukung
-              live streaming kegiatan
-              menggunakan OBS Studio
-              serta kebutuhan sound system.
+              Ruang untuk project digital
+              berikutnya yang lahir dari
+              kebutuhan nyata dan proses
+              kerja yang ingin dibuat lebih
+              sederhana.
             </p>
+
 
             <div class="chips">
 
-              <span>OBS Studio</span>
-              <span>Streaming</span>
-              <span>Recording</span>
-              <span>Sound System</span>
+              <span>
+                Research
+              </span>
+
+              <span>
+                Workflow
+              </span>
+
+              <span>
+                Automation
+              </span>
+
+              <span>
+                Problem Solving
+              </span>
 
             </div>
 
@@ -1294,20 +2834,159 @@
     </section>
 
 
-    <!-- =========================
-         SKILLS
-    ========================= -->
+
+    <!-- =====================================================
+         05 / LIVE STREAMING & SOUND SYSTEM
+    ====================================================== -->
+
+    <section id="production">
+
+      <div class="container">
+
+        <div class="section-head reveal">
+
+          <div>
+
+            <div class="kicker">
+              04 / PRODUCTION
+            </div>
+
+            <h2>
+              Live.<br>
+              Record. Support.
+            </h2>
+
+          </div>
+
+
+          <p>
+            Pengalaman teknis dalam
+            mendukung kegiatan melalui
+            live streaming, recording,
+            dan sound system.
+          </p>
+
+        </div>
+
+
+        <div class="production">
+
+
+          <div
+            class="production-card reveal"
+          >
+
+            <div class="production-icon">
+              ▶
+            </div>
+
+
+            <h3>
+              Live Streaming
+            </h3>
+
+
+            <p>
+              Mendukung kebutuhan
+              live streaming kegiatan
+              menggunakan OBS Studio,
+              termasuk persiapan dan
+              pengoperasian teknis.
+            </p>
+
+
+            <div class="production-list">
+
+              <span>
+                OBS Studio
+              </span>
+
+              <span>
+                Live Production
+              </span>
+
+              <span>
+                Streaming
+              </span>
+
+              <span>
+                Recording
+              </span>
+
+            </div>
+
+          </div>
+
+
+
+          <div
+            class="production-card reveal"
+          >
+
+            <div class="production-icon">
+              ♪
+            </div>
+
+
+            <h3>
+              Sound System
+            </h3>
+
+
+            <p>
+              Mendukung kebutuhan
+              audio dan sound system
+              untuk kegiatan serta
+              event yang membutuhkan
+              dukungan teknis.
+            </p>
+
+
+            <div class="production-list">
+
+              <span>
+                Audio
+              </span>
+
+              <span>
+                Sound System
+              </span>
+
+              <span>
+                Technical Support
+              </span>
+
+              <span>
+                Event
+              </span>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         06 / SKILLS
+    ====================================================== -->
 
     <section id="skills">
 
       <div class="container">
 
-        <div class="section-head">
+        <div class="section-head reveal">
 
           <div>
 
             <div class="kicker">
-              04 / SKILLS
+              05 / SKILLS
             </div>
 
             <h2>
@@ -1317,9 +2996,11 @@
 
           </div>
 
+
           <p>
-            Skill dapat terus bertambah
-            seiring project dan pembelajaran baru.
+            Skill yang berkembang
+            melalui pengalaman kerja,
+            project, dan pembelajaran baru.
           </p>
 
         </div>
@@ -1328,7 +3009,13 @@
         <div class="skills">
 
 
-          <div class="skill">
+          <!-- SKILL 01 -->
+
+          <div class="skill reveal">
+
+            <div class="skill-index">
+              01
+            </div>
 
             <strong>
               Administration
@@ -1336,13 +3023,21 @@
 
             <span>
               Administrative management,
-              document management, archiving.
+              document management,
+              and archiving.
             </span>
 
           </div>
 
 
-          <div class="skill">
+
+          <!-- SKILL 02 -->
+
+          <div class="skill reveal">
+
+            <div class="skill-index">
+              02
+            </div>
 
             <strong>
               Google Workspace
@@ -1356,7 +3051,14 @@
           </div>
 
 
-          <div class="skill">
+
+          <!-- SKILL 03 -->
+
+          <div class="skill reveal">
+
+            <div class="skill-index">
+              03
+            </div>
 
             <strong>
               System Design
@@ -1370,7 +3072,14 @@
           </div>
 
 
-          <div class="skill">
+
+          <!-- SKILL 04 -->
+
+          <div class="skill reveal">
+
+            <div class="skill-index">
+              04
+            </div>
 
             <strong>
               Data Management
@@ -1378,13 +3087,21 @@
 
             <span>
               Database, search,
-              structured records & reporting.
+              structured records
+              & reporting.
             </span>
 
           </div>
 
 
-          <div class="skill">
+
+          <!-- SKILL 05 -->
+
+          <div class="skill reveal">
+
+            <div class="skill-index">
+              05
+            </div>
 
             <strong>
               Live Streaming
@@ -1398,7 +3115,14 @@
           </div>
 
 
-          <div class="skill">
+
+          <!-- SKILL 06 -->
+
+          <div class="skill reveal">
+
+            <div class="skill-index">
+              06
+            </div>
 
             <strong>
               Audio & Sound
@@ -1412,7 +3136,14 @@
           </div>
 
 
-          <div class="skill">
+
+          <!-- SKILL 07 -->
+
+          <div class="skill reveal">
+
+            <div class="skill-index">
+              07
+            </div>
 
             <strong>
               Recording & Editing
@@ -1426,7 +3157,14 @@
           </div>
 
 
-          <div class="skill">
+
+          <!-- SKILL 08 -->
+
+          <div class="skill reveal">
+
+            <div class="skill-index">
+              08
+            </div>
 
             <strong>
               AI-Assisted Development
@@ -1434,7 +3172,8 @@
 
             <span>
               Using AI as a coding
-              and problem-solving assistant.
+              and problem-solving
+              assistant.
             </span>
 
           </div>
@@ -1447,25 +3186,26 @@
     </section>
 
 
-    <!-- =========================
-         JOURNEY
-    ========================= -->
 
-    <section id="journey">
+    <!-- =====================================================
+         07 / WIMA LAB
+    ====================================================== -->
+
+    <section id="lab">
 
       <div class="container">
 
-        <div class="section-head">
+        <div class="section-head reveal">
 
           <div>
 
             <div class="kicker">
-              05 / JOURNEY
+              06 / WIMA LAB
             </div>
 
             <h2>
-              Building<br>
-              as I go.
+              Build.<br>
+              Test. Improve.
             </h2>
 
           </div>
@@ -1473,75 +3213,130 @@
         </div>
 
 
-        <div class="journey">
+        <p class="lab-intro reveal">
+
+          <strong style="color:var(--text)">
+            WIMA LAB
+          </strong>
+          adalah ruang eksperimen untuk
+          project digital baru, automation,
+          workflow, dan ide yang masih
+          dalam proses pengembangan.
+
+        </p>
 
 
-          <div class="journey-item">
-
-            <b>2022</b>
-
-            <h3>
-              Education
-            </h3>
-
-            <p class="muted">
-              S1 Administrasi Publik
-              · Universitas Terbuka
-            </p>
-
-          </div>
+        <div class="lab-grid">
 
 
-          <div class="journey-item">
+          <!-- LAB 01 -->
 
-            <b>
-              2022 — NOW
-            </b>
+          <article
+            class="lab-card reveal"
+          >
 
-            <h3>
-              KPU Kabupaten Karimun
-            </h3>
+            <div>
 
-            <p class="muted">
-              Staf Administrasi
-            </p>
+              <div class="lab-number">
+                LAB / 01
+              </div>
 
-          </div>
+              <h3>
+                New Digital System
+              </h3>
 
+              <p>
+                Tempat untuk project sistem
+                digital baru yang sedang
+                dirancang.
+              </p>
 
-          <div class="journey-item">
-
-            <b>
-              2024 — NOW
-            </b>
-
-            <h3>
-              Creative Production
-            </h3>
-
-            <p class="muted">
-              Live streaming &
-              sound system
-            </p>
-
-          </div>
+            </div>
 
 
-          <div class="journey-item">
+            <div class="lab-status">
 
-            <b>
-              2026
-            </b>
+              <i></i>
 
-            <h3>
-              Digital Systems
-            </h3>
+              Experimental
 
-            <p class="muted">
-              SIARTEKHUM · SIDUMAS · SIPENA
-            </p>
+            </div>
 
-          </div>
+          </article>
+
+
+
+          <!-- LAB 02 -->
+
+          <article
+            class="lab-card reveal"
+          >
+
+            <div>
+
+              <div class="lab-number">
+                LAB / 02
+              </div>
+
+              <h3>
+                Automation
+              </h3>
+
+              <p>
+                Eksperimen automation
+                untuk menyederhanakan
+                proses kerja.
+              </p>
+
+            </div>
+
+
+            <div class="lab-status">
+
+              <i></i>
+
+              Researching
+
+            </div>
+
+          </article>
+
+
+
+          <!-- LAB 03 -->
+
+          <article
+            class="lab-card reveal"
+          >
+
+            <div>
+
+              <div class="lab-number">
+                LAB / 03
+              </div>
+
+              <h3>
+                Coming Next
+              </h3>
+
+              <p>
+                Project berikutnya akan
+                ditambahkan di sini saat
+                siap dipublikasikan.
+              </p>
+
+            </div>
+
+
+            <div class="lab-status">
+
+              <i></i>
+
+              Future Project
+
+            </div>
+
+          </article>
 
 
         </div>
@@ -1551,27 +3346,185 @@
     </section>
 
 
-    <!-- =========================
-         CONTACT
-    ========================= -->
+
+    <!-- =====================================================
+         08 / RESUME
+    ====================================================== -->
+
+    <section id="resume">
+
+      <div class="container">
+
+        <div class="section-head reveal">
+
+          <div>
+
+            <div class="kicker">
+              07 / RESUME
+            </div>
+
+            <h2>
+              Professional<br>
+              snapshot.
+            </h2>
+
+          </div>
+
+
+          <p>
+            Ringkasan pengalaman,
+            pendidikan, dan fokus
+            profesional.
+          </p>
+
+        </div>
+
+
+        <div class="resume">
+
+
+          <div class="reveal">
+
+            <div class="resume-title">
+
+              Wendi Nang Putra, S.A.P.
+
+              <span>
+                Digital Administration ·
+                System Solutions ·
+                Creative Production
+              </span>
+
+            </div>
+
+
+            <div class="buttons">
+
+              <button
+                class="btn btn-primary"
+                onclick="window.print()"
+              >
+                PRINT / SAVE PDF
+              </button>
+
+
+              <a
+                class="btn"
+                href="#contact"
+              >
+                CONTACT
+              </a>
+
+            </div>
+
+          </div>
+
+
+          <div
+            class="resume-content reveal"
+          >
+
+            <div class="resume-row">
+
+              <span>
+                Education
+              </span>
+
+              <strong>
+                S1 Administrasi Publik
+                · Universitas Terbuka
+              </strong>
+
+            </div>
+
+
+            <div class="resume-row">
+
+              <span>
+                Professional Experience
+              </span>
+
+              <strong>
+                Staf Administrasi
+                · KPU Kabupaten Karimun
+              </strong>
+
+            </div>
+
+
+            <div class="resume-row">
+
+              <span>
+                Digital Projects
+              </span>
+
+              <strong>
+                SIARTEKHUM · SIDUMAS · SIPENA
+              </strong>
+
+            </div>
+
+
+            <div class="resume-row">
+
+              <span>
+                Creative Production
+              </span>
+
+              <strong>
+                Live Streaming ·
+                Sound System · Recording
+              </strong>
+
+            </div>
+
+
+            <div class="resume-row">
+
+              <span>
+                Current Focus
+              </span>
+
+              <strong>
+                Digital Systems &
+                Practical Automation
+              </strong>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         09 / CONTACT
+    ====================================================== -->
 
     <section id="contact">
 
       <div class="container">
 
-        <div class="section-head">
+        <div class="section-head reveal">
 
           <div>
 
             <div class="kicker">
-              06 / CONTACT
+              08 / CONTACT
             </div>
 
             <h2>
-              Let's connect.
+              Let's<br>
+              connect.
             </h2>
 
           </div>
+
 
           <p>
             Untuk kesempatan kerja,
@@ -1585,42 +3538,72 @@
         <div class="contact">
 
 
-          <div class="contact-card">
+          <!-- PERSONAL -->
 
-            <span class="muted">
+          <div
+            class="contact-card reveal"
+          >
+
+            <div class="contact-label">
               PERSONAL EMAIL
-            </span>
+            </div>
 
-            <a href="mailto:wendinangputra@gmail.com">
+
+            <a
+              href="mailto:wendinangputra@gmail.com"
+            >
               wendinangputra@gmail.com
             </a>
 
 
-            <span
-              class="muted"
-              style="display:block;margin-top:18px"
+            <div
+              class="contact-label"
+              style="display:block;margin-top:22px"
             >
               WHATSAPP
-            </span>
+            </div>
 
-            <a href="https://wa.me/6281277694393">
+
+            <a
+              href="https://wa.me/6281277694393"
+              target="_blank"
+              rel="noopener"
+            >
               +62 812-7769-4393
             </a>
+
+
+            <p class="contact-note">
+              Untuk komunikasi profesional,
+              project, dan kolaborasi.
+            </p>
 
           </div>
 
 
-          <div class="contact-card">
 
-            <span class="muted">
+          <!-- WIMA NAILA -->
+
+          <div
+            class="contact-card reveal"
+          >
+
+            <div class="contact-label">
               WIMA NAILA PRODUCTION
-            </span>
+            </div>
 
-            <a href="mailto:wimanailaproduction@gmail.com">
+
+            <a
+              href="mailto:wimanailaproduction@gmail.com"
+            >
               wimanailaproduction@gmail.com
             </a>
 
-            <p class="muted">
+
+            <p
+              class="contact-note"
+              style="margin-top:20px"
+            >
               Create · Organize · Build
             </p>
 
@@ -1633,8 +3616,14 @@
 
     </section>
 
+
   </main>
 
+
+
+  <!-- =======================================================
+       FOOTER
+  ======================================================== -->
 
   <footer class="container">
 
@@ -1642,11 +3631,246 @@
       © 2026 Wendi Nang Putra, S.A.P.
     </span>
 
+
     <span>
-      WIMA NAILA PRODUCTION · Personal Portfolio
+      WIMA NAILA PRODUCTION ·
+      Personal Portfolio
     </span>
 
   </footer>
+
+
+
+  <!-- =======================================================
+       JAVASCRIPT
+  ======================================================== -->
+
+  <script>
+
+    /* =======================================================
+       MOBILE MENU
+    ======================================================== */
+
+    const menuToggle =
+      document.getElementById("menuToggle");
+
+    const mobileMenu =
+      document.getElementById("mobileMenu");
+
+
+    menuToggle.addEventListener(
+      "click",
+      () => {
+
+        const isOpen =
+          mobileMenu.classList.toggle("open");
+
+        document.body.classList.toggle(
+          "menu-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          isOpen
+        );
+
+        menuToggle.innerHTML =
+          isOpen ? "×" : "☰";
+
+      }
+    );
+
+
+    /* CLOSE MOBILE MENU
+       AFTER CLICKING LINK
+    */
+
+    document
+      .querySelectorAll(".mobile-menu a")
+      .forEach(link => {
+
+        link.addEventListener(
+          "click",
+          () => {
+
+            mobileMenu.classList.remove(
+              "open"
+            );
+
+            document.body.classList.remove(
+              "menu-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.innerHTML =
+              "☰";
+
+          }
+        );
+
+      });
+
+
+    /* =======================================================
+       SCROLL PROGRESS
+    ======================================================== */
+
+    const scrollProgress =
+      document.getElementById(
+        "scrollProgress"
+      );
+
+
+    window.addEventListener(
+      "scroll",
+      () => {
+
+        const scrollTop =
+          window.scrollY;
+
+        const documentHeight =
+          document.documentElement.scrollHeight
+          - window.innerHeight;
+
+        const progress =
+          documentHeight > 0
+            ? (scrollTop / documentHeight) * 100
+            : 0;
+
+        scrollProgress.style.width =
+          progress + "%";
+
+      }
+    );
+
+
+    /* =======================================================
+       REVEAL ANIMATION
+    ======================================================== */
+
+    const revealElements =
+      document.querySelectorAll(
+        ".reveal"
+      );
+
+
+    const revealObserver =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(
+            entry => {
+
+              if (
+                entry.isIntersecting
+              ) {
+
+                entry.target.classList.add(
+                  "visible"
+                );
+
+                revealObserver.unobserve(
+                  entry.target
+                );
+
+              }
+
+            }
+          );
+
+        },
+        {
+          threshold: .12
+        }
+      );
+
+
+    revealElements.forEach(
+      element => {
+
+        revealObserver.observe(
+          element
+        );
+
+      }
+    );
+
+
+    /* =======================================================
+       ACTIVE NAVIGATION
+    ======================================================== */
+
+    const sections =
+      document.querySelectorAll(
+        "main section[id]"
+      );
+
+    const navLinks =
+      document.querySelectorAll(
+        ".nav-links a"
+      );
+
+
+    const navObserver =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(
+            entry => {
+
+              if (
+                entry.isIntersecting
+              ) {
+
+                const id =
+                  entry.target.getAttribute(
+                    "id"
+                  );
+
+
+                navLinks.forEach(
+                  link => {
+
+                    link.style.color =
+                      link.getAttribute(
+                        "href"
+                      ) === "#" + id
+                        ? "var(--text)"
+                        : "";
+
+                  }
+                );
+
+              }
+
+            }
+          );
+
+        },
+        {
+          rootMargin:
+            "-35% 0px -55% 0px"
+        }
+      );
+
+
+    sections.forEach(
+      section => {
+
+        navObserver.observe(
+          section
+        );
+
+      }
+    );
+
+
+  </script>
 
 </body>
 </html>
