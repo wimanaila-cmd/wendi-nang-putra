@@ -1723,18 +1723,41 @@ async function verifyAdmin() {
       !API_URL ||
       API_URL.indexOf('GANTI_DENGAN') !== -1
     ) {
+
       throw new Error(
         'API_URL belum diisi.'
       );
+
     }
 
-    console.log('Memanggil checkAdmin...');
+    const result =
+      await apiGet({
+        action: 'checkAdmin'
+      });
 
-    const result = await apiGet({
-      action: 'checkAdmin'
-    });
+    console.log(
+      'CHECK ADMIN RESPONSE:',
+      result
+    );
 
-    console.log('Hasil checkAdmin:', result);
+    console.log(
+      'success =',
+      result.success,
+      'type =',
+      typeof result.success
+    );
+
+    console.log(
+      'isAdmin =',
+      result.isAdmin,
+      'type =',
+      typeof result.isAdmin
+    );
+
+    console.log(
+      'admin =',
+      result.admin
+    );
 
     const isSuccess =
       result.success === true ||
@@ -1743,10 +1766,6 @@ async function verifyAdmin() {
     const isAdmin =
       result.isAdmin === true ||
       result.isAdmin === 'true';
-
-    console.log('Success:', isSuccess);
-    console.log('Is Admin:', isAdmin);
-    console.log('Admin:', result.admin);
 
     if (isSuccess && isAdmin) {
 
@@ -1760,6 +1779,7 @@ async function verifyAdmin() {
       await loadProjects();
 
       return;
+
     }
 
     showAccessDenied(
@@ -1769,6 +1789,7 @@ async function verifyAdmin() {
     );
 
   }
+
   catch (error) {
 
     console.error(
@@ -1787,7 +1808,6 @@ async function verifyAdmin() {
   }
 
 }
-
 /* =====================================================
    SHOW APPLICATION
 ===================================================== */
