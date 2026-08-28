@@ -1847,6 +1847,12 @@ async function apiPost(payload) {
        * redirect dan sandbox iframe.
        */
 
+       console.log(
+         'POST MESSAGE RECEIVED:',
+         event.origin,
+         event.data
+      );
+
       if (
         event.source !== iframe.contentWindow
       ) {
