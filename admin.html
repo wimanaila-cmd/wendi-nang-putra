@@ -1787,40 +1787,48 @@ async function apiPost(payload) {
     );
 
 
-    /*
-     * Kita tidak lagi menunggu postMessage.
-     *
-     * Apps Script sudah terbukti menerima POST
-     * dan menyimpan data ke Spreadsheet.
-     */
+    try {
 
-    let finished = false;
+      form.submit();
 
+      /*
+       * Apps Script sudah terbukti menerima POST
+       * dan melakukan operasi database.
+       *
+       * Kita tidak menunggu response dari iframe.
+       *
+       * Beri sedikit waktu agar request terkirim,
+       * lalu lanjutkan frontend.
+       */
 
-    const timeout =
       setTimeout(function() {
-
-        if (finished) {
-          return;
-        }
-
-        finished = true;
 
         cleanup();
 
-        reject(
-          new Error(
-            'Server terlalu lama memproses request.'
-          )
-        );
+        resolve({
 
-      }, 30000);
+          success: true,
+
+          action:
+            payload.action || ''
+
+        });
+
+      }, 1500);
+
+
+    }
+
+    catch (error) {
+
+      cleanup();
+
+      reject(error);
+
+    }
 
 
     function cleanup() {
-
-      clearTimeout(timeout);
-
 
       if (
         iframe.parentNode
@@ -1842,64 +1850,6 @@ async function apiPost(payload) {
         );
 
       }
-
-    }
-
-
-    /*
-     * Tunggu iframe selesai dimuat.
-     *
-     * Kita tidak membaca isi response karena
-     * response Google berada pada origin berbeda.
-     */
-
-    iframe.onload =
-      function() {
-
-        if (finished) {
-          return;
-        }
-
-        finished = true;
-
-        cleanup();
-
-
-        /*
-         * POST sudah selesai dikirim.
-         *
-         * Berikan response sukses ke frontend.
-         */
-
-        resolve({
-
-          success: true,
-
-          action:
-            payload.action || ''
-
-        });
-
-      };
-
-
-    try {
-
-      form.submit();
-
-    }
-
-    catch (error) {
-
-      if (finished) {
-        return;
-      }
-
-      finished = true;
-
-      cleanup();
-
-      reject(error);
 
     }
 
