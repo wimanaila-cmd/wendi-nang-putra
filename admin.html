@@ -1838,23 +1838,21 @@ async function apiPost(payload) {
 
     function handleMessage(event) {
 
-      /*
-       * Response harus berasal dari iframe
-       * yang kita buat sendiri.
-       *
-       * Jangan bergantung pada event.origin
-       * karena Google Apps Script dapat melakukan
-       * redirect dan sandbox iframe.
-       */
-
-       console.log(
-         'POST MESSAGE RECEIVED:',
-         event.origin,
-         event.data
+      console.log(
+        'WIMA LAB POST MESSAGE:',
+        event.origin,
+        event.data
       );
 
+
+      /*
+       * Pastikan message berasal dari iframe
+       * yang dibuat oleh request ini.
+       */
+
       if (
-        event.source !== iframe.contentWindow
+        event.source !==
+        iframe.contentWindow
       ) {
 
         return;
@@ -1865,6 +1863,20 @@ async function apiPost(payload) {
       if (
         !event.data ||
         typeof event.data !== 'object'
+      ) {
+
+        return;
+
+      }
+
+
+      /*
+       * Response khusus dari WIMA LAB API.
+       */
+
+      if (
+        event.data.source !==
+        'WIMA_LAB_API'
       ) {
 
         return;
@@ -1884,13 +1896,32 @@ async function apiPost(payload) {
       cleanup();
 
 
+      const result =
+        event.data.payload;
+
+
       if (
-        event.data.success !== true
+        !result
       ) {
 
         reject(
           new Error(
-            event.data.message ||
+            'Response server kosong.'
+          )
+        );
+
+        return;
+
+      }
+
+
+      if (
+        result.success !== true
+      ) {
+
+        reject(
+          new Error(
+            result.message ||
             'Request gagal.'
           )
         );
@@ -1901,7 +1932,7 @@ async function apiPost(payload) {
 
 
       resolve(
-        event.data
+        result
       );
 
     }
@@ -1926,7 +1957,7 @@ async function apiPost(payload) {
 
   });
 
-}
+} 
    
 /* =====================================================
    VERIFY ADMIN
