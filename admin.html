@@ -1664,35 +1664,36 @@ async function apiGet(params) {
 ===================================================== */
 
 async function apiPost(payload) {
-
-  const response =
-    await fetch(
-      API_URL,
-      {
-        method: 'POST',
-        credentials: 'include',
+    const response = await fetch(API_URL, {
+        method: "POST",
+        redirect: "follow",
         headers: {
-          'Content-Type':
-            'text/plain;charset=utf-8'
+            "Content-Type": "text/plain;charset=utf-8"
         },
-        body:
-          JSON.stringify(payload)
-      }
-    );
+        body: JSON.stringify(payload)
+    });
 
-  if (!response.ok) {
+    const text = await response.text();
 
-    throw new Error(
-      'Server mengembalikan HTTP ' +
-      response.status
-    );
+    if (!text) {
+        throw new Error("Server tidak mengembalikan response.");
+    }
 
-  }
+    let result;
 
-  return response.json();
+    try {
+        result = JSON.parse(text);
+    } catch (error) {
+        console.error("Response server:", text);
+        throw new Error("Response dari Apps Script bukan JSON yang valid.");
+    }
 
+    if (!result.success) {
+        throw new Error(result.message || "Request gagal.");
+    }
+
+    return result;
 }
-
 
 /* =====================================================
    VERIFY ADMIN
