@@ -1718,193 +1718,114 @@ async function apiGet(params) {
 } 
    
 /* =====================================================
-   API POST
+   API POST — BACKGROUND REQUEST
 ===================================================== */
 
 async function apiPost(payload) {
 
-  return new Promise(function(resolve, reject) {
-
-    const iframeName =
-      'wimaLabPostFrame_' +
+  const requestId =
+    payload.requestId ||
+    (
+      'REQ_' +
       Date.now() +
       '_' +
       Math.floor(
-        Math.random() * 100000
-      );
+        Math.random() * 1000000
+      )
+    );
 
 
-    const iframe =
-      document.createElement('iframe');
+  const finalPayload = {
 
-    iframe.name =
-      iframeName;
+    ...payload,
 
-    iframe.style.display =
-      'none';
+    requestId:
+      requestId
 
-
-    const form =
-      document.createElement('form');
-
-    form.method =
-      'POST';
-
-    form.action =
-      API_URL;
-
-    form.target =
-      iframeName;
-
-    form.style.display =
-      'none';
+  };
 
 
-    const requestId =
-      payload.requestId ||
-      (
-        'REQ_' +
-        Date.now() +
-        '_' +
-        Math.floor(
-          Math.random() * 1000000
+  /*
+   * Google Apps Script berada di domain berbeda.
+   *
+   * Kita menggunakan:
+   *   mode: no-cors
+   *
+   * karena kita tidak membaca response POST.
+   *
+   * Hasil sebenarnya dibaca melalui:
+   *
+   *   waitForPostResult()
+   *
+   * menggunakan requestId.
+   */
+
+  const body =
+    new URLSearchParams({
+
+      payload:
+        JSON.stringify(
+          finalPayload
         )
-      );
+
+    });
 
 
-    const finalPayload = {
+  try {
 
-      ...payload,
+    await fetch(
+      API_URL,
+      {
+
+        method:
+          'POST',
+
+        mode:
+          'no-cors',
+
+        body:
+          body
+
+      }
+    );
+
+
+    console.log(
+      'POST REQUEST TERKIRIM:',
+      requestId
+    );
+
+
+    /*
+     * Response fetch bersifat opaque.
+     * Itu normal untuk no-cors.
+     */
+
+    return {
+
+      success:
+        true,
 
       requestId:
         requestId
 
     };
 
+  }
 
-    const payloadInput =
-      document.createElement('input');
+  catch (error) {
 
-    payloadInput.type =
-      'hidden';
-
-    payloadInput.name =
-      'payload';
-
-    payloadInput.value =
-      JSON.stringify(
-        finalPayload
-      );
-
-
-    form.appendChild(
-      payloadInput
+    console.error(
+      'API POST ERROR:',
+      error
     );
 
 
-    let finished =
-      false;
-
-
-    const timeout =
-      setTimeout(function() {
-
-        if (finished) {
-          return;
-        }
-
-
-        finished = true;
-
-        cleanup();
-
-
-        reject(
-          new Error(
-            'Timeout: Server tidak memberikan response.'
-          )
-        );
-
-      }, 60000);
-
-
-    function cleanup() {
-
-      clearTimeout(timeout);
-
-
-      if (
-        iframe.parentNode
-      ) {
-
-        iframe.parentNode.removeChild(
-          iframe
-        );
-
-      }
-
-
-      if (
-        form.parentNode
-      ) {
-
-        form.parentNode.removeChild(
-          form
-        );
-
-      }
-
-    }
-
-
-    iframe.addEventListener(
-      'load',
-      function() {
-
-        if (finished) {
-          return;
-        }
-
-
-        /*
-         * Jangan langsung menganggap
-         * request server berhasil.
-         *
-         * Kita hanya mengetahui bahwa
-         * POST sudah selesai dikirim.
-         */
-
-        finished = true;
-
-        cleanup();
-
-
-        resolve({
-
-          success: true,
-
-          requestId:
-            requestId
-
-        });
-
-      }
+    throw new Error(
+      'Gagal mengirim request ke Google Apps Script.'
     );
 
-
-    document.body.appendChild(
-      iframe
-    );
-
-
-    document.body.appendChild(
-      form
-    );
-
-
-    form.submit();
-
-  });
+  }
 
 }
 
