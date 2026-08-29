@@ -1778,57 +1778,39 @@ async function apiPost(payload) {
     );
 
 
-    document.body.appendChild(
-      iframe
-    );
-
-    document.body.appendChild(
-      form
-    );
+    let finished =
+      false;
 
 
-    try {
-
-      form.submit();
-
-      /*
-       * Apps Script sudah terbukti menerima POST
-       * dan melakukan operasi database.
-       *
-       * Kita tidak menunggu response dari iframe.
-       *
-       * Beri sedikit waktu agar request terkirim,
-       * lalu lanjutkan frontend.
-       */
-
+    const timeout =
       setTimeout(function() {
+
+        if (finished) {
+          return;
+        }
+
+        finished = true;
 
         cleanup();
 
-        resolve({
+        reject(
+          new Error(
+            'Timeout: Server tidak memberikan response.'
+          )
+        );
 
-          success: true,
-
-          action:
-            payload.action || ''
-
-        });
-
-      }, 1500);
-
-
-    }
-
-    catch (error) {
-
-      cleanup();
-
-      reject(error);
-
-    }
+      }, 30000);
 
 
     function cleanup() {
+
+      clearTimeout(timeout);
+
+      window.removeEventListener(
+        'message',
+        handleMessage
+      );
+
 
       if (
         iframe.parentNode
@@ -1853,9 +1835,155 @@ async function apiPost(payload) {
 
     }
 
+
+    function handleMessage(event) {
+
+      if (
+        event.origin !==
+          'https://script.google.com' &&
+        event.origin !==
+          'https://script.googleusercontent.com'
+      ) {
+
+        return;
+
+      }
+
+
+      if (
+        !event.data
+      ) {
+
+        return;
+
+      }
+
+
+      if (finished) {
+        return;
+      }
+
+
+      /*
+       * Google Apps Script response
+       * bisa berupa object langsung.
+       */
+
+      let responseData =
+        event.data;
+
+
+      /*
+       * Jika response ternyata berupa string JSON,
+       * coba parse.
+       */
+
+      if (
+        typeof responseData === 'string'
+      ) {
+
+        try {
+
+          responseData =
+            JSON.parse(
+              responseData
+            );
+
+        }
+
+        catch (error) {
+
+          console.error(
+            'Response bukan JSON:',
+            responseData
+          );
+
+          return;
+
+        }
+
+      }
+
+
+      /*
+       * Pastikan response memang
+       * berasal dari API kita.
+       */
+
+      if (
+        typeof responseData !== 'object'
+      ) {
+
+        return;
+
+      }
+
+
+      finished =
+        true;
+
+
+      cleanup();
+
+
+      console.log(
+        'POST API RESPONSE:',
+        responseData
+      );
+
+
+      /*
+       * Jika request gagal.
+       */
+
+      if (
+        responseData.success !== true
+      ) {
+
+        reject(
+          new Error(
+            responseData.message ||
+            'Request gagal.'
+          )
+        );
+
+        return;
+
+      }
+
+
+      /*
+       * Kembalikan SELURUH response,
+       * termasuk data.imageUrl.
+       */
+
+      resolve(
+        responseData
+      );
+
+    }
+
+
+    window.addEventListener(
+      'message',
+      handleMessage
+    );
+
+
+    document.body.appendChild(
+      iframe
+    );
+
+    document.body.appendChild(
+      form
+    );
+
+
+    form.submit();
+
   });
 
-} 
+}
    
 /* =====================================================
    VERIFY ADMIN
