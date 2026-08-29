@@ -3010,11 +3010,6 @@ async function uploadSelectedImage() {
   }
 
 
-  /*
-   * Batas 10 MB untuk menjaga
-   * request tetap wajar.
-   */
-
   if (
     file.size >
     10 * 1024 * 1024
@@ -3055,22 +3050,84 @@ async function uploadSelectedImage() {
     });
 
 
+  console.log(
+    'UPLOAD API RESPONSE:',
+    result
+  );
+
+
   if (
-    !result.success
+    !result ||
+    result.success !== true
   ) {
 
     throw new Error(
-      result.message ||
-      'Upload gambar gagal.'
+      result &&
+      result.message
+        ? result.message
+        : 'Upload gambar gagal.'
     );
 
   }
 
 
-  return result.data;
+  /*
+   * Response Code.gs:
+   *
+   * {
+   *   success: true,
+   *   action: "uploadImage",
+   *   admin: "...",
+   *   data: {
+   *     success: true,
+   *     fileId: "...",
+   *     name: "...",
+   *     imageUrl: "..."
+   *   }
+   * }
+   */
+
+
+  if (
+    result.data &&
+    result.data.imageUrl
+  ) {
+
+    return result.data;
+
+  }
+
+
+  /*
+   * Pengaman jika response upload
+   * langsung berisi imageUrl.
+   */
+
+  if (
+    result.imageUrl
+  ) {
+
+    return {
+
+      imageUrl:
+        result.imageUrl,
+
+      fileId:
+        result.fileId || '',
+
+      name:
+        result.name || file.name
+
+    };
+
+  }
+
+
+  throw new Error(
+    'Upload berhasil tetapi URL gambar tidak diterima dari server.'
+  );
 
 }
-
 
 /* =====================================================
    SUBMIT PROJECT
