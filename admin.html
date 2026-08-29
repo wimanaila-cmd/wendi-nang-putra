@@ -3052,10 +3052,6 @@ async function uploadSelectedImage() {
   }
 
 
-  /*
-   * Maksimal 10 MB
-   */
-
   if (
     file.size >
     10 * 1024 * 1024
@@ -3069,7 +3065,7 @@ async function uploadSelectedImage() {
 
 
   /*
-   * Buat ID unik untuk request upload.
+   * ID unik untuk upload.
    */
 
   const requestId =
@@ -3094,7 +3090,7 @@ async function uploadSelectedImage() {
 
 
   /*
-   * Kirim file ke server.
+   * Kirim file ke Google Drive.
    */
 
   const uploadResponse =
@@ -3144,38 +3140,23 @@ async function uploadSelectedImage() {
 
 
   /*
-   * Tunggu sebentar agar hasil upload
-   * sudah tersedia di CacheService.
-   */
-
-  await new Promise(
-    function(resolve) {
-
-      setTimeout(
-        resolve,
-        700
-      );
-
-    }
-  );
-
-
-  /*
-   * Ambil hasil upload sebenarnya.
+   * Polling hasil upload.
+   *
+   * Server mungkin membutuhkan sedikit waktu
+   * untuk menyimpan hasil ke CacheService.
    */
 
   let uploadResult =
     null;
 
 
-  /*
-   * Coba beberapa kali karena server
-   * bisa membutuhkan sedikit waktu.
-   */
+  const maxAttempts =
+    12;
+
 
   for (
     let attempt = 1;
-    attempt <= 5;
+    attempt <= maxAttempts;
     attempt++
   ) {
 
@@ -3201,10 +3182,19 @@ async function uploadSelectedImage() {
       );
 
 
+      console.log(
+        'UPLOAD RESULT JSON ATTEMPT ' +
+        attempt +
+        ':',
+        JSON.stringify(result)
+      );
+
+
       if (
         result &&
         result.success === true &&
-        result.data
+        result.data &&
+        result.data.imageUrl
       ) {
 
         uploadResult =
@@ -3219,21 +3209,25 @@ async function uploadSelectedImage() {
     catch (error) {
 
       console.warn(
-        'Upload result attempt ' +
+        'UPLOAD RESULT ATTEMPT ' +
         attempt +
-        ' gagal:',
+        ' ERROR:',
         error
       );
 
     }
 
 
+    /*
+     * Tunggu 1 detik sebelum mencoba lagi.
+     */
+
     await new Promise(
       function(resolve) {
 
         setTimeout(
           resolve,
-          500
+          1000
         );
 
       }
@@ -3243,7 +3237,7 @@ async function uploadSelectedImage() {
 
 
   /*
-   * Pastikan URL tersedia.
+   * Pastikan hasil upload ditemukan.
    */
 
   if (
@@ -3258,7 +3252,7 @@ async function uploadSelectedImage() {
 
 
     throw new Error(
-      'Gambar berhasil diupload ke Google Drive, tetapi URL gambar tidak berhasil diterima.'
+      'Gambar berhasil diupload ke Google Drive, tetapi hasil URL belum berhasil diterima oleh sistem.'
     );
 
   }
@@ -3305,8 +3299,7 @@ async function uploadSelectedImage() {
 
   };
 
-}      
-
+}
 
 /* =====================================================
    SUBMIT PROJECT
