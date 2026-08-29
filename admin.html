@@ -3358,26 +3358,68 @@ async function submitProject(event) {
         .value
         .trim();
 
-
-    /* =================================================
-       UPLOAD GAMBAR BARU
-    ================================================= */
-
-    const imageResult =
-      await uploadSelectedImage();
+     let imageFile =
+  null;
 
 
-    if (imageResult) {
+const imageInput =
+  document.getElementById(
+    'imageFile'
+  );
 
-      imageUrl =
-        imageResult.imageUrl;
 
-      console.log(
-        'Gambar berhasil diupload:',
-        imageResult
-      );
+if (
+  imageInput.files &&
+  imageInput.files[0]
+) {
 
-    }
+  const file =
+    imageInput.files[0];
+
+
+  if (
+    !file.type.startsWith('image/')
+  ) {
+
+    throw new Error(
+      'File harus berupa gambar.'
+    );
+
+  }
+
+
+  if (
+    file.size >
+    10 * 1024 * 1024
+  ) {
+
+    throw new Error(
+      'Ukuran gambar maksimal 10 MB.'
+    );
+
+  }
+
+
+  const base64 =
+    await fileToBase64(
+      file
+    );
+
+
+  imageFile = {
+
+    name:
+      file.name,
+
+    mimeType:
+      file.type,
+
+    data:
+      base64
+
+  };
+
+}
 
 
     /* =================================================
@@ -3412,6 +3454,9 @@ async function submitProject(event) {
 
       imageUrl:
         imageUrl,
+
+       imageFile:
+          imageFile,
 
       gallery:
         document
