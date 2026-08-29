@@ -3010,6 +3010,10 @@ async function uploadSelectedImage() {
   }
 
 
+  /*
+   * Batas 10 MB
+   */
+
   if (
     file.size >
     10 * 1024 * 1024
@@ -3052,7 +3056,7 @@ async function uploadSelectedImage() {
 
   console.log(
     'UPLOAD API RESPONSE JSON:',
-   JSON.stringify(result)
+    JSON.stringify(result)
   );
 
 
@@ -3072,60 +3076,44 @@ async function uploadSelectedImage() {
 
 
   /*
-   * Response Code.gs:
-   *
-   * {
-   *   success: true,
-   *   action: "uploadImage",
-   *   admin: "...",
-   *   data: {
-   *     success: true,
-   *     fileId: "...",
-   *     name: "...",
-   *     imageUrl: "..."
-   *   }
-   * }
+   * URL gambar sekarang langsung
+   * berada di result.imageUrl
    */
 
-
   if (
-    result.data &&
-    result.data.imageUrl
+    !result.imageUrl
   ) {
 
-    return result.data;
+    console.error(
+      'Response upload tidak memiliki imageUrl:',
+      result
+    );
+
+    throw new Error(
+      'Upload berhasil tetapi URL gambar tidak diterima dari server.'
+    );
 
   }
 
 
-  /*
-   * Pengaman jika response upload
-   * langsung berisi imageUrl.
-   */
-
-  if (
+  console.log(
+    'IMAGE URL:',
     result.imageUrl
-  ) {
-
-    return {
-
-      imageUrl:
-        result.imageUrl,
-
-      fileId:
-        result.fileId || '',
-
-      name:
-        result.name || file.name
-
-    };
-
-  }
-
-
-  throw new Error(
-    'Upload berhasil tetapi URL gambar tidak diterima dari server.'
   );
+
+
+  return {
+
+    fileId:
+      result.fileId,
+
+    name:
+      result.name,
+
+    imageUrl:
+      result.imageUrl
+
+  };
 
 }
 
