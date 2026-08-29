@@ -3689,32 +3689,34 @@ if (
        KIRIM KE SERVER
     ================================================= */
 
-    const result =
-      await apiPost({
+    const postRequest =
+  await apiPost({
 
-        action:
-          action,
+    action:
+      action,
 
-        project:
-          project
+    project:
+      project
 
-      });
+  });
 
 
-    console.log(
-      'POST REQUEST:',
-      postRequest
-    );
+console.log(
+  'POST REQUEST:',
+  postRequest
+);
 
-     const result =
-        await waitForPostResult(
-           postRequest.requestId
 
-     console.log(
-        'SERVER RESULT:',
-        result
-      );
+const result =
+  await waitForPostResult(
+    postRequest.requestId
+  );
 
+
+console.log(
+  'SERVER RESULT:',
+  result
+);
 
     /* =================================================
        VALIDASI RESPONSE
