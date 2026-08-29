@@ -1806,6 +1806,7 @@ async function apiPost(payload) {
 
       clearTimeout(timeout);
 
+
       window.removeEventListener(
         'message',
         handleMessage
@@ -1838,6 +1839,11 @@ async function apiPost(payload) {
 
     function handleMessage(event) {
 
+      /*
+       * Response berasal dari
+       * Google Apps Script.
+       */
+
       if (
         event.origin !==
           'https://script.google.com' &&
@@ -1851,7 +1857,7 @@ async function apiPost(payload) {
 
 
       if (
-        !event.data
+        finished
       ) {
 
         return;
@@ -1859,34 +1865,24 @@ async function apiPost(payload) {
       }
 
 
-      if (finished) {
-        return;
-      }
-
-
-      /*
-       * Google Apps Script response
-       * bisa berupa object langsung.
-       */
-
-      let responseData =
+      let response =
         event.data;
 
 
       /*
-       * Jika response ternyata berupa string JSON,
-       * coba parse.
+       * postResponse sekarang mengirim
+       * JSON sebagai STRING.
        */
 
       if (
-        typeof responseData === 'string'
+        typeof response === 'string'
       ) {
 
         try {
 
-          responseData =
+          response =
             JSON.parse(
-              responseData
+              response
             );
 
         }
@@ -1894,8 +1890,8 @@ async function apiPost(payload) {
         catch (error) {
 
           console.error(
-            'Response bukan JSON:',
-            responseData
+            'POST RESPONSE BUKAN JSON:',
+            response
           );
 
           return;
@@ -1905,13 +1901,9 @@ async function apiPost(payload) {
       }
 
 
-      /*
-       * Pastikan response memang
-       * berasal dari API kita.
-       */
-
       if (
-        typeof responseData !== 'object'
+        !response ||
+        typeof response !== 'object'
       ) {
 
         return;
@@ -1928,21 +1920,23 @@ async function apiPost(payload) {
 
       console.log(
         'POST API RESPONSE:',
-        responseData
+        response
       );
 
 
-      /*
-       * Jika request gagal.
-       */
+      console.log(
+        'POST API RESPONSE JSON:',
+        JSON.stringify(response)
+      );
+
 
       if (
-        responseData.success !== true
+        response.success !== true
       ) {
 
         reject(
           new Error(
-            responseData.message ||
+            response.message ||
             'Request gagal.'
           )
         );
@@ -1952,13 +1946,8 @@ async function apiPost(payload) {
       }
 
 
-      /*
-       * Kembalikan SELURUH response,
-       * termasuk data.imageUrl.
-       */
-
       resolve(
-        responseData
+        response
       );
 
     }
@@ -1973,6 +1962,7 @@ async function apiPost(payload) {
     document.body.appendChild(
       iframe
     );
+
 
     document.body.appendChild(
       form
@@ -3203,17 +3193,17 @@ async function uploadSelectedImage() {
   }
 
 
-  /*
-   * URL gambar sekarang langsung
-   * berada di result.imageUrl
-   */
+  const uploadData =
+    result.data;
+
 
   if (
-    !result.imageUrl
+    !uploadData ||
+    !uploadData.imageUrl
   ) {
 
     console.error(
-      'Response upload tidak memiliki imageUrl:',
+      'DATA UPLOAD TIDAK DITEMUKAN:',
       result
     );
 
@@ -3226,11 +3216,11 @@ async function uploadSelectedImage() {
 
   console.log(
     'IMAGE URL:',
-    result.imageUrl
+    uploadData.imageUrl
   );
 
 
-  return {
+  return uploadData;
 
     fileId:
       result.fileId,
