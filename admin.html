@@ -3098,9 +3098,7 @@ function fileToBase64(
 async function uploadSelectedImage() {
 
   const input =
-    document.getElementById(
-      'imageFile'
-    );
+    document.getElementById('imageFile');
 
 
   if (
@@ -3128,10 +3126,6 @@ async function uploadSelectedImage() {
   }
 
 
-  /*
-   * Batas 10 MB
-   */
-
   if (
     file.size >
     10 * 1024 * 1024
@@ -3146,6 +3140,12 @@ async function uploadSelectedImage() {
 
   const base64 =
     await fileToBase64(file);
+
+
+  console.log(
+    'Mengupload gambar:',
+    file.name
+  );
 
 
   const result =
@@ -3171,91 +3171,64 @@ async function uploadSelectedImage() {
 
 
   console.log(
-     '========== UPLOAD API RESPONSE =========='
-   );
+    'UPLOAD IMAGE RESPONSE:',
+    result
+  );
 
-   console.log(
-      'UPLOAD RESULT JSON:',
-      JSON.stringify(result)
-   );
 
-   console.log(
-      '=========================================='
-   );
-
-   
   if (
     !result ||
     result.success !== true
   ) {
 
     throw new Error(
-      result &&
-      result.message
+      result && result.message
         ? result.message
         : 'Upload gambar gagal.'
     );
 
   }
 
-   const fileId=
-      result.fileId || '';
 
-   const name =
-      result.name || file.name;
+  const imageUrl =
+    result.imageUrl || '';
 
-   const imageUrl =
-      result.imageUrl || '';
 
-   if (!imageUrl) {
-      console.error(
-         'IMAGE URL TIDAK DITEMUKAN:',
-         result
-      );
+  if (!imageUrl) {
 
-      throw new Error(
-         'Upload berhasil tetapi URL gambar tidak diterima dari server.'
-      );
-   }
+    console.error(
+      'Response upload tidak memiliki imageUrl:',
+      result
+    );
 
-   concole.log(
-      'FILE ID:',
-      fileId
-   );
+    throw new Error(
+      'Gambar berhasil diupload, tetapi URL gambar tidak diterima.'
+    );
 
-   console.log(
-      'FILE NAME:',
-      name
-   );
+  }
 
-   console.log(
-      'IMAGE URL:',
-      imagerUrl
-   );
 
-   return {
-      fileId:
-         fileId,
+  return {
 
-      name:
-         name,
+    fileId:
+      result.fileId || '',
 
-      imageUrl:
-         imageUrl
+    name:
+      result.name || file.name,
 
-   };
-}
+    imageUrl:
+      imageUrl
 
-      
+  };
+
+}      
 
 
 /* =====================================================
    SUBMIT PROJECT
 ===================================================== */
 
-async function submitProject(
-  event
-) {
+async function submitProject(event) {
 
   event.preventDefault();
 
@@ -3266,11 +3239,14 @@ async function submitProject(
     );
 
 
-  saveButton.disabled =
-    true;
+  saveButton.disabled = true;
 
   saveButton.textContent =
     'Menyimpan...';
+
+
+  const isEditing =
+    !!editingProjectId;
 
 
   try {
@@ -3292,8 +3268,7 @@ async function submitProject(
 
 
     /*
-     * Jika user memilih gambar baru,
-     * upload terlebih dahulu.
+     * URL gambar lama.
      */
 
     let imageUrl =
@@ -3303,42 +3278,31 @@ async function submitProject(
         .trim();
 
 
+    /*
+     * Jika user memilih gambar baru,
+     * upload terlebih dahulu.
+     */
+
     const imageResult =
       await uploadSelectedImage();
 
-     console.log(
-        '========== UPLOAD IMAGE RESULT =========='
-      );
+
+    if (imageResult) {
+
+      imageUrl =
+        imageResult.imageUrl;
 
       console.log(
-        'imageResult:', 
-      imageResult
-      );
-      
-       console.log(
-          'fileId dari upload:',
-         imageResult
-          ? imageResult.fileId
-          : null
-      );
-
-     console.log(
-        'imageUrl dari upload:',
+        'Gambar berhasil diupload:',
         imageResult
-        ? imageResult.imageUrl
-        : null
-     );
+      );
 
-      console.log(
-         '=============================='
-       );  
-
-      if (imageResult) {
-         
-         imageUrl =
-            imageResult.imageUrl;
-      
     }
+
+
+    /*
+     * Susun data project.
+     */
 
     const project = {
 
@@ -3414,10 +3378,22 @@ async function submitProject(
     };
 
 
+    console.log(
+      'PROJECT YANG AKAN DISIMPAN:',
+      project
+    );
+
+
     const action =
-      editingProjectId
+      isEditing
         ? 'updateProject'
         : 'createProject';
+
+
+    console.log(
+      'ACTION:',
+      action
+    );
 
 
     const result =
@@ -3432,41 +3408,72 @@ async function submitProject(
       });
 
 
+    console.log(
+      'SAVE PROJECT RESPONSE:',
+      result
+    );
+
+
     if (
-      !result.success
+      !result ||
+      result.success !== true
     ) {
 
       throw new Error(
-        result.message ||
-        'Gagal menyimpan project.'
+        result && result.message
+          ? result.message
+          : 'Gagal menyimpan project.'
       );
 
     }
 
 
+    /*
+     * Tutup modal.
+     */
+
     closeProjectModal();
+
+
+    /*
+     * Refresh database.
+     */
 
     await loadProjects();
 
 
+    /*
+     * Pesan sukses.
+     */
+
     showToast(
-      'Berhasil',
-      editingProjectId
-        ? 'Project berhasil diperbarui.'
-        : 'Project berhasil dibuat.',
+      isEditing
+        ? 'PROJECT BERHASIL DIPERBARUI'
+        : 'PROJECT BERHASIL DISIMPAN',
+
+      isEditing
+        ? '"' + title +
+          '" berhasil diperbarui.'
+        : '"' + title +
+          '" berhasil ditambahkan ke WIMA LAB.',
+
       'success'
     );
-
 
   }
 
   catch (error) {
 
-    console.error(error);
+    console.error(
+      'SAVE PROJECT ERROR:',
+      error
+    );
+
 
     showToast(
-      'Gagal',
-      error.message,
+      'PROJECT GAGAL DISIMPAN',
+      error.message ||
+        'Terjadi kesalahan saat menyimpan project.',
       'error'
     );
 
@@ -3484,25 +3491,27 @@ async function submitProject(
 
 }
 
-
 /* =====================================================
    DELETE
 ===================================================== */
 
-function confirmDelete(
-  id
-) {
+function confirmDelete(id) {
 
   const project =
     projects.find(function(item) {
 
-      return String(item.id)
-        === String(id);
+      return String(item.id) === String(id);
 
     });
 
 
   if (!project) {
+
+    showToast(
+      'Error',
+      'Project tidak ditemukan.',
+      'error'
+    );
 
     return;
 
@@ -3514,25 +3523,26 @@ function confirmDelete(
       'Hapus project "' +
       project.title +
       '"?\n\n' +
+      'Project akan dihapus dari database WIMA LAB.\n' +
       'Tindakan ini tidak dapat dibatalkan.'
     );
 
 
-  if (
-    confirmed
-  ) {
-
-    deleteProject(
-      id
-    );
-
+  if (!confirmed) {
+    return;
   }
+
+
+  deleteProject(
+    id,
+    project.title
+  );
 
 }
 
-
 async function deleteProject(
-  id
+  id,
+  projectTitle
 ) {
 
   try {
@@ -3550,12 +3560,14 @@ async function deleteProject(
 
 
     if (
-      !result.success
+      !result ||
+      result.success !== true
     ) {
 
       throw new Error(
-        result.message ||
-        'Gagal menghapus project.'
+        result && result.message
+          ? result.message
+          : 'Gagal menghapus project.'
       );
 
     }
@@ -3565,8 +3577,10 @@ async function deleteProject(
 
 
     showToast(
-      'Project dihapus',
-      'Project berhasil dihapus dari database.',
+      'PROJECT BERHASIL DIHAPUS',
+      '"' +
+        (projectTitle || 'Project') +
+        '" berhasil dihapus dari database WIMA LAB.',
       'success'
     );
 
@@ -3574,18 +3588,22 @@ async function deleteProject(
 
   catch (error) {
 
-    console.error(error);
+    console.error(
+      'DELETE PROJECT ERROR:',
+      error
+    );
+
 
     showToast(
-      'Gagal menghapus',
-      error.message,
+      'GAGAL MENGHAPUS PROJECT',
+      error.message ||
+        'Terjadi kesalahan.',
       'error'
     );
 
   }
 
 }
-
 
 /* =====================================================
    REFRESH BUTTON
