@@ -1760,6 +1760,28 @@ async function apiPost(payload) {
       'none';
 
 
+    const requestId =
+      payload.requestId ||
+      (
+        'REQ_' +
+        Date.now() +
+        '_' +
+        Math.floor(
+          Math.random() * 1000000
+        )
+      );
+
+
+    const finalPayload = {
+
+      ...payload,
+
+      requestId:
+        requestId
+
+    };
+
+
     const payloadInput =
       document.createElement('input');
 
@@ -1770,7 +1792,9 @@ async function apiPost(payload) {
       'payload';
 
     payloadInput.value =
-      JSON.stringify(payload);
+      JSON.stringify(
+        finalPayload
+      );
 
 
     form.appendChild(
@@ -1789,9 +1813,11 @@ async function apiPost(payload) {
           return;
         }
 
+
         finished = true;
 
         cleanup();
+
 
         reject(
           new Error(
@@ -1799,14 +1825,17 @@ async function apiPost(payload) {
           )
         );
 
-      }, 30000);
+      }, 60000);
 
 
     function cleanup() {
 
       clearTimeout(timeout);
 
-      if (iframe.parentNode) {
+
+      if (
+        iframe.parentNode
+      ) {
 
         iframe.parentNode.removeChild(
           iframe
@@ -1814,7 +1843,10 @@ async function apiPost(payload) {
 
       }
 
-      if (form.parentNode) {
+
+      if (
+        form.parentNode
+      ) {
 
         form.parentNode.removeChild(
           form
@@ -1824,18 +1856,6 @@ async function apiPost(payload) {
 
     }
 
-
-    /*
-     * Apps Script dapat melakukan redirect
-     * ke script.googleusercontent.com.
-     *
-     * Karena response HTML berada pada
-     * iframe cross-origin, kita tidak mencoba
-     * membaca isi iframe.
-     *
-     * Kita menggunakan event load sebagai
-     * indikasi bahwa request POST sudah selesai.
-     */
 
     iframe.addEventListener(
       'load',
@@ -1847,34 +1867,26 @@ async function apiPost(payload) {
 
 
         /*
-         * Beri sedikit waktu agar operasi
-         * Spreadsheet benar-benar selesai.
+         * Jangan langsung menganggap
+         * request server berhasil.
+         *
+         * Kita hanya mengetahui bahwa
+         * POST sudah selesai dikirim.
          */
 
-        setTimeout(
-          function() {
+        finished = true;
 
-            if (finished) {
-              return;
-            }
-
-            finished = true;
-
-            cleanup();
+        cleanup();
 
 
-            resolve({
+        resolve({
 
-              success: true,
+          success: true,
 
-              message:
-                'Request berhasil diproses oleh server.'
+          requestId:
+            requestId
 
-            });
-
-          },
-          500
-        );
+        });
 
       }
     );
@@ -1884,20 +1896,164 @@ async function apiPost(payload) {
       iframe
     );
 
+
     document.body.appendChild(
       form
     );
 
-
-    /*
-     * Kirim POST
-     */
 
     form.submit();
 
   });
 
 }
+
+
+   /* =====================================================
+   WAIT FOR SERVER RESULT
+===================================================== */
+
+async function waitForPostResult(
+  requestId
+) {
+
+  if (!requestId) {
+
+    throw new Error(
+      'Request ID tidak ditemukan.'
+    );
+
+  }
+
+
+  const maxAttempts =
+    20;
+
+
+  for (
+    let attempt = 1;
+    attempt <= maxAttempts;
+    attempt++
+  ) {
+
+    try {
+
+      const result =
+        await apiGet({
+
+          action:
+            'postResult',
+
+          requestId:
+            requestId
+
+        });
+
+
+      console.log(
+        'POST RESULT ATTEMPT ' +
+        attempt +
+        ':',
+        result
+      );
+
+
+      /*
+       * Server belum menyimpan hasil.
+       */
+
+      if (
+        result &&
+        result.pending === true
+      ) {
+
+        await new Promise(
+          function(resolve) {
+
+            setTimeout(
+              resolve,
+              500
+            );
+
+          }
+        );
+
+        continue;
+
+      }
+
+
+      /*
+       * Server sudah memberikan
+       * hasil sebenarnya.
+       */
+
+      if (
+        result &&
+        result.success === true
+      ) {
+
+        return result;
+
+      }
+
+
+      /*
+       * Server mengembalikan error.
+       */
+
+      throw new Error(
+        result &&
+        result.message
+
+          ? result.message
+
+          : 'Server gagal memproses request.'
+      );
+
+    }
+
+    catch (error) {
+
+      /*
+       * Jangan langsung gagal pada
+       * polling pertama.
+       */
+
+      if (
+        attempt === maxAttempts
+      ) {
+
+        throw error;
+
+      }
+
+
+      await new Promise(
+        function(resolve) {
+
+          setTimeout(
+            resolve,
+            500
+          );
+
+        }
+      );
+
+    }
+
+  }
+
+
+  throw new Error(
+    'Server tidak mengembalikan hasil request.'
+  );
+
+}
+
+
+
+   
    
 /* =====================================================
    VERIFY ADMIN
@@ -3546,9 +3702,18 @@ if (
 
 
     console.log(
-      'SAVE PROJECT RESPONSE:',
-      result
+      'POST REQUEST:',
+      postRequest
     );
+
+     const result =
+        await waitForPostResult(
+           postRequest.requestId
+
+     console.log(
+        'SERVER RESULT:',
+        result
+      );
 
 
     /* =================================================
@@ -3730,6 +3895,12 @@ async function deleteProject(
           id
 
       });
+
+     const result =
+        await waitForPostResult(
+           postRequest.requestId
+      );
+         
 
 
     if (
