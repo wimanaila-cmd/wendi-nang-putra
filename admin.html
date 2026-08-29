@@ -3220,17 +3220,13 @@ async function uploadSelectedImage() {
   );
 
 
-  return uploadData;
-
+  return {
     fileId:
       result.fileId,
-
     name:
       result.name,
-
     imageUrl:
       result.imageUrl
-
   };
 
 }
