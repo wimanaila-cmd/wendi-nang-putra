@@ -3887,7 +3887,7 @@ async function deleteProject(
 
   try {
 
-    const result =
+    const postRequest =
       await apiPost({
 
         action:
@@ -3898,11 +3898,23 @@ async function deleteProject(
 
       });
 
-     const result =
-        await waitForPostResult(
-           postRequest.requestId
+
+    console.log(
+      'DELETE POST REQUEST:',
+      postRequest
+    );
+
+
+    const result =
+      await waitForPostResult(
+        postRequest.requestId
       );
-         
+
+
+    console.log(
+      'DELETE SERVER RESULT:',
+      result
+    );
 
 
     if (
@@ -3920,6 +3932,11 @@ async function deleteProject(
 
 
     await loadProjects();
+
+
+    showSectionById(
+      'dashboard'
+    );
 
 
     showToast(
@@ -3942,15 +3959,16 @@ async function deleteProject(
 
     showToast(
       'GAGAL MENGHAPUS PROJECT',
-      error.message ||
-        'Terjadi kesalahan.',
+      error && error.message
+        ? error.message
+        : 'Terjadi kesalahan saat menghapus project.',
       'error'
     );
 
   }
 
 }
-
+   
 /* =====================================================
    REFRESH BUTTON
 ===================================================== */
