@@ -3140,8 +3140,8 @@ async function submitProject(
       
        console.log(
           'imageUrl dari upload:',
-          imageResult
-          imageResult.imageURL
+         imageResult
+          ? imageResult.imageURL
           : null
       );
 
@@ -3150,6 +3150,7 @@ async function submitProject(
       );
 
       if (imageResult) {
+         
          imageUrl =
             imageResult.imageUrl;
       
