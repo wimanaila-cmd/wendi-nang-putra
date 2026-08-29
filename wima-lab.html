@@ -1499,15 +1499,11 @@
 </footer>
 
 <script>
+  <script>
 
 /* =====================================================
    WIMA LAB PUBLIC PROJECTS
 ===================================================== */
-
-/*
- * URL Web App Google Apps Script
- * yang sama dengan admin.html
- */
 
 const API_URL =
   'https://script.google.com/macros/s/AKfycbxB3uKiZSW7iC-VO0CwyOXyhWl6f4xi1D8m9RLkRCorSv3mqT8Di0cAGh4BRuuRarV76g/exec';
@@ -1522,28 +1518,23 @@ function apiGet(params) {
   return new Promise(function(resolve, reject) {
 
     const callbackName =
-      'wimaLabPublicCallback_' +
+      'wimaLabCallback_' +
       Date.now() +
       '_' +
       Math.floor(Math.random() * 100000);
 
-
     const query =
       new URLSearchParams(params);
-
 
     query.set(
       'callback',
       callbackName
     );
 
-
     const script =
       document.createElement('script');
 
-
     let finished = false;
-
 
     const timeout =
       setTimeout(function() {
@@ -1558,7 +1549,7 @@ function apiGet(params) {
 
         reject(
           new Error(
-            'Timeout: WIMA LAB tidak menerima response dari server.'
+            'Timeout: Google Apps Script tidak memberikan response.'
           )
         );
 
@@ -1572,11 +1563,7 @@ function apiGet(params) {
       delete window[callbackName];
 
       if (script.parentNode) {
-
-        script.parentNode.removeChild(
-          script
-        );
-
+        script.parentNode.removeChild(script);
       }
 
     }
@@ -1644,17 +1631,30 @@ async function loadPublishedProjects() {
       'publishedProjects'
     );
 
-
   if (!container) {
+
+    console.error(
+      'Elemen #publishedProjects tidak ditemukan.'
+    );
+
     return;
+
   }
 
 
   try {
 
+    console.log(
+      'Mengambil Published Projects...'
+    );
+
+
     const result =
       await apiGet({
-        action: 'projects'
+
+        action:
+          'projects'
+
       });
 
 
@@ -1672,7 +1672,7 @@ async function loadPublishedProjects() {
       throw new Error(
         result && result.message
           ? result.message
-          : 'Gagal mengambil project.'
+          : 'Response API tidak valid.'
       );
 
     }
@@ -1683,13 +1683,6 @@ async function loadPublishedProjects() {
         ? result.data
         : [];
 
-
-    /*
-     * Backend sudah memfilter Published.
-     *
-     * Tetapi kita filter ulang di browser
-     * sebagai lapisan keamanan tampilan.
-     */
 
     const published =
       projects.filter(function(project) {
@@ -1704,6 +1697,12 @@ async function loadPublishedProjects() {
       });
 
 
+    console.log(
+      'Published Projects:',
+      published
+    );
+
+
     renderPublishedProjects(
       published
     );
@@ -1715,16 +1714,6 @@ async function loadPublishedProjects() {
     console.error(
       'LOAD PUBLISHED PROJECTS ERROR:',
       error
-    );
-
-    console.log(
-      'ERROR MESSAGE:',
-      error.message
-    );
-
-    console.log(
-      'API URL:',
-      API_URL
     );
 
 
@@ -1741,7 +1730,10 @@ async function loadPublishedProjects() {
         </h3>
 
         <p>
-          ${escapeHtml(error.message)}
+          ${escapeHtml(
+            error.message ||
+            'Terjadi kesalahan.'
+          )}
         </p>
 
       </div>
@@ -1754,7 +1746,7 @@ async function loadPublishedProjects() {
 
 
 /* =====================================================
-   RENDER PROJECTS
+   RENDER PUBLISHED PROJECTS
 ===================================================== */
 
 function renderPublishedProjects(
@@ -1779,7 +1771,7 @@ function renderPublishedProjects(
       <div class="system-card">
 
         <span class="status">
-          EMPTY
+          NO PUBLISHED PROJECT
         </span>
 
         <h3>
@@ -1787,7 +1779,7 @@ function renderPublishedProjects(
         </h3>
 
         <p>
-          Project yang berstatus Published
+          Project dengan status Published
           akan muncul otomatis di sini.
         </p>
 
@@ -1806,16 +1798,9 @@ function renderPublishedProjects(
   projects.forEach(
     function(project, index) {
 
-
-      const imageUrl =
-        String(
-          project.imageUrl || ''
-        ).trim();
-
-
       const title =
         project.title ||
-        'Untitled Project';
+        'Tanpa Judul';
 
 
       const category =
@@ -1831,6 +1816,12 @@ function renderPublishedProjects(
       const description =
         project.description ||
         'Project digital yang dikembangkan melalui WIMA LAB.';
+
+
+      const imageUrl =
+        String(
+          project.imageUrl || ''
+        ).trim();
 
 
       const technologies =
@@ -1853,46 +1844,102 @@ function renderPublishedProjects(
         ).trim();
 
 
-      const slug =
-        project.slug ||
-        '';
-
-
       html += `
 
-        <article
-          class="system-card"
-          style="
-            min-height:auto;
-            padding:0;
-          "
-        >
+        <article class="system-card">
+
+          <span class="number">
+
+            ${String(index + 1).padStart(2, '0')}
+
+          </span>
+
 
           ${
             imageUrl
               ? `
-                <div
+                <img
+                  src="${escapeAttribute(imageUrl)}"
+                  alt="${escapeAttribute(title)}"
+                  loading="lazy"
                   style="
                     width:100%;
-                    height:220px;
-                    overflow:hidden;
-                    border-bottom:1px solid var(--line);
+                    height:190px;
+                    object-fit:cover;
+                    border-radius:14px;
+                    margin-bottom:22px;
+                    border:1px solid var(--line);
                     background:#090b0e;
+                  "
+                  onerror="
+                    this.style.display='none';
+                  "
+                >
+              `
+              : ''
+          }
+
+
+          <span class="status">
+
+            ${escapeHtml(
+              String(category).toUpperCase()
+            )}
+
+            ${
+              year
+                ? ' · ' + escapeHtml(year)
+                : ''
+            }
+
+          </span>
+
+
+          <h3>
+            ${escapeHtml(title)}
+          </h3>
+
+
+          <p>
+            ${escapeHtml(description)}
+          </p>
+
+
+          ${
+            technologies.length
+              ? `
+                <div
+                  style="
+                    display:flex;
+                    flex-wrap:wrap;
+                    gap:6px;
+                    margin-top:18px;
                   "
                 >
 
-                  <img
-                    src="${escapeAttribute(imageUrl)}"
-                    alt="${escapeAttribute(title)}"
-                    style="
-                      width:100%;
-                      height:100%;
-                      object-fit:cover;
-                      display:block;
-                    "
-                    loading="lazy"
-                    onerror="this.parentElement.style.display='none'"
-                  >
+                  ${
+                    technologies.map(
+                      function(tech) {
+
+                        return `
+
+                          <span
+                            style="
+                              padding:5px 8px;
+                              border:1px solid var(--line);
+                              border-radius:999px;
+                              color:var(--muted);
+                              font-size:9px;
+                            "
+                          >
+                            ${escapeHtml(tech)}
+                          </span>
+
+                        `;
+
+                      }
+                    ).join('')
+                  }
 
                 </div>
               `
@@ -1900,166 +1947,70 @@ function renderPublishedProjects(
           }
 
 
-          <div
-            style="
-              padding:25px;
-            "
-          >
+          ${
+            demoUrl || githubUrl
+              ? `
+                <div
+                  style="
+                    display:flex;
+                    flex-wrap:wrap;
+                    gap:8px;
+                    margin-top:20px;
+                  "
+                >
 
-            <span class="number">
-              ${String(index + 1).padStart(2, '0')}
-            </span>
-
-
-            <span class="status">
-              ${escapeHtml(
-                String(category).toUpperCase()
-              )}
-              ${
-                year
-                  ? ' · ' + escapeHtml(year)
-                  : ''
-              }
-            </span>
-
-
-            <h3>
-              ${escapeHtml(title)}
-            </h3>
-
-
-            <p>
-              ${escapeHtml(description)}
-            </p>
-
-
-            ${
-              technologies.length
-                ? `
-                  <div
-                    style="
-                      display:flex;
-                      flex-wrap:wrap;
-                      gap:6px;
-                      margin-top:18px;
-                    "
-                  >
-
-                    ${
-                      technologies
-                        .map(function(tech) {
-
-                          return `
-                            <span
-                              style="
-                                display:inline-block;
-                                padding:5px 8px;
-                                border:1px solid var(--line);
-                                border-radius:999px;
-                                color:var(--muted);
-                                font-size:9px;
-                              "
-                            >
-                              ${escapeHtml(tech)}
-                            </span>
-                          `;
-
-                        })
-                        .join('')
-                    }
-
-                  </div>
-                `
-                : ''
-            }
+                  ${
+                    demoUrl
+                      ? `
+                        <a
+                          href="${escapeAttribute(demoUrl)}"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style="
+                            display:inline-block;
+                            padding:8px 11px;
+                            background:var(--accent);
+                            border:1px solid var(--accent);
+                            border-radius:9px;
+                            color:#080b07;
+                            font-size:9px;
+                            font-weight:800;
+                          "
+                        >
+                          VIEW PROJECT →
+                        </a>
+                      `
+                      : ''
+                  }
 
 
-            ${
-              demoUrl || githubUrl
-                ? `
-                  <div
-                    style="
-                      display:flex;
-                      flex-wrap:wrap;
-                      gap:8px;
-                      margin-top:22px;
-                    "
-                  >
+                  ${
+                    githubUrl
+                      ? `
+                        <a
+                          href="${escapeAttribute(githubUrl)}"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style="
+                            display:inline-block;
+                            padding:8px 11px;
+                            border:1px solid var(--line);
+                            border-radius:9px;
+                            color:var(--muted);
+                            font-size:9px;
+                            font-weight:800;
+                          "
+                        >
+                          GITHUB
+                        </a>
+                      `
+                      : ''
+                  }
 
-                    ${
-                      demoUrl
-                        ? `
-                          <a
-                            href="${escapeAttribute(demoUrl)}"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style="
-                              display:inline-flex;
-                              align-items:center;
-                              padding:8px 11px;
-                              border:1px solid var(--accent);
-                              border-radius:9px;
-                              background:var(--accent);
-                              color:#080b07;
-                              font-size:9px;
-                              font-weight:800;
-                            "
-                          >
-                            VIEW PROJECT →
-                          </a>
-                        `
-                        : ''
-                    }
-
-
-                    ${
-                      githubUrl
-                        ? `
-                          <a
-                            href="${escapeAttribute(githubUrl)}"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style="
-                              display:inline-flex;
-                              align-items:center;
-                              padding:8px 11px;
-                              border:1px solid var(--line);
-                              border-radius:9px;
-                              color:var(--muted);
-                              font-size:9px;
-                              font-weight:800;
-                            "
-                          >
-                            GITHUB
-                          </a>
-                        `
-                        : ''
-                    }
-
-                  </div>
-                `
-                : ''
-            }
-
-
-            ${
-              slug
-                ? `
-                  <div
-                    style="
-                      margin-top:18px;
-                      color:#626b75;
-                      font-size:9px;
-                      word-break:break-word;
-                    "
-                  >
-                    /${escapeHtml(slug)}
-                  </div>
-                `
-                : ''
-            }
-
-          </div>
+                </div>
+              `
+              : ''
+          }
 
 
           <div class="system-footer">
@@ -2099,27 +2050,22 @@ function escapeHtml(value) {
       ? ''
       : value
   )
-
     .replace(
       /&/g,
       '&amp;'
     )
-
     .replace(
       /</g,
       '&lt;'
     )
-
     .replace(
       />/g,
       '&gt;'
     )
-
     .replace(
       /"/g,
       '&quot;'
     )
-
     .replace(
       /'/g,
       '&#039;'
@@ -2134,9 +2080,7 @@ function escapeHtml(value) {
 
 function escapeAttribute(value) {
 
-  return escapeHtml(
-    value
-  );
+  return escapeHtml(value);
 
 }
 
@@ -2149,10 +2093,18 @@ document.addEventListener(
   'DOMContentLoaded',
   function() {
 
+    console.log(
+      'WIMA LAB PUBLIC SCRIPT AKTIF'
+    );
+
     loadPublishedProjects();
 
   }
 );
+
+</script>
+
+
 
 </script>
 
