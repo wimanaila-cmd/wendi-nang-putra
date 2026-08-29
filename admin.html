@@ -3234,22 +3234,26 @@ async function submitProject(event) {
 
 
   const saveButton =
-    document.getElementById(
-      'saveButton'
-    );
-
-
-  saveButton.disabled = true;
-
-  saveButton.textContent =
-    'Menyimpan...';
+    document.getElementById('saveButton');
 
 
   const isEditing =
     !!editingProjectId;
 
 
+  saveButton.disabled = true;
+
+  saveButton.textContent =
+    isEditing
+      ? 'Memperbarui...'
+      : 'Menyimpan...';
+
+
   try {
+
+    /* =================================================
+       VALIDASI JUDUL
+    ================================================= */
 
     const title =
       document
@@ -3267,9 +3271,9 @@ async function submitProject(event) {
     }
 
 
-    /*
-     * URL gambar lama.
-     */
+    /* =================================================
+       GAMBAR LAMA
+    ================================================= */
 
     let imageUrl =
       document
@@ -3278,10 +3282,9 @@ async function submitProject(event) {
         .trim();
 
 
-    /*
-     * Jika user memilih gambar baru,
-     * upload terlebih dahulu.
-     */
+    /* =================================================
+       UPLOAD GAMBAR BARU
+    ================================================= */
 
     const imageResult =
       await uploadSelectedImage();
@@ -3300,9 +3303,9 @@ async function submitProject(event) {
     }
 
 
-    /*
-     * Susun data project.
-     */
+    /* =================================================
+       DATA PROJECT
+    ================================================= */
 
     const project = {
 
@@ -3339,7 +3342,9 @@ async function submitProject(event) {
           .value
           .split('\n')
           .map(function(item) {
+
             return item.trim();
+
           })
           .filter(Boolean),
 
@@ -3349,7 +3354,9 @@ async function submitProject(event) {
           .value
           .split(',')
           .map(function(item) {
+
             return item.trim();
+
           })
           .filter(Boolean),
 
@@ -3384,6 +3391,10 @@ async function submitProject(event) {
     );
 
 
+    /* =================================================
+       ACTION
+    ================================================= */
+
     const action =
       isEditing
         ? 'updateProject'
@@ -3395,6 +3406,10 @@ async function submitProject(event) {
       action
     );
 
+
+    /* =================================================
+       KIRIM KE SERVER
+    ================================================= */
 
     const result =
       await apiPost({
@@ -3414,6 +3429,10 @@ async function submitProject(event) {
     );
 
 
+    /* =================================================
+       VALIDASI RESPONSE
+    ================================================= */
+
     if (
       !result ||
       result.success !== true
@@ -3422,43 +3441,66 @@ async function submitProject(event) {
       throw new Error(
         result && result.message
           ? result.message
-          : 'Gagal menyimpan project.'
+          : 'Project gagal disimpan.'
       );
 
     }
 
 
-    /*
-     * Tutup modal.
-     */
+    /* =================================================
+       TUTUP FORM
+    ================================================= */
 
     closeProjectModal();
 
 
-    /*
-     * Refresh database.
-     */
+    /* =================================================
+       KEMBALI KE DASHBOARD
+    ================================================= */
+
+    const dashboardNav =
+      document.querySelector(
+        '.nav-item'
+      );
+
+
+    showSection(
+      'dashboard',
+      dashboardNav
+    );
+
+
+    /* =================================================
+       REFRESH DATA
+    ================================================= */
 
     await loadProjects();
 
 
-    /*
-     * Pesan sukses.
-     */
+    /* =================================================
+       NOTICE SUKSES
+    ================================================= */
 
     showToast(
+
       isEditing
         ? 'PROJECT BERHASIL DIPERBARUI'
         : 'PROJECT BERHASIL DISIMPAN',
 
       isEditing
-        ? '"' + title +
-          '" berhasil diperbarui.'
-        : '"' + title +
+
+        ? '"' +
+          title +
+          '" berhasil diperbarui dan tersimpan.'
+
+        : '"' +
+          title +
           '" berhasil ditambahkan ke WIMA LAB.',
 
       'success'
+
     );
+
 
   }
 
@@ -3471,10 +3513,18 @@ async function submitProject(event) {
 
 
     showToast(
+
       'PROJECT GAGAL DISIMPAN',
-      error.message ||
-        'Terjadi kesalahan saat menyimpan project.',
+
+      error &&
+      error.message
+
+        ? error.message
+
+        : 'Terjadi kesalahan saat menyimpan project.',
+
       'error'
+
     );
 
   }
@@ -3491,6 +3541,7 @@ async function submitProject(event) {
 
 }
 
+   
 /* =====================================================
    DELETE
 ===================================================== */
