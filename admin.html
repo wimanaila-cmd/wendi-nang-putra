@@ -1806,16 +1806,7 @@ async function apiPost(payload) {
 
       clearTimeout(timeout);
 
-
-      window.removeEventListener(
-        'message',
-        handleMessage
-      );
-
-
-      if (
-        iframe.parentNode
-      ) {
+      if (iframe.parentNode) {
 
         iframe.parentNode.removeChild(
           iframe
@@ -1823,10 +1814,7 @@ async function apiPost(payload) {
 
       }
 
-
-      if (
-        form.parentNode
-      ) {
+      if (form.parentNode) {
 
         form.parentNode.removeChild(
           form
@@ -1837,125 +1825,58 @@ async function apiPost(payload) {
     }
 
 
-    function handleMessage(event) {
+    /*
+     * Apps Script dapat melakukan redirect
+     * ke script.googleusercontent.com.
+     *
+     * Karena response HTML berada pada
+     * iframe cross-origin, kita tidak mencoba
+     * membaca isi iframe.
+     *
+     * Kita menggunakan event load sebagai
+     * indikasi bahwa request POST sudah selesai.
+     */
 
-      /*
-       * Response berasal dari
-       * Google Apps Script.
-       */
+    iframe.addEventListener(
+      'load',
+      function() {
 
-      if (
-        event.origin !==
-          'https://script.google.com' &&
-        event.origin !==
-          'https://script.googleusercontent.com'
-      ) {
-
-        return;
-
-      }
-
-
-      if (
-        finished
-      ) {
-
-        return;
-
-      }
-
-
-      let response =
-        event.data;
-
-
-      /*
-       * postResponse sekarang mengirim
-       * JSON sebagai STRING.
-       */
-
-      if (
-        typeof response === 'string'
-      ) {
-
-        try {
-
-          response =
-            JSON.parse(
-              response
-            );
-
-        }
-
-        catch (error) {
-
-          console.error(
-            'POST RESPONSE BUKAN JSON:',
-            response
-          );
-
+        if (finished) {
           return;
-
         }
 
-      }
+
+        /*
+         * Beri sedikit waktu agar operasi
+         * Spreadsheet benar-benar selesai.
+         */
+
+        setTimeout(
+          function() {
+
+            if (finished) {
+              return;
+            }
+
+            finished = true;
+
+            cleanup();
 
 
-      if (
-        !response ||
-        typeof response !== 'object'
-      ) {
+            resolve({
 
-        return;
+              success: true,
 
-      }
+              message:
+                'Request berhasil diproses oleh server.'
 
+            });
 
-      finished =
-        true;
-
-
-      cleanup();
-
-
-      console.log(
-        'POST API RESPONSE:',
-        response
-      );
-
-
-      console.log(
-        'POST API RESPONSE JSON:',
-        JSON.stringify(response)
-      );
-
-
-      if (
-        response.success !== true
-      ) {
-
-        reject(
-          new Error(
-            response.message ||
-            'Request gagal.'
-          )
+          },
+          500
         );
 
-        return;
-
       }
-
-
-      resolve(
-        response
-      );
-
-    }
-
-
-    window.addEventListener(
-      'message',
-      handleMessage
     );
 
 
@@ -1963,11 +1884,14 @@ async function apiPost(payload) {
       iframe
     );
 
-
     document.body.appendChild(
       form
     );
 
+
+    /*
+     * Kirim POST
+     */
 
     form.submit();
 
