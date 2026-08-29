@@ -3130,20 +3130,29 @@ async function submitProject(
       await uploadSelectedImage();
 
      consol.log(
-        'IMAGE RESULT =',
-        imageResult
-   );
-
-    if (imageResult) {
-
-       console.log(
-          'IMAGE URL =',
-          imageResult.imageURL
+        '========== UPLOAD IMAGE RESULT =========='
       );
 
-      imageUrl =
-        imageResult.imageUrl;
+      console.log(
+        'imageResult:', 
+      imageResult
+      );
+      
+       console.log(
+          'imageUrl dari upload:',
+          imageResult
+          imageResult.imageURL
+          : null
+      );
 
+     console.log(
+        '========================================'
+      );
+
+      if (imageResult) {
+         imageUrl =
+            imageResult.imageUrl;
+      
     }
 
     const project = {
