@@ -3145,9 +3145,7 @@ async function uploadSelectedImage() {
 
 
   const base64 =
-    await fileToBase64(
-      file
-    );
+    await fileToBase64(file);
 
 
   const result =
@@ -3173,11 +3171,19 @@ async function uploadSelectedImage() {
 
 
   console.log(
-    'UPLOAD API RESPONSE JSON:',
-    JSON.stringify(result)
-  );
+     '========== UPLOAD API RESPONSE =========='
+   );
 
+   console.log(
+      'UPLOAD RESULT JSON:'
+      JSON.stringify(result)
+   );
 
+   console.log(
+      '=========================================='
+   );
+
+   
   if (
     !result ||
     result.success !== true
@@ -3192,44 +3198,56 @@ async function uploadSelectedImage() {
 
   }
 
+   const fileId=
+      result.fileId || '';
 
-  const uploadData =
-    result.data;
+   const name =
+      result.name || file.name;
 
+   const imageUrl =
+      result.imageUrl || '';
 
-  if (
-    !uploadData ||
-    !uploadData.imageUrl
-  ) {
+   if (!imageUrl) {
+      console.error(
+         'IMAGE URL TIDAK DITEMUKAN:',
+         result
+      );
 
-    console.error(
-      'DATA UPLOAD TIDAK DITEMUKAN:',
-      result
-    );
+      throw new Error(
+         'Upload berhasil tetapi URL gambar tidak diterima dari server.'
+      );
+   }
 
-    throw new Error(
-      'Upload berhasil tetapi URL gambar tidak diterima dari server.'
-    );
+   concole.log(
+      'FILE ID:',
+      fileId
+   );
 
-  }
+   console.log(
+      'FILE NAME:',
+      name
+   );
 
+   console.log(
+      'IMAGE URL:',
+      imagerUrl
+   );
 
-  console.log(
-    'IMAGE URL:',
-    uploadData.imageUrl
-  );
+   return {
+      fileId:
+         fileId,
 
+      name:
+         name,
 
-  return {
-    fileId:
-      result.fileId,
-    name:
-      result.name,
-    imageUrl:
-      result.imageUrl
-  };
+      imageUrl:
+         imageUrl
 
+   };
 }
+
+      
+
 
 /* =====================================================
    SUBMIT PROJECT
@@ -3298,15 +3316,22 @@ async function submitProject(
       );
       
        console.log(
-          'imageUrl dari upload:',
+          'fileId dari upload:',
          imageResult
-          ? imageResult.imageURL
+          ? imageResult.fileId
           : null
       );
 
      console.log(
-        '========================================'
-      );
+        'imageUrl dari upload:',
+        imageResult
+        ? imageResult.imageUrl
+        : null
+     );
+
+      console.log(
+         '=============================='
+       );  
 
       if (imageResult) {
          
