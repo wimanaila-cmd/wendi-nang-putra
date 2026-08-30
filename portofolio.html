@@ -1,17 +1,25 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>CV & Portfolio — Wendi Nang Putra</title>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Wendi Nang Putra — CV & Portfolio</title>
 
   <meta
     name="description"
-    content="CV dan portfolio Wendi Nang Putra — Administrative & Digital Systems Support."
+    content="CV dan portfolio Wendi Nang Putra — Administrasi, pengelolaan data, digitalisasi administrasi, web application, dan live streaming."
   >
 
-  <meta name="theme-color" content="#08090c">
+  <meta
+    name="theme-color"
+    content="#08090c"
+  >
 
   <style>
 
@@ -45,6 +53,7 @@
       color: #f4f4f5;
 
       line-height: 1.6;
+
       overflow-x: hidden;
     }
 
@@ -76,6 +85,7 @@
 
       --bg: #08090c;
       --bg-soft: #0d0f13;
+
       --surface: #111318;
       --surface-2: #171920;
 
@@ -83,8 +93,11 @@
       --text-soft: #a1a1aa;
       --text-muted: #71717a;
 
-      --border: rgba(255, 255, 255, 0.09);
-      --border-hover: rgba(255, 255, 255, 0.18);
+      --border:
+        rgba(255,255,255,0.09);
+
+      --border-hover:
+        rgba(255,255,255,0.20);
 
       --max-width: 1180px;
 
@@ -93,7 +106,13 @@
       --radius-lg: 28px;
 
       --transition:
-        0.35s cubic-bezier(0.22, 1, 0.36, 1);
+        0.35s cubic-bezier(
+          0.22,
+          1,
+          0.36,
+          1
+        );
+
     }
 
 
@@ -106,6 +125,7 @@
       content: "";
 
       position: fixed;
+
       inset: 0;
 
       pointer-events: none;
@@ -134,6 +154,7 @@
       content: "";
 
       position: fixed;
+
       inset: 0;
 
       pointer-events: none;
@@ -198,30 +219,40 @@
 
       z-index: 1000;
 
-      height: 78px;
+      height: 76px;
 
       display: flex;
+
       align-items: center;
 
       background:
+
         linear-gradient(
           to bottom,
           rgba(8,9,12,0.94),
           rgba(8,9,12,0.72)
         );
 
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      backdrop-filter:
+        blur(18px);
 
-      border-bottom: 1px solid transparent;
+      -webkit-backdrop-filter:
+        blur(18px);
 
-      transition: var(--transition);
+      border-bottom:
+        1px solid transparent;
+
+      transition:
+        var(--transition);
 
     }
 
 
     .navbar.scrolled {
-      border-bottom-color: var(--border);
+
+      border-bottom-color:
+        var(--border);
+
     }
 
 
@@ -241,6 +272,8 @@
 
       justify-content: space-between;
 
+      gap: 20px;
+
     }
 
 
@@ -252,36 +285,36 @@
 
       gap: 11px;
 
-      font-size: 15px;
+      font-size: 14px;
 
-      font-weight: 750;
+      font-weight: 800;
 
-      letter-spacing: -0.02em;
+      letter-spacing:
+        -0.02em;
 
     }
 
 
     .brand-mark {
 
-      width: 31px;
-      height: 31px;
+      width: 32px;
+      height: 32px;
 
       display: grid;
 
       place-items: center;
 
       border:
-        1px solid
-        var(--border);
+        1px solid var(--border);
 
       border-radius: 9px;
 
-      font-size: 12px;
-
-      font-weight: 800;
-
       background:
         rgba(255,255,255,0.035);
+
+      font-size: 12px;
+
+      font-weight: 850;
 
     }
 
@@ -292,20 +325,22 @@
 
       align-items: center;
 
-      gap: 27px;
+      gap: 25px;
 
     }
 
 
     .nav-links a {
 
-      color: var(--text-soft);
+      color:
+        var(--text-soft);
 
       font-size: 12px;
 
       font-weight: 650;
 
-      transition: var(--transition);
+      transition:
+        var(--transition);
 
     }
 
@@ -313,7 +348,8 @@
     .nav-links a:hover,
     .nav-links a.active {
 
-      color: var(--text);
+      color:
+        var(--text);
 
     }
 
@@ -326,28 +362,32 @@
 
       gap: 8px;
 
-      padding: 9px 14px;
+      padding:
+        9px 14px;
 
       border:
-        1px solid
-        var(--border);
+        1px solid var(--border);
 
-      border-radius: 999px;
+      border-radius:
+        999px;
 
-      font-size: 12px;
+      color:
+        var(--text-soft);
 
-      font-weight: 650;
+      font-size: 11px;
 
-      color: var(--text-soft);
+      font-weight: 700;
 
-      transition: var(--transition);
+      transition:
+        var(--transition);
 
     }
 
 
     .nav-back:hover {
 
-      color: var(--text);
+      color:
+        var(--text);
 
       border-color:
         var(--border-hover);
@@ -362,31 +402,25 @@
 
 
     /* =========================================================
-       HERO / PROFILE
+       HERO
     ========================================================= */
 
     .hero {
 
-      min-height: 88vh;
-
-      padding-top: 145px;
+      padding-top: 150px;
 
       padding-bottom: 90px;
-
-      display: flex;
-
-      align-items: center;
 
     }
 
 
-    .hero-layout {
+    .hero-grid {
 
       display: grid;
 
       grid-template-columns:
-        minmax(0, 1fr)
-        290px;
+        0.78fr
+        1.22fr;
 
       gap: 70px;
 
@@ -395,37 +429,131 @@
     }
 
 
-    .eyebrow {
+    .profile-card {
+
+      position: relative;
+
+      overflow: hidden;
+
+      border:
+        1px solid var(--border);
+
+      border-radius:
+        var(--radius-lg);
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,0.055),
+          rgba(255,255,255,0.012)
+        );
+
+    }
+
+
+    .profile-photo {
+
+      aspect-ratio: 1 / 1;
+
+      display: grid;
+
+      place-items: center;
+
+      background:
+
+        radial-gradient(
+          circle at center,
+          #1b1d24,
+          #0d0e12 70%
+        );
+
+      color:
+        var(--text-muted);
+
+      font-size: 12px;
+
+      overflow: hidden;
+
+    }
+
+
+    .profile-photo img {
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+    }
+
+
+    .profile-placeholder {
+
+      text-align: center;
+
+      padding: 30px;
+
+    }
+
+
+    .profile-placeholder strong {
+
+      display: block;
+
+      color:
+        var(--text-soft);
+
+      font-size: 18px;
+
+      margin-bottom: 5px;
+
+    }
+
+
+    .profile-placeholder span {
+
+      font-size: 11px;
+
+      color:
+        var(--text-muted);
+
+    }
+
+
+    .profile-info {
+
+      padding: 25px;
+
+    }
+
+
+    .profile-status {
 
       display: inline-flex;
 
       align-items: center;
 
-      gap: 9px;
+      gap: 8px;
 
-      margin-bottom: 25px;
-
-      color: var(--text-soft);
+      color:
+        var(--text-soft);
 
       font-size: 11px;
 
-      font-weight: 750;
-
-      letter-spacing: 0.16em;
-
-      text-transform: uppercase;
+      font-weight: 650;
 
     }
 
 
-    .eyebrow-dot {
+    .status-dot {
 
       width: 7px;
       height: 7px;
 
       border-radius: 50%;
 
-      background: #f4f4f5;
+      background:
+        #f4f4f5;
 
       box-shadow:
         0 0 0 5px
@@ -434,51 +562,119 @@
     }
 
 
+    .profile-location {
+
+      margin-top: 12px;
+
+      color:
+        var(--text-muted);
+
+      font-size: 12px;
+
+    }
+
+
+    .hero-eyebrow {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 9px;
+
+      margin-bottom: 20px;
+
+      color:
+        var(--text-soft);
+
+      font-size: 11px;
+
+      font-weight: 800;
+
+      letter-spacing:
+        0.16em;
+
+      text-transform:
+        uppercase;
+
+    }
+
+
+    .hero-eyebrow::before {
+
+      content: "";
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background:
+        var(--text);
+
+    }
+
+
     .hero h1 {
 
-      max-width: 850px;
+      max-width: 800px;
 
       font-size:
         clamp(
           50px,
           7vw,
-          86px
+          88px
         );
 
-      line-height: 0.98;
+      line-height: 0.96;
 
-      letter-spacing: -0.065em;
+      letter-spacing:
+        -0.065em;
 
-      font-weight: 800;
+      font-weight: 850;
 
     }
 
 
     .hero h1 span {
 
-      display: block;
+      color:
+        var(--text-muted);
 
-      color: var(--text-muted);
+    }
+
+
+    .hero-role {
+
+      margin-top: 24px;
+
+      color:
+        var(--text-soft);
+
+      font-size:
+        clamp(
+          17px,
+          2vw,
+          21px
+        );
+
+      font-weight: 600;
 
     }
 
 
     .hero-description {
 
-      max-width: 690px;
+      max-width: 700px;
 
-      margin-top: 28px;
+      margin-top: 20px;
 
-      color: var(--text-soft);
+      color:
+        var(--text-soft);
 
-      font-size:
-        clamp(
-          15px,
-          2vw,
-          18px
-        );
+      font-size: 14px;
 
-      line-height: 1.8;
+      line-height: 1.85;
 
     }
 
@@ -491,7 +687,7 @@
 
       gap: 10px;
 
-      margin-top: 34px;
+      margin-top: 30px;
 
     }
 
@@ -508,30 +704,35 @@
 
       min-height: 46px;
 
-      padding: 0 18px;
+      padding:
+        0 18px;
 
       border:
-        1px solid
-        var(--border);
+        1px solid var(--border);
 
-      border-radius: 999px;
+      border-radius:
+        999px;
 
       font-size: 12px;
 
       font-weight: 750;
 
-      transition: var(--transition);
+      transition:
+        var(--transition);
 
     }
 
 
     .btn-primary {
 
-      background: var(--text);
+      color:
+        var(--bg);
 
-      color: var(--bg);
+      background:
+        var(--text);
 
-      border-color: var(--text);
+      border-color:
+        var(--text);
 
     }
 
@@ -550,7 +751,8 @@
 
     .btn-secondary {
 
-      color: var(--text-soft);
+      color:
+        var(--text-soft);
 
       background:
         rgba(255,255,255,0.025);
@@ -560,7 +762,8 @@
 
     .btn-secondary:hover {
 
-      color: var(--text);
+      color:
+        var(--text);
 
       border-color:
         var(--border-hover);
@@ -575,159 +778,12 @@
 
 
     /* =========================================================
-       PROFILE PHOTO
-    ========================================================= */
-
-    .profile-photo-wrap {
-
-      display: flex;
-
-      justify-content: center;
-
-    }
-
-
-    .profile-photo {
-
-      position: relative;
-
-      width: 250px;
-      height: 250px;
-
-      overflow: hidden;
-
-      border:
-        1px solid
-        var(--border);
-
-      border-radius: 50%;
-
-      background:
-        radial-gradient(
-          circle at center,
-          #20232a,
-          #0d0f13 70%
-        );
-
-      box-shadow:
-        0 30px 80px
-        rgba(0,0,0,0.35);
-
-    }
-
-
-    .profile-photo img {
-
-      width: 100%;
-      height: 100%;
-
-      object-fit: cover;
-
-    }
-
-
-    .profile-initial {
-
-      width: 100%;
-      height: 100%;
-
-      display: grid;
-
-      place-items: center;
-
-      color: var(--text);
-
-      font-size: 76px;
-
-      font-weight: 800;
-
-      letter-spacing: -0.08em;
-
-    }
-
-
-    .photo-note {
-
-      margin-top: 14px;
-
-      color: var(--text-muted);
-
-      font-size: 10px;
-
-      text-align: center;
-
-    }
-
-
-    /* =========================================================
-       QUICK FACTS
-    ========================================================= */
-
-    .quick-facts {
-
-      display: grid;
-
-      grid-template-columns:
-        repeat(4, 1fr);
-
-      gap: 10px;
-
-      margin-top: 45px;
-
-    }
-
-
-    .fact {
-
-      padding: 18px;
-
-      border:
-        1px solid
-        var(--border);
-
-      border-radius: 14px;
-
-      background:
-        rgba(255,255,255,0.018);
-
-    }
-
-
-    .fact-label {
-
-      color: var(--text-muted);
-
-      font-size: 9px;
-
-      font-weight: 800;
-
-      letter-spacing: 0.12em;
-
-      text-transform: uppercase;
-
-    }
-
-
-    .fact-value {
-
-      margin-top: 6px;
-
-      color: var(--text-soft);
-
-      font-size: 12px;
-
-      line-height: 1.5;
-
-    }
-
-
-    /* =========================================================
        SECTION
     ========================================================= */
 
     .section {
 
-      padding: 100px 0;
+      padding: 90px 0;
 
     }
 
@@ -742,24 +798,27 @@
 
       gap: 30px;
 
-      margin-bottom: 45px;
+      margin-bottom: 42px;
 
     }
 
 
     .section-label {
 
-      margin-bottom: 10px;
+      margin-bottom: 9px;
 
-      color: var(--text-muted);
+      color:
+        var(--text-muted);
 
       font-size: 10px;
 
-      font-weight: 800;
+      font-weight: 850;
 
-      letter-spacing: 0.17em;
+      letter-spacing:
+        0.17em;
 
-      text-transform: uppercase;
+      text-transform:
+        uppercase;
 
     }
 
@@ -775,9 +834,10 @@
 
       line-height: 1.05;
 
-      letter-spacing: -0.045em;
+      letter-spacing:
+        -0.045em;
 
-      font-weight: 780;
+      font-weight: 800;
 
     }
 
@@ -786,7 +846,8 @@
 
       max-width: 500px;
 
-      color: var(--text-soft);
+      color:
+        var(--text-soft);
 
       font-size: 13px;
 
@@ -796,7 +857,7 @@
 
 
     /* =========================================================
-       CV ABOUT
+       ABOUT
     ========================================================= */
 
     .about-grid {
@@ -804,21 +865,19 @@
       display: grid;
 
       grid-template-columns:
-        1.2fr
-        0.8fr;
+        1fr 1fr;
 
       gap: 22px;
 
     }
 
 
-    .about-card {
+    .info-card {
 
-      padding: 32px;
+      padding: 30px;
 
       border:
-        1px solid
-        var(--border);
+        1px solid var(--border);
 
       border-radius:
         var(--radius-md);
@@ -829,156 +888,77 @@
     }
 
 
-    .about-card h3 {
+    .info-card h3 {
 
-      font-size: 20px;
+      margin-bottom: 14px;
 
-      letter-spacing: -0.025em;
+      font-size: 18px;
+
+      letter-spacing:
+        -0.025em;
 
     }
 
 
-    .about-card p {
+    .info-card p {
 
-      margin-top: 15px;
+      color:
+        var(--text-soft);
 
-      color: var(--text-soft);
-
-      font-size: 14px;
+      font-size: 13px;
 
       line-height: 1.85;
 
     }
 
 
-    .about-highlight {
-
-      display: grid;
-
-      gap: 13px;
-
-      margin-top: 20px;
-
-    }
-
-
-    .highlight-item {
-
-      display: flex;
-
-      gap: 12px;
-
-      align-items: flex-start;
-
-    }
-
-
-    .highlight-icon {
-
-      flex: 0 0 auto;
-
-      width: 27px;
-      height: 27px;
-
-      display: grid;
-
-      place-items: center;
-
-      border:
-        1px solid
-        var(--border);
-
-      border-radius: 8px;
-
-      color: var(--text-soft);
-
-      font-size: 11px;
-
-    }
-
-
-    .highlight-item span {
-
-      color: var(--text-soft);
-
-      font-size: 12px;
-
-    }
-
-
-    /* =========================================================
-       SKILLS
-    ========================================================= */
-
-    .skills-grid {
+    .highlight-list {
 
       display: grid;
 
       grid-template-columns:
-        repeat(2, minmax(0, 1fr));
+        repeat(2, 1fr);
 
-      gap: 18px;
+      gap: 10px;
+
+      margin-top: 22px;
 
     }
 
 
-    .skill-card {
+    .highlight {
 
-      padding: 27px;
+      padding: 15px;
 
       border:
-        1px solid
-        var(--border);
+        1px solid var(--border);
 
       border-radius:
-        var(--radius-md);
-
-      background:
-        var(--surface);
-
-    }
-
-
-    .skill-card h3 {
-
-      font-size: 17px;
-
-      letter-spacing: -0.02em;
-
-    }
-
-
-    .skill-list {
-
-      display: flex;
-
-      flex-wrap: wrap;
-
-      gap: 7px;
-
-      margin-top: 18px;
-
-    }
-
-
-    .skill {
-
-      padding: 7px 10px;
-
-      border:
-        1px solid
-        var(--border);
-
-      border-radius: 7px;
-
-      color: var(--text-soft);
+        var(--radius-sm);
 
       background:
         rgba(255,255,255,0.025);
 
-      font-size: 10px;
+    }
 
-      font-weight: 650;
+
+    .highlight strong {
+
+      display: block;
+
+      font-size: 17px;
+
+      margin-bottom: 2px;
+
+    }
+
+
+    .highlight span {
+
+      color:
+        var(--text-muted);
+
+      font-size: 10px;
 
     }
 
@@ -993,7 +973,7 @@
 
       display: grid;
 
-      gap: 0;
+      gap: 18px;
 
     }
 
@@ -1004,10 +984,10 @@
 
       position: absolute;
 
-      top: 0;
-      bottom: 0;
+      left: 9px;
 
-      left: 7px;
+      top: 18px;
+      bottom: 18px;
 
       width: 1px;
 
@@ -1017,100 +997,147 @@
     }
 
 
-    .timeline-item {
+    .experience-item {
 
       position: relative;
 
-      padding-left: 42px;
-
-      padding-bottom: 45px;
+      padding-left: 38px;
 
     }
 
 
-    .timeline-item:last-child {
-
-      padding-bottom: 0;
-
-    }
-
-
-    .timeline-dot {
+    .experience-dot {
 
       position: absolute;
 
-      top: 4px;
-      left: 0;
+      left: 4px;
 
-      width: 15px;
-      height: 15px;
+      top: 20px;
 
-      border:
-        3px solid
-        var(--bg);
+      width: 11px;
+      height: 11px;
 
       border-radius: 50%;
 
       background:
-        var(--text-soft);
+        var(--text);
 
       box-shadow:
-        0 0 0 1px
-        var(--border);
+        0 0 0 5px
+        var(--bg);
+
+      border:
+        1px solid
+        var(--text);
 
     }
 
 
-    .timeline-date {
+    .experience-card {
 
-      color: var(--text-muted);
+      padding: 27px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius:
+        var(--radius-md);
+
+      background:
+        var(--surface);
+
+      transition:
+        var(--transition);
+
+    }
+
+
+    .experience-card:hover {
+
+      border-color:
+        var(--border-hover);
+
+      transform:
+        translateX(3px);
+
+    }
+
+
+    .experience-top {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: flex-start;
+
+      gap: 20px;
+
+    }
+
+
+    .experience-company {
+
+      color:
+        var(--text-muted);
 
       font-size: 10px;
 
       font-weight: 800;
 
-      letter-spacing: 0.12em;
+      letter-spacing:
+        0.12em;
 
-      text-transform: uppercase;
-
-    }
-
-
-    .timeline-role {
-
-      margin-top: 7px;
-
-      font-size: 23px;
-
-      line-height: 1.15;
-
-      letter-spacing: -0.035em;
-
-      font-weight: 760;
+      text-transform:
+        uppercase;
 
     }
 
 
-    .timeline-company {
+    .experience-title {
 
-      margin-top: 5px;
+      margin-top: 6px;
 
-      color: var(--text-soft);
+      font-size: 21px;
 
-      font-size: 12px;
+      line-height: 1.2;
 
-      font-weight: 650;
+      letter-spacing:
+        -0.03em;
 
     }
 
 
-    .timeline-description {
+    .experience-period {
 
-      max-width: 760px;
+      white-space: nowrap;
 
-      margin-top: 14px;
+      color:
+        var(--text-muted);
 
-      color: var(--text-soft);
+      font-size: 11px;
+
+    }
+
+
+    .experience-location {
+
+      margin-top: 6px;
+
+      color:
+        var(--text-muted);
+
+      font-size: 11px;
+
+    }
+
+
+    .experience-description {
+
+      margin-top: 16px;
+
+      color:
+        var(--text-soft);
 
       font-size: 13px;
 
@@ -1119,13 +1146,14 @@
     }
 
 
-    .timeline-list {
+    .experience-list {
 
-      margin-top: 13px;
+      margin-top: 14px;
 
       padding-left: 18px;
 
-      color: var(--text-muted);
+      color:
+        var(--text-soft);
 
       font-size: 12px;
 
@@ -1134,36 +1162,35 @@
     }
 
 
-    .timeline-list li {
+    .experience-list li + li {
 
-      margin-bottom: 4px;
+      margin-top: 5px;
 
     }
 
 
     /* =========================================================
-       EDUCATION & CERTIFICATION
+       SKILLS
     ========================================================= */
 
-    .two-column {
+    .skills-grid {
 
       display: grid;
 
       grid-template-columns:
-        repeat(2, minmax(0, 1fr));
+        repeat(3, 1fr);
 
-      gap: 20px;
+      gap: 18px;
 
     }
 
 
-    .info-card {
+    .skill-card {
 
-      padding: 30px;
+      padding: 25px;
 
       border:
-        1px solid
-        var(--border);
+        1px solid var(--border);
 
       border-radius:
         var(--radius-md);
@@ -1174,586 +1201,373 @@
     }
 
 
-    .info-card-label {
+    .skill-card h3 {
 
-      color: var(--text-muted);
+      margin-bottom: 17px;
 
-      font-size: 9px;
-
-      font-weight: 800;
-
-      letter-spacing: 0.14em;
-
-      text-transform: uppercase;
+      font-size: 16px;
 
     }
 
 
-    .info-card h3 {
+    .skill-tags {
 
-      margin-top: 10px;
+      display: flex;
 
-      font-size: 21px;
+      flex-wrap: wrap;
 
-      line-height: 1.2;
-
-      letter-spacing: -0.035em;
+      gap: 7px;
 
     }
 
 
-    .info-card p {
+    .skill-tag {
 
-      margin-top: 7px;
-
-      color: var(--text-soft);
-
-      font-size: 12px;
-
-    }
-
-
-    .cert-list {
-
-      display: grid;
-
-      gap: 10px;
-
-      margin-top: 17px;
-
-    }
-
-
-    .cert-item {
-
-      padding: 11px 13px;
+      padding:
+        7px 10px;
 
       border:
-        1px solid
-        var(--border);
+        1px solid var(--border);
 
-      border-radius: 8px;
+      border-radius:
+        999px;
 
-      color: var(--text-soft);
+      color:
+        var(--text-soft);
 
       background:
-        rgba(255,255,255,0.02);
+        rgba(255,255,255,0.025);
 
-      font-size: 11px;
+      font-size: 10px;
+
+      font-weight: 700;
 
     }
 
 
     /* =========================================================
-       DIGITAL EXPERIENCE
+       EDUCATION / CERTIFICATE
     ========================================================= */
 
-    .digital-card {
+    .two-column {
 
-      padding: 38px;
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 22px;
+
+    }
+
+
+    .education-card,
+    .certificate-card {
+
+      padding: 28px;
 
       border:
-        1px solid
-        var(--border);
+        1px solid var(--border);
 
       border-radius:
-        var(--radius-lg);
+        var(--radius-md);
 
       background:
-        radial-gradient(
-          circle at 85% 20%,
-          rgba(255,255,255,0.055),
-          transparent 32%
-        ),
         var(--surface);
 
     }
 
 
-    .digital-card h3 {
-
-      font-size:
-        clamp(
-          28px,
-          4vw,
-          42px
-        );
-
-      line-height: 1;
-
-      letter-spacing: -0.05em;
-
-    }
-
-
-    .digital-card > p {
-
-      max-width: 780px;
-
-      margin-top: 17px;
-
-      color: var(--text-soft);
-
-      font-size: 14px;
-
-      line-height: 1.8;
-
-    }
-
-
-    .digital-tags {
-
-      display: flex;
-
-      flex-wrap: wrap;
-
-      gap: 7px;
-
-      margin-top: 22px;
-
-    }
-
-
-    .digital-tag {
-
-      padding: 7px 10px;
-
-      border:
-        1px solid
-        var(--border);
-
-      border-radius: 999px;
-
-      color: var(--text-muted);
-
-      font-size: 10px;
-
-      font-weight: 700;
-
-    }
-
-
-    /* =========================================================
-       WIMA LAB CTA
-    ========================================================= */
-
-    .wimalab-box {
-
-      position: relative;
-
-      overflow: hidden;
-
-      padding: 55px;
-
-      border:
-        1px solid
-        var(--border);
-
-      border-radius:
-        var(--radius-lg);
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255,255,255,0.06),
-          rgba(255,255,255,0.012)
-        );
-
-    }
-
-
-    .wimalab-box::before {
-
-      content: "WIMA LAB";
-
-      position: absolute;
-
-      right: -20px;
-      bottom: -48px;
+    .small-label {
 
       color:
-        rgba(255,255,255,0.025);
-
-      font-size: 130px;
-
-      font-weight: 900;
-
-      letter-spacing: -0.08em;
-
-      pointer-events: none;
-
-    }
-
-
-    .wimalab-content {
-
-      position: relative;
-
-      z-index: 1;
-
-      max-width: 760px;
-
-    }
-
-
-    .wimalab-label {
-
-      color: var(--text-muted);
+        var(--text-muted);
 
       font-size: 10px;
 
       font-weight: 800;
 
-      letter-spacing: 0.16em;
+      letter-spacing:
+        0.12em;
 
-      text-transform: uppercase;
-
-    }
-
-
-    .wimalab-title {
-
-      margin-top: 12px;
-
-      font-size:
-        clamp(
-          34px,
-          5vw,
-          58px
-        );
-
-      line-height: 1;
-
-      letter-spacing: -0.055em;
-
-      font-weight: 800;
+      text-transform:
+        uppercase;
 
     }
 
 
-    .wimalab-text {
+    .education-card h3,
+    .certificate-card h3 {
 
-      margin-top: 17px;
+      margin-top: 8px;
 
-      color: var(--text-soft);
-
-      font-size: 14px;
-
-      line-height: 1.8;
+      font-size: 19px;
 
     }
 
 
-    .wimalab-actions {
+    .education-card p,
+    .certificate-card p {
 
-      display: flex;
+      margin-top: 8px;
 
-      flex-wrap: wrap;
+      color:
+        var(--text-soft);
 
-      gap: 10px;
+      font-size: 12px;
 
-      margin-top: 27px;
+      line-height: 1.75;
 
     }
 
 
     /* =========================================================
-       FEATURED PROJECT
+       ACHIEVEMENTS
     ========================================================= */
 
-    .featured-wrapper {
-
-      display: none;
-
-    }
-
-
-    .featured-wrapper.visible {
-
-      display: block;
-
-    }
-
-
-    .featured-card {
-
-      position: relative;
+    .achievement-grid {
 
       display: grid;
 
       grid-template-columns:
-        minmax(0, 1.15fr)
-        minmax(340px, 0.85fr);
+        repeat(3, 1fr);
 
-      min-height: 540px;
+      gap: 18px;
 
-      overflow: hidden;
+    }
+
+
+    .achievement-card {
+
+      padding: 26px;
 
       border:
-        1px solid
-        var(--border);
+        1px solid var(--border);
 
       border-radius:
-        var(--radius-lg);
+        var(--radius-md);
 
       background:
         linear-gradient(
-          135deg,
-          rgba(255,255,255,0.055),
+          145deg,
+          rgba(255,255,255,0.045),
           rgba(255,255,255,0.012)
         );
 
-      transition:
-        var(--transition);
-
     }
 
 
-    .featured-card:hover {
+    .achievement-number {
 
-      border-color:
-        var(--border-hover);
+      color:
+        var(--text-muted);
 
-    }
-
-
-    .featured-image-wrap {
-
-      position: relative;
-
-      min-height: 540px;
-
-      overflow: hidden;
-
-      background: #101116;
-
-    }
-
-
-    .featured-image-wrap::after {
-
-      content: "";
-
-      position: absolute;
-
-      inset: 0;
-
-      background:
-        linear-gradient(
-          90deg,
-          transparent 55%,
-          rgba(8,9,12,0.55)
-        );
-
-    }
-
-
-    .featured-image {
-
-      width: 100%;
-      height: 100%;
-
-      object-fit: cover;
-
-      transition:
-        transform 0.8s
-        cubic-bezier(0.22,1,0.36,1);
-
-    }
-
-
-    .featured-card:hover
-    .featured-image {
-
-      transform:
-        scale(1.035);
-
-    }
-
-
-    .featured-placeholder {
-
-      width: 100%;
-      height: 100%;
-
-      min-height: 540px;
-
-      display: grid;
-
-      place-items: center;
-
-      color: var(--text-muted);
-
-      font-size: 13px;
-
-      background:
-        radial-gradient(
-          circle at center,
-          #1b1d24,
-          #0e0f13 65%
-        );
-
-    }
-
-
-    .featured-content {
-
-      position: relative;
-
-      z-index: 2;
-
-      padding: 55px;
-
-      display: flex;
-
-      flex-direction: column;
-
-      justify-content: center;
-
-    }
-
-
-    .featured-badge {
-
-      display: inline-flex;
-
-      align-self: flex-start;
-
-      padding: 7px 11px;
-
-      margin-bottom: 25px;
-
-      border:
-        1px solid
-        var(--border);
-
-      border-radius: 999px;
-
-      color: var(--text-soft);
-
-      font-size: 10px;
+      font-size: 11px;
 
       font-weight: 800;
 
-      letter-spacing: 0.13em;
-
-      text-transform: uppercase;
-
-    }
-
-
-    .featured-content h3 {
-
-      font-size:
-        clamp(
-          32px,
-          4vw,
-          56px
-        );
-
-      line-height: 1;
-
-      letter-spacing: -0.055em;
-
-      font-weight: 800;
+      letter-spacing:
+        0.12em;
 
     }
 
 
-    .featured-meta {
+    .achievement-card h3 {
 
-      display: flex;
+      margin-top: 14px;
 
-      align-items: center;
+      font-size: 17px;
 
-      flex-wrap: wrap;
+      line-height: 1.3;
 
-      gap: 10px;
+    }
 
-      margin-top: 18px;
 
-      color: var(--text-muted);
+    .achievement-card p {
+
+      margin-top: 10px;
+
+      color:
+        var(--text-soft);
 
       font-size: 12px;
 
-    }
-
-
-    .featured-meta-separator {
-
-      opacity: 0.5;
-
-    }
-
-
-    .featured-description {
-
-      margin-top: 26px;
-
-      color: var(--text-soft);
-
-      font-size: 14px;
-
-      line-height: 1.8;
-
-      display: -webkit-box;
-
-      -webkit-line-clamp: 5;
-
-      -webkit-box-orient: vertical;
-
-      overflow: hidden;
-
-    }
-
-
-    .technology-list {
-
-      display: flex;
-
-      flex-wrap: wrap;
-
-      gap: 7px;
-
-      margin-top: 25px;
-
-    }
-
-
-    .technology {
-
-      padding: 6px 10px;
-
-      border:
-        1px solid
-        var(--border);
-
-      border-radius: 999px;
-
-      color: var(--text-muted);
-
-      font-size: 10px;
-
-      font-weight: 700;
-
-    }
-
-
-    .featured-actions {
-
-      display: flex;
-
-      flex-wrap: wrap;
-
-      gap: 10px;
-
-      margin-top: 32px;
+      line-height: 1.75;
 
     }
 
 
     /* =========================================================
-       FILTER
+       LIVE STREAMING
+    ========================================================= */
+
+    .production-box {
+
+      display: grid;
+
+      grid-template-columns:
+        0.8fr 1.2fr;
+
+      gap: 25px;
+
+      padding: 32px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius:
+        var(--radius-lg);
+
+      background:
+        var(--surface);
+
+    }
+
+
+    .production-intro h3 {
+
+      font-size: 25px;
+
+      letter-spacing:
+        -0.035em;
+
+    }
+
+
+    .production-intro p {
+
+      margin-top: 12px;
+
+      color:
+        var(--text-soft);
+
+      font-size: 13px;
+
+      line-height: 1.8;
+
+    }
+
+
+    .production-list {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
+      gap: 9px;
+
+    }
+
+
+    .production-item {
+
+      padding: 14px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius:
+        var(--radius-sm);
+
+      color:
+        var(--text-soft);
+
+      background:
+        rgba(255,255,255,0.025);
+
+      font-size: 11px;
+
+      font-weight: 650;
+
+    }
+
+
+    /* =========================================================
+       WIMA LAB
+    ========================================================= */
+
+    .lab-box {
+
+      position: relative;
+
+      overflow: hidden;
+
+      padding: 55px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius:
+        var(--radius-lg);
+
+      background:
+
+        radial-gradient(
+          circle at 80% 20%,
+          rgba(255,255,255,0.06),
+          transparent 35%
+        ),
+
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,0.04),
+          rgba(255,255,255,0.012)
+        );
+
+    }
+
+
+    .lab-box h2 {
+
+      max-width: 650px;
+
+      font-size:
+        clamp(
+          32px,
+          5vw,
+          60px
+        );
+
+      line-height: 1;
+
+      letter-spacing:
+        -0.055em;
+
+    }
+
+
+    .lab-box p {
+
+      max-width: 650px;
+
+      margin-top: 18px;
+
+      color:
+        var(--text-soft);
+
+      font-size: 13px;
+
+      line-height: 1.8;
+
+    }
+
+
+    .lab-actions {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 10px;
+
+      margin-top: 28px;
+
+    }
+
+
+    /* =========================================================
+       PROJECTS
     ========================================================= */
 
     .filters {
@@ -1764,7 +1578,7 @@
 
       gap: 8px;
 
-      margin-bottom: 35px;
+      margin-bottom: 28px;
 
     }
 
@@ -1773,21 +1587,24 @@
 
       cursor: pointer;
 
-      padding: 9px 15px;
+      padding:
+        8px 14px;
 
       border:
-        1px solid
-        var(--border);
+        1px solid var(--border);
 
-      border-radius: 999px;
+      border-radius:
+        999px;
 
-      background: transparent;
+      background:
+        transparent;
 
-      color: var(--text-muted);
+      color:
+        var(--text-muted);
 
       font-size: 10px;
 
-      font-weight: 750;
+      font-weight: 800;
 
       transition:
         var(--transition);
@@ -1797,7 +1614,8 @@
 
     .filter-btn:hover {
 
-      color: var(--text);
+      color:
+        var(--text);
 
       border-color:
         var(--border-hover);
@@ -1807,30 +1625,26 @@
 
     .filter-btn.active {
 
-      color: var(--bg);
+      color:
+        var(--bg);
 
-      background: var(--text);
+      background:
+        var(--text);
 
-      border-color: var(--text);
+      border-color:
+        var(--text);
 
     }
 
-
-    /* =========================================================
-       PROJECT GRID
-    ========================================================= */
 
     .projects-grid {
 
       display: grid;
 
       grid-template-columns:
-        repeat(
-          2,
-          minmax(0,1fr)
-        );
+        repeat(2, 1fr);
 
-      gap: 22px;
+      gap: 20px;
 
     }
 
@@ -1840,8 +1654,7 @@
       overflow: hidden;
 
       border:
-        1px solid
-        var(--border);
+        1px solid var(--border);
 
       border-radius:
         var(--radius-md);
@@ -1850,14 +1663,7 @@
         var(--surface);
 
       transition:
-        transform var(--transition),
-        border-color var(--transition),
-        background var(--transition);
-
-      animation:
-        cardIn 0.55s
-        cubic-bezier(0.22,1,0.36,1)
-        both;
+        var(--transition);
 
     }
 
@@ -1865,7 +1671,7 @@
     .project-card:hover {
 
       transform:
-        translateY(-6px);
+        translateY(-5px);
 
       border-color:
         var(--border-hover);
@@ -1880,11 +1686,13 @@
 
       position: relative;
 
-      aspect-ratio: 16 / 10;
+      aspect-ratio:
+        16 / 10;
 
       overflow: hidden;
 
-      background: #0e0f13;
+      background:
+        #0e0f13;
 
     }
 
@@ -1898,7 +1706,12 @@
 
       transition:
         transform 0.7s
-        cubic-bezier(0.22,1,0.36,1);
+        cubic-bezier(
+          0.22,
+          1,
+          0.36,
+          1
+        );
 
     }
 
@@ -1921,11 +1734,13 @@
 
       place-items: center;
 
-      color: var(--text-muted);
+      color:
+        var(--text-muted);
 
-      font-size: 12px;
+      font-size: 11px;
 
       background:
+
         radial-gradient(
           circle at center,
           #1a1c22,
@@ -1935,22 +1750,25 @@
     }
 
 
-    .project-featured-label {
+    .project-featured {
 
       position: absolute;
 
-      top: 14px;
-      left: 14px;
+      top: 13px;
+      left: 13px;
 
-      padding: 6px 9px;
+      padding:
+        6px 9px;
 
       border:
         1px solid
         rgba(255,255,255,0.12);
 
-      border-radius: 999px;
+      border-radius:
+        999px;
 
-      color: #fff;
+      color:
+        #fff;
 
       background:
         rgba(0,0,0,0.55);
@@ -1962,16 +1780,18 @@
 
       font-weight: 800;
 
-      letter-spacing: 0.12em;
+      letter-spacing:
+        0.12em;
 
-      text-transform: uppercase;
+      text-transform:
+        uppercase;
 
     }
 
 
     .project-content {
 
-      padding: 25px;
+      padding: 24px;
 
     }
 
@@ -1986,57 +1806,61 @@
 
       gap: 15px;
 
-      margin-bottom: 10px;
-
     }
 
 
     .project-category {
 
-      color: var(--text-muted);
+      color:
+        var(--text-muted);
 
-      font-size: 10px;
+      font-size: 9px;
 
       font-weight: 800;
 
-      letter-spacing: 0.13em;
+      letter-spacing:
+        0.13em;
 
-      text-transform: uppercase;
+      text-transform:
+        uppercase;
 
     }
 
 
     .project-year {
 
-      color: var(--text-muted);
+      color:
+        var(--text-muted);
 
-      font-size: 11px;
+      font-size: 10px;
 
     }
 
 
     .project-title {
 
+      margin-top: 8px;
+
       font-size: 24px;
 
       line-height: 1.1;
 
-      letter-spacing: -0.035em;
-
-      font-weight: 760;
+      letter-spacing:
+        -0.035em;
 
     }
 
 
     .project-description {
 
-      margin-top: 12px;
+      margin-top: 11px;
 
-      color: var(--text-soft);
+      color:
+        var(--text-soft);
 
-      font-size: 13px;
+      font-size: 12px;
 
-      line-height: 1.7;
+      line-height: 1.75;
 
       display: -webkit-box;
 
@@ -2057,21 +1881,23 @@
 
       gap: 6px;
 
-      margin-top: 18px;
+      margin-top: 17px;
 
     }
 
 
     .project-tech span {
 
-      padding: 5px 8px;
+      padding:
+        5px 8px;
 
       border-radius: 6px;
 
       background:
         rgba(255,255,255,0.045);
 
-      color: var(--text-muted);
+      color:
+        var(--text-muted);
 
       font-size: 9px;
 
@@ -2088,7 +1914,7 @@
 
       gap: 8px;
 
-      margin-top: 22px;
+      margin-top: 20px;
 
     }
 
@@ -2101,17 +1927,18 @@
 
       gap: 7px;
 
-      padding: 9px 13px;
+      padding:
+        8px 12px;
 
       border:
-        1px solid
-        var(--border);
+        1px solid var(--border);
 
       border-radius: 8px;
 
-      color: var(--text-soft);
+      color:
+        var(--text-soft);
 
-      font-size: 11px;
+      font-size: 10px;
 
       font-weight: 750;
 
@@ -2123,7 +1950,8 @@
 
     .project-link:hover {
 
-      color: var(--text);
+      color:
+        var(--text);
 
       border-color:
         var(--border-hover);
@@ -2135,32 +1963,34 @@
 
 
     /* =========================================================
-       EMPTY / LOADING
+       STATES
     ========================================================= */
 
     .state {
 
-      padding: 70px 20px;
+      padding:
+        60px 20px;
 
       text-align: center;
 
       border:
-        1px dashed
-        var(--border);
+        1px dashed var(--border);
 
       border-radius:
         var(--radius-md);
 
-      color: var(--text-muted);
+      color:
+        var(--text-muted);
 
     }
 
 
     .state-title {
 
-      color: var(--text-soft);
+      color:
+        var(--text-soft);
 
-      font-size: 16px;
+      font-size: 15px;
 
       font-weight: 700;
 
@@ -2171,9 +2001,10 @@
 
       max-width: 500px;
 
-      margin: 8px auto 0;
+      margin:
+        7px auto 0;
 
-      font-size: 13px;
+      font-size: 12px;
 
       line-height: 1.7;
 
@@ -2182,10 +2013,11 @@
 
     .spinner {
 
-      width: 30px;
-      height: 30px;
+      width: 28px;
+      height: 28px;
 
-      margin: 0 auto 18px;
+      margin:
+        0 auto 16px;
 
       border:
         2px solid
@@ -2206,34 +2038,21 @@
        CONTACT
     ========================================================= */
 
-    .cta {
+    .contact-box {
 
       padding:
-        120px 0
-        145px;
-
-    }
-
-
-    .cta-box {
-
-      position: relative;
-
-      overflow: hidden;
-
-      padding:
-        75px 50px;
+        60px 40px;
 
       text-align: center;
 
       border:
-        1px solid
-        var(--border);
+        1px solid var(--border);
 
       border-radius:
         var(--radius-lg);
 
       background:
+
         radial-gradient(
           circle at center,
           rgba(255,255,255,0.055),
@@ -2243,59 +2062,41 @@
     }
 
 
-    .cta-label {
-
-      color: var(--text-muted);
-
-      font-size: 10px;
-
-      font-weight: 800;
-
-      letter-spacing: 0.16em;
-
-      text-transform: uppercase;
-
-    }
-
-
-    .cta-title {
-
-      max-width: 700px;
-
-      margin: 18px auto 0;
+    .contact-box h2 {
 
       font-size:
         clamp(
-          38px,
+          36px,
           6vw,
-          70px
+          65px
         );
 
       line-height: 1;
 
-      letter-spacing: -0.055em;
-
-      font-weight: 800;
-
-    }
-
-
-    .cta-text {
-
-      max-width: 550px;
-
-      margin: 22px auto 0;
-
-      color: var(--text-soft);
-
-      font-size: 14px;
-
-      line-height: 1.75;
+      letter-spacing:
+        -0.055em;
 
     }
 
 
-    .cta-actions {
+    .contact-box p {
+
+      max-width: 600px;
+
+      margin:
+        20px auto 0;
+
+      color:
+        var(--text-soft);
+
+      font-size: 13px;
+
+      line-height: 1.8;
+
+    }
+
+
+    .contact-actions {
 
       display: flex;
 
@@ -2305,7 +2106,7 @@
 
       gap: 10px;
 
-      margin-top: 30px;
+      margin-top: 28px;
 
     }
 
@@ -2317,12 +2118,10 @@
     footer {
 
       padding:
-        30px 0
-        45px;
+        30px 0 45px;
 
       border-top:
-        1px solid
-        var(--border);
+        1px solid var(--border);
 
     }
 
@@ -2342,9 +2141,10 @@
 
     .footer-copy {
 
-      color: var(--text-muted);
+      color:
+        var(--text-muted);
 
-      font-size: 11px;
+      font-size: 10px;
 
     }
 
@@ -2353,8 +2153,6 @@
 
       display: flex;
 
-      flex-wrap: wrap;
-
       gap: 18px;
 
     }
@@ -2362,21 +2160,20 @@
 
     .footer-links a {
 
-      color: var(--text-muted);
+      color:
+        var(--text-muted);
 
-      font-size: 11px;
+      font-size: 10px;
 
       font-weight: 650;
-
-      transition:
-        var(--transition);
 
     }
 
 
     .footer-links a:hover {
 
-      color: var(--text);
+      color:
+        var(--text);
 
     }
 
@@ -2394,88 +2191,37 @@
     }
 
 
-    @keyframes cardIn {
-
-      from {
-
-        opacity: 0;
-
-        transform:
-          translateY(14px);
-
-      }
-
-      to {
-
-        opacity: 1;
-
-        transform:
-          translateY(0);
-
-      }
-
-    }
-
-
     /* =========================================================
        RESPONSIVE
     ========================================================= */
 
     @media (max-width: 950px) {
 
-      .hero-layout {
+      .hero-grid {
 
         grid-template-columns: 1fr;
 
-        gap: 40px;
+        gap: 35px;
 
       }
 
-      .profile-photo-wrap {
 
-        justify-content: flex-start;
+      .profile-card {
 
-      }
-
-      .featured-card {
-
-        grid-template-columns: 1fr;
+        max-width: 420px;
 
       }
 
-      .featured-image-wrap {
 
-        min-height: 400px;
-
-      }
-
-      .featured-placeholder {
-
-        min-height: 400px;
-
-      }
-
-      .featured-content {
-
-        padding: 38px;
-
-      }
-
-    }
-
-
-    @media (max-width: 800px) {
-
-      .quick-facts {
+      .skills-grid {
 
         grid-template-columns:
-          repeat(2,1fr);
+          repeat(2, 1fr);
 
       }
 
-      .about-grid,
-      .skills-grid,
-      .two-column {
+
+      .production-box {
 
         grid-template-columns: 1fr;
 
@@ -2484,7 +2230,7 @@
     }
 
 
-    @media (max-width: 700px) {
+    @media (max-width: 750px) {
 
       .container {
 
@@ -2522,30 +2268,19 @@
       }
 
 
-      .brand {
-
-        font-size: 13px;
-
-      }
-
-
       .nav-back {
 
         padding:
-          8px 11px;
-
-        font-size: 10px;
+          8px 12px;
 
       }
 
 
       .hero {
 
-        min-height: auto;
+        padding-top: 120px;
 
-        padding-top: 125px;
-
-        padding-bottom: 70px;
+        padding-bottom: 60px;
 
       }
 
@@ -2554,46 +2289,18 @@
 
         font-size:
           clamp(
-            47px,
+            46px,
             14vw,
-            72px
+            70px
           );
-
-      }
-
-
-      .hero-description {
-
-        font-size: 14px;
-
-      }
-
-
-      .profile-photo {
-
-        width: 190px;
-        height: 190px;
-
-      }
-
-
-      .profile-initial {
-
-        font-size: 60px;
-
-      }
-
-
-      .quick-facts {
-
-        grid-template-columns: 1fr;
 
       }
 
 
       .section {
 
-        padding: 75px 0;
+        padding:
+          70px 0;
 
       }
 
@@ -2602,80 +2309,36 @@
 
         display: block;
 
-        margin-bottom: 30px;
+        margin-bottom: 28px;
 
       }
 
 
       .section-description {
 
-        margin-top: 15px;
+        margin-top: 13px;
 
       }
 
 
-      .about-card,
-      .skill-card,
-      .info-card {
+      .about-grid,
+      .two-column {
 
-        padding: 24px;
-
-      }
-
-
-      .timeline-item {
-
-        padding-left: 34px;
+        grid-template-columns: 1fr;
 
       }
 
 
-      .timeline-role {
+      .skills-grid {
 
-        font-size: 20px;
-
-      }
-
-
-      .digital-card {
-
-        padding: 28px 24px;
+        grid-template-columns: 1fr;
 
       }
 
 
-      .wimalab-box {
+      .achievement-grid {
 
-        padding: 32px 24px;
-
-      }
-
-
-      .featured-image-wrap {
-
-        min-height: 280px;
-
-      }
-
-
-      .featured-placeholder {
-
-        min-height: 280px;
-
-      }
-
-
-      .featured-content {
-
-        padding:
-          28px 24px 30px;
-
-      }
-
-
-      .featured-content h3 {
-
-        font-size: 38px;
+        grid-template-columns: 1fr;
 
       }
 
@@ -2687,40 +2350,25 @@
       }
 
 
-      .project-content {
+      .production-list {
 
-        padding: 21px;
-
-      }
-
-
-      .project-title {
-
-        font-size: 22px;
+        grid-template-columns: 1fr;
 
       }
 
 
-      .cta {
+      .lab-box {
 
         padding:
-          80px 0
-          100px;
+          35px 24px;
 
       }
 
 
-      .cta-box {
+      .contact-box {
 
         padding:
-          55px 24px;
-
-      }
-
-
-      .cta-title {
-
-        font-size: 43px;
+          50px 24px;
 
       }
 
@@ -2744,6 +2392,7 @@
 
       }
 
+
       *,
       *::before,
       *::after {
@@ -2762,6 +2411,7 @@
     }
 
   </style>
+
 </head>
 
 
@@ -2782,8 +2432,7 @@
 
       <a
         class="brand"
-        href="index.html"
-        aria-label="Kembali ke halaman utama"
+        href="index.html#home"
       >
 
         <span class="brand-mark">
@@ -2804,6 +2453,10 @@
           class="active"
         >
           CV
+        </a>
+
+        <a href="#about">
+          About
         </a>
 
         <a href="#experience">
@@ -2829,9 +2482,8 @@
         class="nav-back"
         href="index.html"
       >
-        ← Back
+        ← Website
       </a>
-
 
     </div>
 
@@ -2839,29 +2491,84 @@
 
 
 
+  <!-- =======================================================
+       MAIN
+  ======================================================== -->
+
   <main id="top">
 
 
     <!-- =====================================================
-         HERO
+         HERO / PROFILE
     ====================================================== -->
 
     <section class="hero">
 
       <div class="container">
 
-        <div class="hero-layout">
+        <div class="hero-grid">
 
 
-          <div class="hero-content">
+          <!-- PHOTO -->
+
+          <div class="profile-card">
+
+            <div
+              class="profile-photo"
+              id="profilePhoto"
+            >
+
+              <!--
+                FOTO NANTI BISA DIUBAH DARI DASHBOARD.
+
+                Untuk sementara jika belum ada foto,
+                placeholder ini akan tampil.
+              -->
+
+              <div class="profile-placeholder">
+
+                <strong>
+                  WENDI
+                </strong>
+
+                <span>
+                  Professional Profile
+                </span>
+
+              </div>
+
+            </div>
 
 
-            <div class="eyebrow">
+            <div class="profile-info">
 
-              <span class="eyebrow-dot"></span>
+              <div class="profile-status">
 
-              CV & Digital Portfolio
+                <span class="status-dot"></span>
 
+                Open to opportunities
+
+              </div>
+
+
+              <div class="profile-location">
+
+                Kabupaten Karimun,
+                Kepulauan Riau, Indonesia
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- INTRO -->
+
+          <div>
+
+            <div class="hero-eyebrow">
+              Curriculum Vitae & Portfolio
             </div>
 
 
@@ -2876,16 +2583,24 @@
             </h1>
 
 
+            <div class="hero-role">
+
+              Staf Administrasi ·
+              Digital Administration ·
+              Data Management
+
+            </div>
+
+
             <p class="hero-description">
 
-              <strong>
-                Administrative & Digital Systems Support
-              </strong>
-              dengan pengalaman sekitar 15 tahun
-              dalam administrasi, pengolahan data,
-              kearsipan, dokumentasi, serta pengembangan
-              solusi digital untuk membantu pekerjaan
-              menjadi lebih terstruktur dan efisien.
+              Profesional administrasi dengan pengalaman
+              lebih dari 15 tahun dalam administrasi,
+              pengelolaan data, pengarsipan, serta
+              digitalisasi proses kerja. Memiliki pengalaman
+              membangun sistem digital sederhana untuk
+              membantu pekerjaan administrasi menjadi lebih
+              terstruktur, terdokumentasi, dan efisien.
 
             </p>
 
@@ -2893,13 +2608,15 @@
             <div class="hero-actions">
 
 
+              <!-- DOWNLOAD CV -->
+
               <a
                 class="btn btn-primary"
                 href="CV-Wendi-Nang-Putra.pdf"
                 download
               >
 
-                Download CV PDF
+                Download CV
 
                 <span>
                   ↓
@@ -2907,134 +2624,39 @@
 
               </a>
 
+
+              <!-- WIMA LAB -->
 
               <a
                 class="btn btn-secondary"
-                href="#projects"
+                href="wima-lab.html"
               >
 
-                View Projects
+                Open WIMA LAB
 
                 <span>
-                  ↓
+                  ↗
                 </span>
 
               </a>
 
+
+              <!-- CONTACT -->
 
               <a
                 class="btn btn-secondary"
                 href="#contact"
               >
 
-                Contact Me
+                Contact
 
               </a>
 
-
-            </div>
-
-
-          </div>
-
-
-          <div class="profile-photo-wrap">
-
-            <div>
-
-              <div class="profile-photo">
-
-                <!--
-                  NANTI FOTO BISA DIGANTI.
-
-                  Contoh:
-                  <img src="assets/wendi.jpg" alt="Wendi Nang Putra">
-
-                  Untuk sekarang sistem memakai inisial W
-                  agar halaman tetap tampil walaupun foto belum ada.
-                -->
-
-                <div
-                  class="profile-initial"
-                  aria-label="Wendi Nang Putra"
-                >
-                  W
-                </div>
-
-              </div>
-
-
-              <div class="photo-note">
-
-                Wendi Nang Putra
-
-              </div>
-
             </div>
 
           </div>
-
 
         </div>
-
-
-        <div class="quick-facts">
-
-
-          <div class="fact">
-
-            <div class="fact-label">
-              Experience
-            </div>
-
-            <div class="fact-value">
-              15+ Tahun
-            </div>
-
-          </div>
-
-
-          <div class="fact">
-
-            <div class="fact-label">
-              Education
-            </div>
-
-            <div class="fact-value">
-              S1 Administrasi Publik
-            </div>
-
-          </div>
-
-
-          <div class="fact">
-
-            <div class="fact-label">
-              Location
-            </div>
-
-            <div class="fact-value">
-              Kab. Karimun, Kepri
-            </div>
-
-          </div>
-
-
-          <div class="fact">
-
-            <div class="fact-label">
-              Focus
-            </div>
-
-            <div class="fact-value">
-              Administration & Digital
-            </div>
-
-          </div>
-
-
-        </div>
-
 
       </div>
 
@@ -3063,7 +2685,7 @@
             </div>
 
             <h2 class="section-title">
-              About me.
+              Tentang saya.
             </h2>
 
           </div>
@@ -3071,8 +2693,9 @@
 
           <p class="section-description">
 
-            Administrasi bukan hanya pekerjaan saya,
-            tetapi bidang yang saya kuasai dan sukai.
+            Administrasi bukan hanya tentang mengerjakan
+            pekerjaan rutin, tetapi juga bagaimana membuat
+            pekerjaan menjadi lebih teratur dan efektif.
 
           </p>
 
@@ -3082,144 +2705,167 @@
         <div class="about-grid">
 
 
-          <div class="about-card">
+          <article class="info-card">
 
             <h3>
-              Profesional Administrasi dengan kemampuan digital.
+              Profil Profesional
             </h3>
 
 
             <p>
 
-              Saya memiliki pengalaman sekitar 15 tahun
-              dalam pekerjaan administrasi di lingkungan
-              pemerintahan dan institusi publik. Pengalaman
-              saya meliputi administrasi perkantoran,
-              pengarsipan, pengolahan data, dokumentasi,
-              pembuatan surat dan SK, serta pengelolaan
-              data dalam jumlah besar.
+              Saya adalah Wendi Nang Putra, seorang staf
+              administrasi dengan pengalaman kerja lebih
+              dari 15 tahun. Saya terbiasa menangani
+              administrasi, pengarsipan, pengolahan data,
+              pembuatan dokumen, serta koordinasi pekerjaan.
+
+              <br><br>
+
+              Selain pekerjaan administrasi, saya memiliki
+              ketertarikan terhadap teknologi dan digitalisasi.
+              Saya belajar dan mengembangkan beberapa sistem
+              berbasis web untuk menyelesaikan permasalahan
+              administrasi di lingkungan kerja.
 
             </p>
+
+
+            <div class="highlight-list">
+
+
+              <div class="highlight">
+
+                <strong>
+                  15+
+                </strong>
+
+                <span>
+                  Tahun pengalaman
+                </span>
+
+              </div>
+
+
+              <div class="highlight">
+
+                <strong>
+                  3+
+                </strong>
+
+                <span>
+                  Sistem digital
+                </span>
+
+              </div>
+
+
+              <div class="highlight">
+
+                <strong>
+                  14
+                </strong>
+
+                <span>
+                  Kecamatan dikoordinasikan
+                </span>
+
+              </div>
+
+
+              <div class="highlight">
+
+                <strong>
+                  60+
+                </strong>
+
+                <span>
+                  Operator/sekolah pernah dikelola
+                </span>
+
+              </div>
+
+
+            </div>
+
+          </article>
+
+
+
+          <article class="info-card">
+
+            <h3>
+              Nilai yang saya bawa
+            </h3>
 
 
             <p>
 
-              Di samping pekerjaan administrasi, saya memiliki
-              ketertarikan kuat terhadap teknologi dan
-              pengembangan solusi digital. Saya belajar dan
-              mengembangkan aplikasi web sederhana untuk
-              mengubah pekerjaan yang sebelumnya dilakukan
-              secara manual menjadi lebih terstruktur dan
-              otomatis.
+              Saya menyukai pekerjaan yang membutuhkan
+              ketelitian, tanggung jawab, dan penyelesaian
+              masalah. Saya juga senang mempelajari hal baru
+              dan mencoba mencari cara yang lebih praktis
+              dalam menyelesaikan pekerjaan.
+
+              <br><br>
+
+              Salah satu fokus saya adalah mengubah proses
+              yang sebelumnya dilakukan secara manual menjadi
+              proses digital yang lebih terstruktur.
 
             </p>
 
 
-            <div class="about-highlight">
+            <div class="highlight-list">
 
 
-              <div class="highlight-item">
+              <div class="highlight">
 
-                <div class="highlight-icon">
-                  01
-                </div>
+                <strong>
+                  Ulet
+                </strong>
 
                 <span>
-                  Ulet, cepat, dan tepat dalam menyelesaikan pekerjaan.
+                  Tidak mudah menyerah
                 </span>
 
               </div>
 
 
-              <div class="highlight-item">
+              <div class="highlight">
 
-                <div class="highlight-icon">
-                  02
-                </div>
+                <strong>
+                  Cepat
+                </strong>
 
                 <span>
-                  Terbuka terhadap hal baru dan pekerjaan yang menantang.
+                  Responsif terhadap pekerjaan
                 </span>
 
               </div>
 
 
-              <div class="highlight-item">
+              <div class="highlight">
 
-                <div class="highlight-icon">
-                  03
-                </div>
+                <strong>
+                  Tepat
+                </strong>
 
                 <span>
-                  Senang memperbaiki proses kerja agar lebih efektif.
+                  Mengutamakan ketelitian
                 </span>
 
               </div>
 
 
-            </div>
+              <div class="highlight">
 
-
-          </div>
-
-
-          <div class="about-card">
-
-            <h3>
-              Contact
-            </h3>
-
-
-            <div class="about-highlight">
-
-
-              <div class="highlight-item">
-
-                <div class="highlight-icon">
-                  WA
-                </div>
+                <strong>
+                  Adaptif
+                </strong>
 
                 <span>
-                  081277694393
-                </span>
-
-              </div>
-
-
-              <div class="highlight-item">
-
-                <div class="highlight-icon">
-                  @
-                </div>
-
-                <span>
-                  wendinangputra@gmail.com
-                </span>
-
-              </div>
-
-
-              <div class="highlight-item">
-
-                <div class="highlight-icon">
-                  ID
-                </div>
-
-                <span>
-                  Kabupaten Karimun, Provinsi Kepulauan Riau
-                </span>
-
-              </div>
-
-
-              <div class="highlight-item">
-
-                <div class="highlight-icon">
-                  ↗
-                </div>
-
-                <span>
-                  WIMA LAB — dokumentasi project digital
+                  Suka belajar hal baru
                 </span>
 
               </div>
@@ -3227,269 +2873,7 @@
 
             </div>
 
-
-          </div>
-
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         SKILLS
-    ====================================================== -->
-
-    <section
-      class="section"
-      id="skills"
-    >
-
-      <div class="container">
-
-
-        <div class="section-header">
-
-          <div>
-
-            <div class="section-label">
-              02 — Skills
-            </div>
-
-            <h2 class="section-title">
-              What I can do.
-            </h2>
-
-          </div>
-
-
-          <p class="section-description">
-
-            Kombinasi pengalaman administrasi,
-            pengolahan data, teknologi web,
-            dan digital content.
-
-          </p>
-
-        </div>
-
-
-        <div class="skills-grid">
-
-
-          <!-- ADMIN -->
-
-          <div class="skill-card">
-
-            <h3>
-              Administrative
-            </h3>
-
-
-            <div class="skill-list">
-
-              <span class="skill">
-                Administrasi Perkantoran
-              </span>
-
-              <span class="skill">
-                Pengarsipan
-              </span>
-
-              <span class="skill">
-                Dokumentasi
-              </span>
-
-              <span class="skill">
-                Surat Masuk & Keluar
-              </span>
-
-              <span class="skill">
-                Pembuatan SK
-              </span>
-
-              <span class="skill">
-                Disposisi Surat
-              </span>
-
-              <span class="skill">
-                Pengolahan Data
-              </span>
-
-              <span class="skill">
-                Penyusunan Laporan
-              </span>
-
-              <span class="skill">
-                Administrasi Pemerintahan
-              </span>
-
-            </div>
-
-          </div>
-
-
-          <!-- OFFICE -->
-
-          <div class="skill-card">
-
-            <h3>
-              Microsoft Office
-            </h3>
-
-
-            <div class="skill-list">
-
-              <span class="skill">
-                Microsoft Word
-              </span>
-
-              <span class="skill">
-                Microsoft Excel
-              </span>
-
-              <span class="skill">
-                Microsoft PowerPoint
-              </span>
-
-              <span class="skill">
-                SUM / AVERAGE
-              </span>
-
-              <span class="skill">
-                IF
-              </span>
-
-              <span class="skill">
-                COUNTIF / SUMIF
-              </span>
-
-              <span class="skill">
-                VLOOKUP
-              </span>
-
-              <span class="skill">
-                XLOOKUP
-              </span>
-
-              <span class="skill">
-                Pivot Table
-              </span>
-
-              <span class="skill">
-                Filter & Sort
-              </span>
-
-              <span class="skill">
-                Grafik
-              </span>
-
-              <span class="skill">
-                Laporan Excel
-              </span>
-
-            </div>
-
-          </div>
-
-
-          <!-- DIGITAL -->
-
-          <div class="skill-card">
-
-            <h3>
-              Digital & Web
-            </h3>
-
-
-            <div class="skill-list">
-
-              <span class="skill">
-                Google Apps Script
-              </span>
-
-              <span class="skill">
-                Google Sheets
-              </span>
-
-              <span class="skill">
-                Google Drive
-              </span>
-
-              <span class="skill">
-                Google Sites
-              </span>
-
-              <span class="skill">
-                HTML
-              </span>
-
-              <span class="skill">
-                CSS
-              </span>
-
-              <span class="skill">
-                JavaScript
-              </span>
-
-              <span class="skill">
-                Web-based System
-              </span>
-
-            </div>
-
-          </div>
-
-
-          <!-- CONTENT -->
-
-          <div class="skill-card">
-
-            <h3>
-              Design & Live Streaming
-            </h3>
-
-
-            <div class="skill-list">
-
-              <span class="skill">
-                OBS Studio
-              </span>
-
-              <span class="skill">
-                Zoom
-              </span>
-
-              <span class="skill">
-                YouTube Studio
-              </span>
-
-              <span class="skill">
-                Camera
-              </span>
-
-              <span class="skill">
-                Capture Card
-              </span>
-
-              <span class="skill">
-                Audio Mixer
-              </span>
-
-              <span class="skill">
-                Canva
-              </span>
-
-              <span class="skill">
-                CorelDRAW
-              </span>
-
-            </div>
-
-          </div>
+          </article>
 
 
         </div>
@@ -3517,11 +2901,11 @@
           <div>
 
             <div class="section-label">
-              03 — Experience
+              02 — Experience
             </div>
 
             <h2 class="section-title">
-              Work experience.
+              Pengalaman kerja.
             </h2>
 
           </div>
@@ -3529,9 +2913,9 @@
 
           <p class="section-description">
 
-            Perjalanan pengalaman kerja di bidang
-            administrasi, data, operasional, dan
-            digital support.
+            Pengalaman dalam administrasi pemerintahan,
+            pengelolaan data, operasional, pengarsipan,
+            serta digitalisasi pekerjaan.
 
           </p>
 
@@ -3543,213 +2927,267 @@
 
           <!-- KPU -->
 
-          <article class="timeline-item">
+          <article class="experience-item">
 
-            <span class="timeline-dot"></span>
+            <span class="experience-dot"></span>
 
 
-            <div class="timeline-date">
-              2022 — Present
+            <div class="experience-card">
+
+              <div class="experience-top">
+
+                <div>
+
+                  <div class="experience-company">
+                    KPU Kabupaten Karimun
+                  </div>
+
+                  <h3 class="experience-title">
+                    Staf Administrasi
+                  </h3>
+
+                  <div class="experience-location">
+                    Kabupaten Karimun
+                  </div>
+
+                </div>
+
+
+                <div class="experience-period">
+                  2022 — Sekarang
+                </div>
+
+              </div>
+
+
+              <p class="experience-description">
+
+                Mengelola administrasi Subbagian Teknis dan
+                Hukum, termasuk pengarsipan, pengelolaan
+                dokumen, pencatatan, dan berbagai pekerjaan
+                administrasi pendukung kegiatan organisasi.
+
+              </p>
+
+
+              <ul class="experience-list">
+
+                <li>
+                  Mengelola dan menata arsip administrasi.
+                </li>
+
+                <li>
+                  Mendukung administrasi Subbagian Teknis
+                  dan Hukum.
+                </li>
+
+                <li>
+                  Mengembangkan SIARTEKHUM, SIDUMAS,
+                  dan SIPENA.
+                </li>
+
+                <li>
+                  Menjadi operator SIREKAP serta mengelola
+                  koordinasi data 14 kecamatan.
+                </li>
+
+                <li>
+                  Menangani kebutuhan live streaming
+                  berbagai kegiatan KPU Kabupaten Karimun.
+                </li>
+
+              </ul>
+
             </div>
-
-
-            <h3 class="timeline-role">
-              Staf Administrasi
-            </h3>
-
-
-            <div class="timeline-company">
-              KPU Kabupaten Karimun · Kabupaten Karimun
-            </div>
-
-
-            <p class="timeline-description">
-
-              Mengelola administrasi Subbagian Teknis
-              dan Hukum, pengarsipan, dokumentasi,
-              pengolahan data, serta mendukung berbagai
-              kegiatan dan kebutuhan operasional kantor.
-
-            </p>
-
-
-            <ul class="timeline-list">
-
-              <li>
-                Mengelola administrasi dan arsip Subbagian Teknis dan Hukum.
-              </li>
-
-              <li>
-                Mengembangkan SIARTEKHUM untuk digitalisasi arsip teknis hukum.
-              </li>
-
-              <li>
-                Mengembangkan SIDUMAS untuk pengelolaan pengaduan masyarakat.
-              </li>
-
-              <li>
-                Mengembangkan SIPENA untuk pencatatan nomor arsip secara otomatis.
-              </li>
-
-              <li>
-                Menjadi operator SIREKAP dan mengolah koordinasi data 14 kecamatan.
-              </li>
-
-              <li>
-                Mendukung live streaming kegiatan KPU menggunakan OBS Studio,
-                Zoom, YouTube Studio, kamera, capture card, dan audio mixer.
-              </li>
-
-            </ul>
 
           </article>
 
 
-          <!-- CAMAT -->
 
-          <article class="timeline-item">
+          <!-- KANTOR CAMAT -->
 
-            <span class="timeline-dot"></span>
+          <article class="experience-item">
+
+            <span class="experience-dot"></span>
 
 
-            <div class="timeline-date">
-              2020 — 2021
+            <div class="experience-card">
+
+              <div class="experience-top">
+
+                <div>
+
+                  <div class="experience-company">
+                    Kantor Camat Kundur
+                  </div>
+
+                  <h3 class="experience-title">
+                    Staf Administrasi
+                  </h3>
+
+                  <div class="experience-location">
+                    Tanjung Batu
+                  </div>
+
+                </div>
+
+
+                <div class="experience-period">
+                  2020 — 2021
+                </div>
+
+              </div>
+
+
+              <p class="experience-description">
+
+                Menangani berbagai pekerjaan administrasi
+                kantor kecamatan serta pengelolaan dokumen
+                dan surat-menyurat.
+
+              </p>
+
+
+              <ul class="experience-list">
+
+                <li>
+                  Membuat Surat Keputusan (SK).
+                </li>
+
+                <li>
+                  Membuat surat keluar.
+                </li>
+
+                <li>
+                  Mengelola disposisi surat masuk.
+                </li>
+
+                <li>
+                  Melakukan pengarsipan dokumen.
+                </li>
+
+              </ul>
+
             </div>
-
-
-            <h3 class="timeline-role">
-              Staf Administrasi
-            </h3>
-
-
-            <div class="timeline-company">
-              Kantor Camat Kundur · Tanjung Batu
-            </div>
-
-
-            <p class="timeline-description">
-
-              Melaksanakan berbagai pekerjaan administrasi
-              pemerintahan dan mendukung kelancaran
-              pengelolaan dokumen kantor.
-
-            </p>
-
-
-            <ul class="timeline-list">
-
-              <li>
-                Membuat Surat Keputusan (SK).
-              </li>
-
-              <li>
-                Membuat surat keluar.
-              </li>
-
-              <li>
-                Mengelola surat masuk dan disposisi.
-              </li>
-
-              <li>
-                Melakukan pengarsipan dokumen.
-              </li>
-
-              <li>
-                Mendukung pekerjaan administrasi perkantoran lainnya.
-              </li>
-
-            </ul>
 
           </article>
 
 
-          <!-- PENDIDIKAN -->
 
-          <article class="timeline-item">
+          <!-- UPT DINAS PENDIDIKAN -->
 
-            <span class="timeline-dot"></span>
+          <article class="experience-item">
+
+            <span class="experience-dot"></span>
 
 
-            <div class="timeline-date">
-              2011 — 2019
+            <div class="experience-card">
+
+              <div class="experience-top">
+
+                <div>
+
+                  <div class="experience-company">
+                    UPT Dinas Pendidikan Kecamatan Kundur
+                  </div>
+
+                  <h3 class="experience-title">
+                    Staf Administrasi
+                  </h3>
+
+                  <div class="experience-location">
+                    Tanjung Batu
+                  </div>
+
+                </div>
+
+
+                <div class="experience-period">
+                  2011 — 2019
+                </div>
+
+              </div>
+
+
+              <p class="experience-description">
+
+                Menangani administrasi pendidikan dan
+                pengelolaan data pendidikan pada wilayah
+                kerja Kecamatan Kundur.
+
+              </p>
+
+
+              <ul class="experience-list">
+
+                <li>
+                  Mengelola administrasi pendidikan.
+                </li>
+
+                <li>
+                  Mengoperasikan dan mengelola data pendidikan.
+                </li>
+
+                <li>
+                  Mengolah data angka pendidikan.
+                </li>
+
+                <li>
+                  Mengelola data dari sekitar 60 sekolah
+                  dan operator.
+                </li>
+
+              </ul>
+
             </div>
-
-
-            <h3 class="timeline-role">
-              Staf Administrasi
-            </h3>
-
-
-            <div class="timeline-company">
-              UPT Dinas Pendidikan Kecamatan Kundur · Tanjung Batu
-            </div>
-
-
-            <p class="timeline-description">
-
-              Mengelola administrasi dan data pendidikan
-              serta mendukung pengolahan informasi dari
-              sekolah-sekolah di wilayah Kecamatan Kundur.
-
-            </p>
-
-
-            <ul class="timeline-list">
-
-              <li>
-                Administrasi pendidikan.
-              </li>
-
-              <li>
-                Operator data pendidikan.
-              </li>
-
-              <li>
-                Mengolah data pendidikan.
-              </li>
-
-              <li>
-                Mengelola data sekitar 60 sekolah dan operator.
-              </li>
-
-              <li>
-                Menyusun dan mengolah laporan data pendidikan.
-              </li>
-
-            </ul>
 
           </article>
+
 
 
           <!-- PLTG -->
 
-          <article class="timeline-item">
+          <article class="experience-item">
 
-            <span class="timeline-dot"></span>
+            <span class="experience-dot"></span>
 
 
-            <div class="timeline-date">
-              2011
+            <div class="experience-card">
+
+              <div class="experience-top">
+
+                <div>
+
+                  <div class="experience-company">
+                    PLTG Tanjung Batu
+                  </div>
+
+                  <h3 class="experience-title">
+                    Operator Panel
+                  </h3>
+
+                  <div class="experience-location">
+                    Tanjung Batu
+                  </div>
+
+                </div>
+
+
+                <div class="experience-period">
+                  2011
+                </div>
+
+              </div>
+
+
+              <p class="experience-description">
+
+                Bertugas sebagai operator panel dalam
+                mendukung kegiatan operasional PLTG.
+
+              </p>
+
             </div>
-
-
-            <h3 class="timeline-role">
-              Operator Panel
-            </h3>
-
-
-            <div class="timeline-company">
-              PLTG Tanjung Batu · Tanjung Batu
-            </div>
-
-
-            <p class="timeline-description">
-
-              Bertugas sebagai operator panel dalam
-              mendukung pemantauan dan kelancaran
-              operasional sistem.
-
-            </p>
 
           </article>
 
@@ -3763,13 +3201,300 @@
 
 
     <!-- =====================================================
-         EDUCATION & CERTIFICATION
+         SKILLS
     ====================================================== -->
 
     <section
       class="section"
-      id="education"
+      id="skills"
     >
+
+      <div class="container">
+
+
+        <div class="section-header">
+
+          <div>
+
+            <div class="section-label">
+              03 — Skills
+            </div>
+
+            <h2 class="section-title">
+              Keahlian.
+            </h2>
+
+          </div>
+
+
+          <p class="section-description">
+
+            Keahlian yang saya gunakan dalam pekerjaan
+            administrasi, pengolahan data, digitalisasi,
+            dan produksi kegiatan.
+
+          </p>
+
+        </div>
+
+
+        <div class="skills-grid">
+
+
+          <article class="skill-card">
+
+            <h3>
+              Administrasi
+            </h3>
+
+
+            <div class="skill-tags">
+
+              <span class="skill-tag">
+                Administrasi Perkantoran
+              </span>
+
+              <span class="skill-tag">
+                Pengarsipan
+              </span>
+
+              <span class="skill-tag">
+                Surat-menyurat
+              </span>
+
+              <span class="skill-tag">
+                Disposisi
+              </span>
+
+              <span class="skill-tag">
+                Pembuatan SK
+              </span>
+
+              <span class="skill-tag">
+                Pengelolaan Dokumen
+              </span>
+
+            </div>
+
+          </article>
+
+
+
+          <article class="skill-card">
+
+            <h3>
+              Microsoft Office
+            </h3>
+
+
+            <div class="skill-tags">
+
+              <span class="skill-tag">
+                Microsoft Word
+              </span>
+
+              <span class="skill-tag">
+                Microsoft Excel
+              </span>
+
+              <span class="skill-tag">
+                Microsoft PowerPoint
+              </span>
+
+              <span class="skill-tag">
+                SUM / AVERAGE
+              </span>
+
+              <span class="skill-tag">
+                IF
+              </span>
+
+              <span class="skill-tag">
+                COUNTIF / SUMIF
+              </span>
+
+              <span class="skill-tag">
+                VLOOKUP
+              </span>
+
+              <span class="skill-tag">
+                XLOOKUP
+              </span>
+
+              <span class="skill-tag">
+                Pivot Table
+              </span>
+
+              <span class="skill-tag">
+                Filter & Sort
+              </span>
+
+              <span class="skill-tag">
+                Grafik
+              </span>
+
+            </div>
+
+          </article>
+
+
+
+          <article class="skill-card">
+
+            <h3>
+              Digital & Web
+            </h3>
+
+
+            <div class="skill-tags">
+
+              <span class="skill-tag">
+                Google Apps Script
+              </span>
+
+              <span class="skill-tag">
+                Google Sheets
+              </span>
+
+              <span class="skill-tag">
+                Google Drive
+              </span>
+
+              <span class="skill-tag">
+                Google Sites
+              </span>
+
+              <span class="skill-tag">
+                HTML
+              </span>
+
+              <span class="skill-tag">
+                CSS
+              </span>
+
+              <span class="skill-tag">
+                JavaScript
+              </span>
+
+            </div>
+
+          </article>
+
+
+
+          <article class="skill-card">
+
+            <h3>
+              Creative Tools
+            </h3>
+
+
+            <div class="skill-tags">
+
+              <span class="skill-tag">
+                Canva
+              </span>
+
+              <span class="skill-tag">
+                CorelDRAW
+              </span>
+
+            </div>
+
+          </article>
+
+
+
+          <article class="skill-card">
+
+            <h3>
+              Live Streaming
+            </h3>
+
+
+            <div class="skill-tags">
+
+              <span class="skill-tag">
+                OBS Studio
+              </span>
+
+              <span class="skill-tag">
+                Zoom
+              </span>
+
+              <span class="skill-tag">
+                YouTube Studio
+              </span>
+
+              <span class="skill-tag">
+                Camera
+              </span>
+
+              <span class="skill-tag">
+                Capture Card
+              </span>
+
+              <span class="skill-tag">
+                Mixer / Audio
+              </span>
+
+            </div>
+
+          </article>
+
+
+
+          <article class="skill-card">
+
+            <h3>
+              Work Style
+            </h3>
+
+
+            <div class="skill-tags">
+
+              <span class="skill-tag">
+                Teliti
+              </span>
+
+              <span class="skill-tag">
+                Cepat
+              </span>
+
+              <span class="skill-tag">
+                Ulet
+              </span>
+
+              <span class="skill-tag">
+                Adaptif
+              </span>
+
+              <span class="skill-tag">
+                Problem Solving
+              </span>
+
+              <span class="skill-tag">
+                Suka Tantangan
+              </span>
+
+            </div>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         EDUCATION & CERTIFICATE
+    ====================================================== -->
+
+    <section class="section">
 
       <div class="container">
 
@@ -3783,18 +3508,10 @@
             </div>
 
             <h2 class="section-title">
-              Education & certificates.
+              Pendidikan & sertifikat.
             </h2>
 
           </div>
-
-
-          <p class="section-description">
-
-            Latar belakang pendidikan dan pelatihan
-            yang mendukung pengalaman profesional.
-
-          </p>
 
         </div>
 
@@ -3802,50 +3519,64 @@
         <div class="two-column">
 
 
-          <div class="info-card">
+          <article class="education-card">
 
-            <div class="info-card-label">
-              Higher Education
+            <div class="small-label">
+              Pendidikan
             </div>
-
 
             <h3>
               S1 Administrasi Publik
             </h3>
 
-
             <p>
-              Universitas Terbuka · Lulus 2022
+
+              Universitas Terbuka
+
+              <br>
+
+              Lulus 2022
+
             </p>
 
-          </div>
+          </article>
 
 
-          <div class="info-card">
 
-            <div class="info-card-label">
-              Training & Certification
+          <article class="certificate-card">
+
+            <div class="small-label">
+              Pelatihan / Sertifikat
             </div>
-
 
             <h3>
-              Pelatihan & Seminar
+              Microsoft Office
             </h3>
 
+            <p>
+              Pelatihan Microsoft Office.
+            </p>
 
-            <div class="cert-list">
+          </article>
 
-              <div class="cert-item">
-                Microsoft Office
-              </div>
 
-              <div class="cert-item">
-                Seminar Nasional Kearsipan
-              </div>
 
+          <article class="certificate-card">
+
+            <div class="small-label">
+              Seminar
             </div>
 
-          </div>
+            <h3>
+              Seminar Nasional Kearsipan
+            </h3>
+
+            <p>
+              Pengembangan wawasan dan pengetahuan
+              dalam bidang kearsipan.
+            </p>
+
+          </article>
 
 
         </div>
@@ -3857,75 +3588,288 @@
 
 
     <!-- =====================================================
-         DIGITAL EXPERIENCE
+         ACHIEVEMENTS
+    ====================================================== -->
+
+    <section class="section">
+
+      <div class="container">
+
+
+        <div class="section-header">
+
+          <div>
+
+            <div class="section-label">
+              05 — Achievements
+            </div>
+
+            <h2 class="section-title">
+              Yang pernah saya kerjakan.
+            </h2>
+
+          </div>
+
+
+          <p class="section-description">
+
+            Pengalaman yang menunjukkan kemampuan
+            administrasi, koordinasi, pengelolaan data,
+            dan pemecahan masalah.
+
+          </p>
+
+        </div>
+
+
+        <div class="achievement-grid">
+
+
+          <article class="achievement-card">
+
+            <div class="achievement-number">
+              01
+            </div>
+
+            <h3>
+              Digitalisasi pekerjaan administrasi
+            </h3>
+
+            <p>
+
+              Membuat beberapa sistem sederhana untuk
+              mengubah proses manual menjadi proses digital
+              yang lebih terstruktur dan terdokumentasi.
+
+            </p>
+
+          </article>
+
+
+
+          <article class="achievement-card">
+
+            <div class="achievement-number">
+              02
+            </div>
+
+            <h3>
+              Koordinasi data 14 kecamatan
+            </h3>
+
+            <p>
+
+              Berpengalaman sebagai operator SIREKAP dan
+              mengelola koordinasi data dengan operator
+              dari 14 kecamatan.
+
+            </p>
+
+          </article>
+
+
+
+          <article class="achievement-card">
+
+            <div class="achievement-number">
+              03
+            </div>
+
+            <h3>
+              Pengelolaan data pendidikan
+            </h3>
+
+            <p>
+
+              Berpengalaman mengelola data pendidikan
+              dari sekitar 60 sekolah dan operator
+              pada wilayah kerja.
+
+            </p>
+
+          </article>
+
+
+
+          <article class="achievement-card">
+
+            <div class="achievement-number">
+              04
+            </div>
+
+            <h3>
+              Pengembangan SIDUMAS
+            </h3>
+
+            <p>
+
+              Membuat sistem pengaduan masyarakat untuk
+              membantu proses penyampaian, pencatatan,
+              pengelolaan, dan pemantauan pengaduan
+              secara digital.
+
+            </p>
+
+          </article>
+
+
+
+          <article class="achievement-card">
+
+            <div class="achievement-number">
+              05
+            </div>
+
+            <h3>
+              Pengembangan SIARTEKHUM
+            </h3>
+
+            <p>
+
+              Membuat sistem arsip digital untuk membantu
+              pencatatan, penyimpanan, dan pencarian arsip
+              Subbagian Teknis dan Hukum.
+
+            </p>
+
+          </article>
+
+
+
+          <article class="achievement-card">
+
+            <div class="achievement-number">
+              06
+            </div>
+
+            <h3>
+              Pengembangan SIPENA
+            </h3>
+
+            <p>
+
+              Membuat sistem pencatatan nomor arsip
+              secara otomatis dan berurutan untuk
+              surat keluar, surat tugas, SPPD,
+              dan berita acara.
+
+            </p>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         PRODUCTION / LIVE STREAMING
     ====================================================== -->
 
     <section
       class="section"
-      id="digital"
+      id="production"
     >
 
       <div class="container">
 
 
-        <div class="digital-card">
+        <div class="section-header">
 
+          <div>
 
-          <div class="section-label">
-            05 — Digital Experience
+            <div class="section-label">
+              06 — Production
+            </div>
+
+            <h2 class="section-title">
+              Live streaming & production.
+            </h2>
+
           </div>
 
 
-          <h3>
-            Dari pekerjaan manual menjadi solusi digital.
-          </h3>
+          <p class="section-description">
 
-
-          <p>
-
-            Salah satu hal yang paling saya sukai adalah
-            mencari cara agar pekerjaan yang sebelumnya
-            dilakukan secara manual dapat menjadi lebih
-            terstruktur, terdokumentasi, dan mudah digunakan.
-            Dari kebutuhan pekerjaan tersebut saya belajar
-            mengembangkan beberapa sistem sederhana
-            berbasis web.
+            Selain administrasi, saya memiliki pengalaman
+            menyiapkan dan mengoperasikan live streaming
+            berbagai kegiatan.
 
           </p>
 
+        </div>
 
-          <div class="digital-tags">
 
-            <span class="digital-tag">
-              Google Apps Script
-            </span>
+        <div class="production-box">
 
-            <span class="digital-tag">
-              Google Sheets
-            </span>
 
-            <span class="digital-tag">
-              Google Drive
-            </span>
+          <div class="production-intro">
 
-            <span class="digital-tag">
-              Google Sites
-            </span>
+            <h3>
+              Menyiapkan kegiatan dari belakang layar.
+            </h3>
 
-            <span class="digital-tag">
-              HTML
-            </span>
 
-            <span class="digital-tag">
-              CSS
-            </span>
+            <p>
 
-            <span class="digital-tag">
-              JavaScript
-            </span>
+              Berpengalaman menangani kebutuhan teknis
+              live streaming kegiatan KPU Kabupaten Karimun,
+              mulai dari kamera, audio, capture card,
+              OBS Studio, Zoom, hingga YouTube Studio.
+
+            </p>
 
           </div>
 
+
+          <div class="production-list">
+
+
+            <div class="production-item">
+              Rekapitulasi hasil perolehan suara Pemilu
+            </div>
+
+
+            <div class="production-item">
+              Rekapitulasi hasil perolehan suara Pilkada
+            </div>
+
+
+            <div class="production-item">
+              Pleno Terbuka PDPB
+            </div>
+
+
+            <div class="production-item">
+              Focus Group Discussion (FGD)
+            </div>
+
+
+            <div class="production-item">
+              Kegiatan Bedah Buku
+            </div>
+
+
+            <div class="production-item">
+              Zoom Meeting
+            </div>
+
+
+            <div class="production-item">
+              YouTube Live
+            </div>
+
+
+            <div class="production-item">
+              Setup kamera & capture card
+            </div>
+
+
+          </div>
 
         </div>
 
@@ -3947,104 +3891,16 @@
       <div class="container">
 
 
-        <div class="wimalab-box">
-
-
-          <div class="wimalab-content">
-
-
-            <div class="wimalab-label">
-              WIMA LAB
-            </div>
-
-
-            <h2 class="wimalab-title">
-              Dokumentasi project yang saya bangun.
-            </h2>
-
-
-            <p class="wimalab-text">
-
-              WIMA LAB adalah wadah dokumentasi berbagai
-              project dan solusi digital yang saya kembangkan.
-              Di dalamnya terdapat dokumentasi SIARTEKHUM,
-              SIDUMAS, SIPENA, serta project lainnya yang
-              akan dikembangkan.
-
-            </p>
-
-
-            <div class="wimalab-actions">
-
-
-              <!--
-                Tombol utama WIMA LAB menggunakan bagian
-                Projects di halaman ini karena project
-                di bawah ini mengambil data langsung dari
-                sistem WIMA LAB.
-              -->
-
-              <a
-                class="btn btn-primary"
-                href="#projects"
-              >
-
-                Explore WIMA LAB Projects
-
-                <span>
-                  ↓
-                </span>
-
-              </a>
-
-
-              <a
-                class="btn btn-secondary"
-                href="index.html"
-              >
-
-                Back to Website
-
-              </a>
-
-
-            </div>
-
-
-          </div>
-
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         FEATURED
-    ====================================================== -->
-
-    <section
-      class="section"
-      id="featured"
-    >
-
-      <div class="container">
-
-
         <div class="section-header">
-
 
           <div>
 
             <div class="section-label">
-              06 — Featured
+              07 — WIMA LAB
             </div>
 
             <h2 class="section-title">
-              Selected project.
+              Dokumentasi project.
             </h2>
 
           </div>
@@ -4052,51 +3908,68 @@
 
           <p class="section-description">
 
-            Project yang ditandai sebagai Featured
-            di sistem WIMA LAB akan tampil otomatis
-            di bagian ini.
-
-          </p>
-
-
-        </div>
-
-
-        <div
-          id="featuredWrapper"
-          class="featured-wrapper"
-        >
-
-          <div
-            id="featuredCard"
-            class="featured-card"
-          >
-
-            <!-- Filled by JavaScript -->
-
-          </div>
-
-        </div>
-
-
-        <div
-          id="featuredEmpty"
-          class="state"
-        >
-
-          <div class="state-title">
-            Belum ada featured project
-          </div>
-
-          <p class="state-text">
-
-            Project yang ditandai sebagai Featured
-            di database WIMA LAB akan muncul di sini.
+            WIMA LAB menjadi tempat dokumentasi project
+            dan sistem digital yang saya buat.
 
           </p>
 
         </div>
 
+
+        <div class="lab-box">
+
+
+          <h2>
+            From problems
+            to digital solutions.
+          </h2>
+
+
+          <p>
+
+            WIMA LAB adalah wadah dokumentasi hasil kerja
+            dan project yang saya bangun. Project seperti
+            SIARTEKHUM, SIDUMAS, dan SIPENA dikembangkan
+            untuk menyelesaikan kebutuhan nyata dalam
+            pekerjaan administrasi.
+
+          </p>
+
+
+          <div class="lab-actions">
+
+
+            <a
+              class="btn btn-primary"
+              href="wima-lab.html"
+            >
+
+              Explore WIMA LAB
+
+              <span>
+                ↗
+              </span>
+
+            </a>
+
+
+            <a
+              class="btn btn-secondary"
+              href="#projects"
+            >
+
+              Lihat Project
+
+              <span>
+                ↓
+              </span>
+
+            </a>
+
+
+          </div>
+
+        </div>
 
       </div>
 
@@ -4118,15 +3991,14 @@
 
         <div class="section-header">
 
-
           <div>
 
             <div class="section-label">
-              07 — WIMA LAB Projects
+              08 — Projects
             </div>
 
             <h2 class="section-title">
-              Things I've built.
+              Project yang saya bangun.
             </h2>
 
           </div>
@@ -4134,15 +4006,16 @@
 
           <p class="section-description">
 
-            Project di bawah ini tetap mengambil data
-            langsung dari sistem WIMA LAB yang sudah
-            Anda bangun.
+            Project diambil otomatis dari sistem WIMA LAB.
+            Project yang dipublikasikan melalui dashboard
+            akan muncul di halaman ini.
 
           </p>
 
-
         </div>
 
+
+        <!-- FILTER -->
 
         <div
           id="filters"
@@ -4159,6 +4032,8 @@
         </div>
 
 
+        <!-- LOADING -->
+
         <div
           id="loadingState"
           class="state"
@@ -4167,17 +4042,17 @@
           <div class="spinner"></div>
 
           <div class="state-title">
-            Memuat project WIMA LAB...
+            Memuat project...
           </div>
 
           <p class="state-text">
-
-            Mengambil project terbaru dari server.
-
+            Mengambil project terbaru dari WIMA LAB.
           </p>
 
         </div>
 
+
+        <!-- ERROR -->
 
         <div
           id="errorState"
@@ -4186,20 +4061,20 @@
         >
 
           <div class="state-title">
-            Portfolio belum dapat dimuat.
+            Project belum dapat dimuat.
           </div>
 
           <p
             id="errorMessage"
             class="state-text"
           >
-
             Terjadi kesalahan saat menghubungi server.
-
           </p>
 
         </div>
 
+
+        <!-- EMPTY -->
 
         <div
           id="emptyState"
@@ -4212,24 +4087,20 @@
           </div>
 
           <p class="state-text">
-
-            Project yang berstatus Published
-            akan muncul di sini.
-
+            Project yang berstatus Published akan
+            muncul di sini.
           </p>
 
         </div>
 
 
+        <!-- PROJECT GRID -->
+
         <div
           id="projectsGrid"
           class="projects-grid"
           style="display:none;"
-        >
-
-          <!-- Projects inserted here -->
-
-        </div>
+        ></div>
 
 
       </div>
@@ -4243,41 +4114,37 @@
     ====================================================== -->
 
     <section
-      class="cta"
+      class="section"
       id="contact"
     >
 
       <div class="container">
 
 
-        <div class="cta-box">
+        <div class="contact-box">
 
 
-          <div class="cta-label">
-            Let's work together
+          <div class="section-label">
+            09 — Contact
           </div>
 
 
-          <h2 class="cta-title">
-
-            Looking for someone
-            who can make things work?
-
+          <h2>
+            Mari terhubung.
           </h2>
 
 
-          <p class="cta-text">
+          <p>
 
-            Saya terbuka untuk kesempatan kerja,
-            pekerjaan administrasi, digital support,
-            pengolahan data, maupun pekerjaan lain
-            yang membutuhkan ketelitian, kemauan belajar,
-            dan kemampuan menyelesaikan masalah.
+            Terbuka untuk peluang kerja, project,
+            pekerjaan administrasi, digitalisasi,
+            pengelolaan data, maupun pekerjaan lain
+            yang sesuai dengan kemampuan dan pengalaman.
 
           </p>
 
 
-          <div class="cta-actions">
+          <div class="contact-actions">
 
 
             <a
@@ -4322,9 +4189,7 @@
 
           </div>
 
-
         </div>
-
 
       </div>
 
@@ -4359,37 +4224,22 @@
 
         <div class="footer-links">
 
-
           <a href="index.html">
             Home
           </a>
 
-
-          <a href="#about">
-            About
-          </a>
-
-
-          <a href="#experience">
-            Experience
-          </a>
-
-
-          <a href="#projects">
+          <a href="wima-lab.html">
             WIMA LAB
           </a>
-
 
           <a href="#top">
             Back to top ↑
           </a>
 
-
         </div>
 
 
       </div>
-
 
     </div>
 
@@ -4405,16 +4255,16 @@
 
 
     /* =======================================================
-       WIMA LAB API
-       ======================================================= */
+       CONFIGURATION
+    ======================================================== */
 
     const API_URL =
       'https://script.google.com/macros/s/AKfycbxB3uKiZSW7iC-VO0CwyOXyhWl6f4xi1D8m9RLkRCorSv3mqT8Di0cAGh4BRuuRarV76g/exec';
 
 
     /* =======================================================
-       GLOBAL STATE
-    ======================================================= */
+       STATE
+    ======================================================== */
 
     let allProjects = [];
 
@@ -4423,47 +4273,28 @@
 
     /* =======================================================
        DOM
-    ======================================================= */
+    ======================================================== */
 
     const navbar =
       document.getElementById('navbar');
 
-
     const loadingState =
       document.getElementById('loadingState');
-
 
     const errorState =
       document.getElementById('errorState');
 
-
     const errorMessage =
       document.getElementById('errorMessage');
-
 
     const emptyState =
       document.getElementById('emptyState');
 
-
     const projectsGrid =
       document.getElementById('projectsGrid');
 
-
     const filtersContainer =
       document.getElementById('filters');
-
-
-    const featuredWrapper =
-      document.getElementById('featuredWrapper');
-
-
-    const featuredCard =
-      document.getElementById('featuredCard');
-
-
-    const featuredEmpty =
-      document.getElementById('featuredEmpty');
-
 
     const yearElement =
       document.getElementById('year');
@@ -4471,7 +4302,7 @@
 
     /* =======================================================
        YEAR
-    ======================================================= */
+    ======================================================== */
 
     yearElement.textContent =
       new Date().getFullYear();
@@ -4479,7 +4310,7 @@
 
     /* =======================================================
        NAVBAR SCROLL
-    ======================================================= */
+    ======================================================== */
 
     window.addEventListener(
       'scroll',
@@ -4508,7 +4339,7 @@
 
     /* =======================================================
        ESCAPE HTML
-    ======================================================= */
+    ======================================================== */
 
     function escapeHtml(value) {
 
@@ -4518,44 +4349,42 @@
           : value
       )
 
-        .replace(
-          /&/g,
-          '&amp;'
-        )
+      .replace(
+        /&/g,
+        '&amp;'
+      )
 
-        .replace(
-          /</g,
-          '&lt;'
-        )
+      .replace(
+        /</g,
+        '&lt;'
+      )
 
-        .replace(
-          />/g,
-          '&gt;'
-        )
+      .replace(
+        />/g,
+        '&gt;'
+      )
 
-        .replace(
-          /"/g,
-          '&quot;'
-        )
+      .replace(
+        /"/g,
+        '&quot;'
+      )
 
-        .replace(
-          /'/g,
-          '&#039;'
-        );
+      .replace(
+        /'/g,
+        '&#039;'
+      );
 
     }
 
 
     /* =======================================================
-       URL SAFETY
-    ======================================================= */
+       SAFE URL
+    ======================================================== */
 
     function safeUrl(value) {
 
       if (!value) {
-
         return '';
-
       }
 
 
@@ -4564,9 +4393,7 @@
 
 
       if (!url) {
-
         return '';
-
       }
 
 
@@ -4580,11 +4407,8 @@
 
 
         if (
-
           parsed.protocol === 'http:' ||
-
           parsed.protocol === 'https:'
-
         ) {
 
           return parsed.href;
@@ -4610,16 +4434,13 @@
 
     /* =======================================================
        IMAGE URL
-    ======================================================= */
+    ======================================================== */
 
     function getImageUrl(project) {
 
       if (
-
         project &&
-
         project.imageUrl
-
       ) {
 
         return safeUrl(
@@ -4628,15 +4449,59 @@
 
       }
 
-
       return '';
 
     }
 
 
     /* =======================================================
+       SHOW LOADING
+    ======================================================== */
+
+    function showLoading() {
+
+      loadingState.style.display =
+        'block';
+
+      errorState.style.display =
+        'none';
+
+      emptyState.style.display =
+        'none';
+
+      projectsGrid.style.display =
+        'none';
+
+    }
+
+
+    /* =======================================================
+       SHOW ERROR
+    ======================================================== */
+
+    function showError(message) {
+
+      loadingState.style.display =
+        'none';
+
+      projectsGrid.style.display =
+        'none';
+
+      emptyState.style.display =
+        'none';
+
+      errorState.style.display =
+        'block';
+
+      errorMessage.textContent =
+        message;
+
+    }
+
+
+    /* =======================================================
        LOAD PROJECTS
-    ======================================================= */
+    ======================================================== */
 
     function loadProjects() {
 
@@ -4653,9 +4518,7 @@
 
 
       const script =
-        document.createElement(
-          'script'
-        );
+        document.createElement('script');
 
 
       let finished = false;
@@ -4664,9 +4527,7 @@
       function cleanup() {
 
         if (finished) {
-
           return;
-
         }
 
 
@@ -4685,11 +4546,8 @@
 
 
         if (
-
           script &&
-
           script.parentNode
-
         ) {
 
           script.parentNode.removeChild(
@@ -4740,9 +4598,7 @@
 
       document
         .head
-        .appendChild(
-          script
-        );
+        .appendChild(script);
 
 
       setTimeout(
@@ -4767,31 +4623,23 @@
 
 
     /* =======================================================
-       HANDLE API RESPONSE
-    ======================================================= */
+       HANDLE RESPONSE
+    ======================================================== */
 
     function handleProjectsResponse(
       response
     ) {
 
       if (
-
         !response ||
-
         response.success !== true
-
       ) {
 
         showError(
-
           response &&
-
           response.message
-
             ? response.message
-
-            : 'Data portfolio tidak valid.'
-
+            : 'Data project tidak valid.'
         );
 
         return;
@@ -4800,15 +4648,13 @@
 
 
       if (
-
         !Array.isArray(
           response.data
         )
-
       ) {
 
         showError(
-          'Format data portfolio tidak sesuai.'
+          'Format data project tidak sesuai.'
         );
 
         return;
@@ -4823,7 +4669,6 @@
       allProjects.sort(
         function (a, b) {
 
-
           const featuredA =
             a.featured === true
               ? 1
@@ -4837,10 +4682,8 @@
 
 
           if (
-
             featuredA !==
             featuredB
-
           ) {
 
             return (
@@ -4868,10 +4711,9 @@
       );
 
 
-      hideLoading();
+      loadingState.style.display =
+        'none';
 
-
-      renderFeatured();
 
       renderFilters();
 
@@ -4881,448 +4723,31 @@
 
 
     /* =======================================================
-       LOADING
-    ======================================================= */
-
-    function showLoading() {
-
-      loadingState.style.display =
-        'block';
-
-
-      errorState.style.display =
-        'none';
-
-
-      emptyState.style.display =
-        'none';
-
-
-      projectsGrid.style.display =
-        'none';
-
-    }
-
-
-    function hideLoading() {
-
-      loadingState.style.display =
-        'none';
-
-    }
-
-
-    /* =======================================================
-       ERROR
-    ======================================================= */
-
-    function showError(
-      message
-    ) {
-
-      loadingState.style.display =
-        'none';
-
-
-      projectsGrid.style.display =
-        'none';
-
-
-      emptyState.style.display =
-        'none';
-
-
-      errorState.style.display =
-        'block';
-
-
-      errorMessage.textContent =
-        message;
-
-    }
-
-
-    /* =======================================================
-       FEATURED PROJECT
-    ======================================================= */
-
-    function renderFeatured() {
-
-      const featuredProjects =
-        allProjects.filter(
-          function (project) {
-
-            return (
-              project.featured === true
-            );
-
-          }
-        );
-
-
-      if (
-
-        featuredProjects.length === 0
-
-      ) {
-
-        featuredWrapper.classList.remove(
-          'visible'
-        );
-
-
-        featuredEmpty.style.display =
-          'block';
-
-
-        return;
-
-      }
-
-
-      const project =
-        featuredProjects[0];
-
-
-      featuredEmpty.style.display =
-        'none';
-
-
-      featuredWrapper.classList.add(
-        'visible'
-      );
-
-
-      const imageUrl =
-        getImageUrl(
-          project
-        );
-
-
-      const technologies =
-        Array.isArray(
-          project.technologies
-        )
-          ? project.technologies
-          : [];
-
-
-      const technologyHtml =
-        technologies
-
-          .slice(0, 8)
-
-          .map(
-            function (technology) {
-
-              return `
-
-                <span class="technology">
-
-                  ${escapeHtml(
-                    technology
-                  )}
-
-                </span>
-
-              `;
-
-            }
-          )
-
-          .join('');
-
-
-      const imageHtml =
-        imageUrl
-
-          ? `
-
-            <img
-              class="featured-image"
-              src="${escapeHtml(imageUrl)}"
-              alt="${escapeHtml(project.title || 'Project')}"
-              loading="eager"
-              onerror="
-                this.style.display='none';
-                this.nextElementSibling.style.display='grid';
-              "
-            >
-
-            <div
-              class="featured-placeholder"
-              style="display:none;"
-            >
-              Image unavailable
-            </div>
-
-          `
-
-          : `
-
-            <div
-              class="featured-placeholder"
-            >
-              No image
-            </div>
-
-          `;
-
-
-      const demoUrl =
-        safeUrl(
-          project.demoUrl
-        );
-
-
-      const githubUrl =
-        safeUrl(
-          project.githubUrl
-        );
-
-
-      const actionsHtml = [];
-
-
-      if (demoUrl) {
-
-        actionsHtml.push(`
-
-          <a
-            class="btn btn-primary"
-            href="${escapeHtml(demoUrl)}"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-
-            View WIMA LAB Project
-
-            <span>
-              ↗
-            </span>
-
-          </a>
-
-        `);
-
-      }
-
-
-      if (githubUrl) {
-
-        actionsHtml.push(`
-
-          <a
-            class="btn btn-secondary"
-            href="${escapeHtml(githubUrl)}"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-
-            GitHub
-
-            <span>
-              ↗
-            </span>
-
-          </a>
-
-        `);
-
-      }
-
-
-      if (
-        actionsHtml.length === 0
-      ) {
-
-        actionsHtml.push(`
-
-          <span
-            class="btn btn-secondary"
-            style="
-              opacity:.5;
-              cursor:default;
-            "
-          >
-
-            Project
-
-          </span>
-
-        `);
-
-      }
-
-
-      featuredCard.innerHTML = `
-
-        <div
-          class="featured-image-wrap"
-        >
-
-          ${imageHtml}
-
-        </div>
-
-
-        <div
-          class="featured-content"
-        >
-
-
-          <div
-            class="featured-badge"
-          >
-            Featured Project
-          </div>
-
-
-          <h3>
-
-            ${escapeHtml(
-              project.title ||
-              'Untitled Project'
-            )}
-
-          </h3>
-
-
-          <div
-            class="featured-meta"
-          >
-
-            ${
-              project.category
-
-                ? `
-
-                  <span>
-
-                    ${escapeHtml(
-                      project.category
-                    )}
-
-                  </span>
-
-                `
-
-                : ''
-            }
-
-
-            ${
-              project.category &&
-              project.year
-
-                ? `
-
-                  <span
-                    class="featured-meta-separator"
-                  >
-                    •
-                  </span>
-
-                `
-
-                : ''
-            }
-
-
-            ${
-              project.year
-
-                ? `
-
-                  <span>
-
-                    ${escapeHtml(
-                      project.year
-                    )}
-
-                  </span>
-
-                `
-
-                : ''
-            }
-
-          </div>
-
-
-          <p
-            class="featured-description"
-          >
-
-            ${escapeHtml(
-              project.description ||
-              'Project digital yang saya bangun.'
-            )}
-
-          </p>
-
-
-          ${
-            technologyHtml
-
-              ? `
-
-                <div
-                  class="technology-list"
-                >
-
-                  ${technologyHtml}
-
-                </div>
-
-              `
-
-              : ''
-          }
-
-
-          <div
-            class="featured-actions"
-          >
-
-            ${actionsHtml.join('')}
-
-          </div>
-
-
-        </div>
-
-      `;
-
-    }
-
-
-    /* =======================================================
        FILTERS
-    ======================================================= */
+    ======================================================== */
 
     function renderFilters() {
 
       const categories =
         allProjects
 
-          .map(
-            function (project) {
+        .map(
+          function (project) {
 
-              return String(
-                project.category || ''
-              ).trim();
+            return String(
+              project.category || ''
+            ).trim();
 
-            }
-          )
+          }
+        )
 
-          .filter(
-            function (category) {
+        .filter(
+          function (category) {
 
-              return category !== '';
+            return category !== '';
 
-            }
-          );
+          }
+        );
 
 
       const uniqueCategories =
@@ -5340,10 +4765,8 @@
           ALL
         </button>
 
-
         ${
           uniqueCategories
-
             .map(
               function (category) {
 
@@ -5353,18 +4776,15 @@
                     class="filter-btn"
                     data-filter="${escapeHtml(category)}"
                   >
-
                     ${escapeHtml(
                       category
                     ).toUpperCase()}
-
                   </button>
 
                 `;
 
               }
             )
-
             .join('')
         }
 
@@ -5378,11 +4798,9 @@
         .forEach(
           function (button) {
 
-
             button.addEventListener(
               'click',
               function () {
-
 
                 filtersContainer
                   .querySelectorAll(
@@ -5420,8 +4838,8 @@
 
 
     /* =======================================================
-       PROJECTS
-    ======================================================= */
+       RENDER PROJECTS
+    ======================================================== */
 
     function renderProjects() {
 
@@ -5438,19 +4856,13 @@
             function (project) {
 
               return (
-
                 String(
                   project.category || ''
-                )
-                .toLowerCase()
-
+                ).toLowerCase()
                 ===
-
                 String(
                   activeFilter
-                )
-                .toLowerCase()
-
+                ).toLowerCase()
               );
 
             }
@@ -5466,10 +4878,8 @@
         projectsGrid.style.display =
           'none';
 
-
         emptyState.style.display =
           'block';
-
 
         return;
 
@@ -5482,7 +4892,6 @@
 
         projectsGrid.style.display =
           'none';
-
 
         emptyState.style.display =
           'block';
@@ -5515,7 +4924,6 @@
 
       projectsGrid.innerHTML =
         projects
-
           .map(
             function (project, index) {
 
@@ -5526,7 +4934,6 @@
 
             }
           )
-
           .join('');
 
     }
@@ -5534,7 +4941,7 @@
 
     /* =======================================================
        PROJECT CARD
-    ======================================================= */
+    ======================================================== */
 
     function createProjectCard(
       project,
@@ -5542,9 +4949,7 @@
     ) {
 
       const imageUrl =
-        getImageUrl(
-          project
-        );
+        getImageUrl(project);
 
 
       const technologies =
@@ -5557,27 +4962,22 @@
 
       const technologyHtml =
         technologies
-
-          .slice(0, 6)
-
+          .slice(0, 8)
           .map(
             function (technology) {
 
               return `
 
                 <span>
-
                   ${escapeHtml(
                     technology
                   )}
-
                 </span>
 
               `;
 
             }
           )
-
           .join('');
 
 
@@ -5589,7 +4989,10 @@
             <img
               class="project-image"
               src="${escapeHtml(imageUrl)}"
-              alt="${escapeHtml(project.title || 'Project')}"
+              alt="${escapeHtml(
+                project.title ||
+                'Project'
+              )}"
               loading="lazy"
               onerror="
                 this.style.display='none';
@@ -5608,9 +5011,7 @@
 
           : `
 
-            <div
-              class="project-placeholder"
-            >
+            <div class="project-placeholder">
               No image
             </div>
 
@@ -5643,7 +5044,7 @@
             rel="noopener noreferrer"
           >
 
-            View WIMA LAB
+            View Project
 
             <span>
               ↗
@@ -5691,45 +5092,33 @@
         >
 
 
-          <div
-            class="project-image-wrap"
-          >
+          <div class="project-image-wrap">
 
             ${imageHtml}
 
 
             ${
               project.featured === true
-
                 ? `
 
-                  <div
-                    class="project-featured-label"
-                  >
+                  <div class="project-featured">
                     Featured
                   </div>
 
                 `
-
                 : ''
-
             }
 
           </div>
 
 
-          <div
-            class="project-content"
-          >
+
+          <div class="project-content">
 
 
-            <div
-              class="project-top"
-            >
+            <div class="project-top">
 
-              <span
-                class="project-category"
-              >
+              <span class="project-category">
 
                 ${
                   escapeHtml(
@@ -5743,50 +5132,46 @@
 
               ${
                 project.year
-
                   ? `
 
-                    <span
-                      class="project-year"
-                    >
-
+                    <span class="project-year">
                       ${escapeHtml(
                         project.year
                       )}
-
                     </span>
 
                   `
-
                   : ''
-
               }
 
             </div>
 
 
-            <h3
-              class="project-title"
-            >
 
-              ${escapeHtml(
-                project.title ||
-                'Untitled Project'
-              )}
+            <h3 class="project-title">
+
+              ${
+                escapeHtml(
+                  project.title ||
+                  'Untitled Project'
+                )
+              }
 
             </h3>
 
 
-            <p
-              class="project-description"
-            >
 
-              ${escapeHtml(
-                project.description ||
-                'Project digital.'
-              )}
+            <p class="project-description">
+
+              ${
+                escapeHtml(
+                  project.description ||
+                  'Project digital.'
+                )
+              }
 
             </p>
+
 
 
             ${
@@ -5794,9 +5179,7 @@
 
                 ? `
 
-                  <div
-                    class="project-tech"
-                  >
+                  <div class="project-tech">
 
                     ${technologyHtml}
 
@@ -5805,8 +5188,8 @@
                 `
 
                 : ''
-
             }
+
 
 
             ${
@@ -5814,9 +5197,7 @@
 
                 ? `
 
-                  <div
-                    class="project-actions"
-                  >
+                  <div class="project-actions">
 
                     ${actionsHtml}
 
@@ -5825,12 +5206,10 @@
                 `
 
                 : ''
-
             }
 
 
           </div>
-
 
         </article>
 
@@ -5841,7 +5220,7 @@
 
     /* =======================================================
        START
-    ======================================================= */
+    ======================================================== */
 
     document.addEventListener(
       'DOMContentLoaded',
@@ -5854,6 +5233,7 @@
 
 
   </script>
+
 
 </body>
 </html>
