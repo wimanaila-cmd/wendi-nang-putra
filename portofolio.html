@@ -1,0 +1,2989 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Portfolio — Wendi Nang Putra</title>
+
+  <meta
+    name="description"
+    content="Portfolio Wendi Nang Putra — selected projects, digital solutions, creativity and technology."
+  >
+
+  <meta name="theme-color" content="#08090c">
+
+  <style>
+    /* =========================================================
+       RESET
+    ========================================================= */
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      background: #08090c;
+      color: #f4f4f5;
+
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    ::selection {
+      background: #ffffff;
+      color: #08090c;
+    }
+
+
+    /* =========================================================
+       VARIABLES
+    ========================================================= */
+
+    :root {
+      --bg: #08090c;
+      --bg-soft: #0d0f13;
+      --surface: #111318;
+      --surface-2: #171920;
+
+      --text: #f4f4f5;
+      --text-soft: #a1a1aa;
+      --text-muted: #71717a;
+
+      --border: rgba(255, 255, 255, 0.09);
+      --border-hover: rgba(255, 255, 255, 0.18);
+
+      --max-width: 1180px;
+
+      --radius-sm: 10px;
+      --radius-md: 18px;
+      --radius-lg: 28px;
+
+      --transition:
+        0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+
+    /* =========================================================
+       BACKGROUND
+    ========================================================= */
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+
+      pointer-events: none;
+      z-index: -2;
+
+      background:
+        radial-gradient(
+          circle at 15% 15%,
+          rgba(255, 255, 255, 0.045),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 85% 35%,
+          rgba(255, 255, 255, 0.035),
+          transparent 28%
+        );
+    }
+
+    body::after {
+      content: "";
+
+      position: fixed;
+      inset: 0;
+
+      pointer-events: none;
+      z-index: -1;
+
+      opacity: 0.025;
+
+      background-image:
+        linear-gradient(
+          rgba(255, 255, 255, 0.5) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.5) 1px,
+          transparent 1px
+        );
+
+      background-size: 60px 60px;
+
+      mask-image:
+        linear-gradient(
+          to bottom,
+          black,
+          transparent 80%
+        );
+    }
+
+
+    /* =========================================================
+       CONTAINER
+    ========================================================= */
+
+    .container {
+      width: min(
+        calc(100% - 40px),
+        var(--max-width)
+      );
+
+      margin-inline: auto;
+    }
+
+
+    /* =========================================================
+       NAVBAR
+    ========================================================= */
+
+    .navbar {
+      position: fixed;
+
+      top: 0;
+      left: 0;
+      right: 0;
+
+      z-index: 1000;
+
+      height: 78px;
+
+      display: flex;
+      align-items: center;
+
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(8, 9, 12, 0.92),
+          rgba(8, 9, 12, 0.68)
+        );
+
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+
+      border-bottom: 1px solid transparent;
+
+      transition: var(--transition);
+    }
+
+    .navbar.scrolled {
+      border-bottom-color: var(--border);
+    }
+
+    .nav-inner {
+      width: min(
+        calc(100% - 40px),
+        var(--max-width)
+      );
+
+      margin-inline: auto;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+
+      font-size: 15px;
+      font-weight: 750;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-mark {
+      width: 31px;
+      height: 31px;
+
+      display: grid;
+      place-items: center;
+
+      border: 1px solid var(--border);
+      border-radius: 9px;
+
+      font-size: 12px;
+      font-weight: 800;
+
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      color: var(--text-soft);
+
+      font-size: 13px;
+      font-weight: 600;
+
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+    }
+
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      padding: 9px 14px;
+
+      border: 1px solid var(--border);
+      border-radius: 999px;
+
+      font-size: 12px;
+      font-weight: 650;
+
+      color: var(--text-soft);
+
+      transition: var(--transition);
+    }
+
+    .nav-back:hover {
+      color: var(--text);
+      border-color: var(--border-hover);
+      background: rgba(255, 255, 255, 0.04);
+      transform: translateY(-1px);
+    }
+
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    .hero {
+      min-height: 86vh;
+
+      padding-top: 160px;
+      padding-bottom: 110px;
+
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      margin-bottom: 26px;
+
+      color: var(--text-soft);
+
+      font-size: 12px;
+      font-weight: 700;
+
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background: #f4f4f5;
+
+      box-shadow:
+        0 0 0 5px rgba(255, 255, 255, 0.06);
+    }
+
+    .hero h1 {
+      max-width: 900px;
+
+      font-size:
+        clamp(
+          48px,
+          8vw,
+          92px
+        );
+
+      line-height: 0.98;
+
+      letter-spacing: -0.065em;
+
+      font-weight: 800;
+    }
+
+    .hero h1 span {
+      color: var(--text-muted);
+    }
+
+    .hero-description {
+      max-width: 650px;
+
+      margin-top: 30px;
+
+      color: var(--text-soft);
+
+      font-size:
+        clamp(
+          16px,
+          2vw,
+          19px
+        );
+
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+
+      margin-top: 38px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+
+      min-height: 48px;
+
+      padding: 0 20px;
+
+      border-radius: 999px;
+
+      border: 1px solid var(--border);
+
+      font-size: 13px;
+      font-weight: 700;
+
+      transition: var(--transition);
+    }
+
+    .btn-primary {
+      background: var(--text);
+      color: var(--bg);
+
+      border-color: var(--text);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.35);
+    }
+
+    .btn-secondary {
+      color: var(--text-soft);
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    .btn-secondary:hover {
+      color: var(--text);
+      border-color: var(--border-hover);
+      background: rgba(255, 255, 255, 0.055);
+      transform: translateY(-2px);
+    }
+
+
+    /* =========================================================
+       SECTION
+    ========================================================= */
+
+    .section {
+      padding: 100px 0;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+
+      gap: 30px;
+
+      margin-bottom: 45px;
+    }
+
+    .section-label {
+      margin-bottom: 10px;
+
+      color: var(--text-muted);
+
+      font-size: 11px;
+      font-weight: 800;
+
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      font-size:
+        clamp(
+          30px,
+          4vw,
+          48px
+        );
+
+      line-height: 1.05;
+
+      letter-spacing: -0.045em;
+      font-weight: 780;
+    }
+
+    .section-description {
+      max-width: 480px;
+
+      color: var(--text-soft);
+
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+
+    /* =========================================================
+       FEATURED PROJECT
+    ========================================================= */
+
+    .featured-wrapper {
+      display: none;
+    }
+
+    .featured-wrapper.visible {
+      display: block;
+    }
+
+    .featured-card {
+      position: relative;
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1.15fr)
+        minmax(340px, 0.85fr);
+
+      min-height: 540px;
+
+      overflow: hidden;
+
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,0.055),
+          rgba(255,255,255,0.012)
+        );
+
+      transition: var(--transition);
+    }
+
+    .featured-card:hover {
+      border-color: var(--border-hover);
+    }
+
+    .featured-image-wrap {
+      position: relative;
+
+      min-height: 540px;
+
+      overflow: hidden;
+
+      background: #101116;
+    }
+
+    .featured-image-wrap::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent 55%,
+          rgba(8, 9, 12, 0.55)
+        );
+    }
+
+    .featured-image {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      transition:
+        transform 0.8s
+        cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .featured-card:hover .featured-image {
+      transform: scale(1.035);
+    }
+
+    .featured-placeholder {
+      width: 100%;
+      height: 100%;
+
+      min-height: 540px;
+
+      display: grid;
+      place-items: center;
+
+      color: var(--text-muted);
+
+      font-size: 13px;
+
+      background:
+        radial-gradient(
+          circle at center,
+          #1b1d24,
+          #0e0f13 65%
+        );
+    }
+
+    .featured-content {
+      position: relative;
+      z-index: 2;
+
+      padding: 55px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .featured-badge {
+      display: inline-flex;
+      align-self: flex-start;
+
+      padding: 7px 11px;
+
+      margin-bottom: 25px;
+
+      border: 1px solid var(--border);
+      border-radius: 999px;
+
+      color: var(--text-soft);
+
+      font-size: 10px;
+      font-weight: 800;
+
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .featured-content h3 {
+      font-size:
+        clamp(
+          32px,
+          4vw,
+          56px
+        );
+
+      line-height: 1;
+
+      letter-spacing: -0.055em;
+      font-weight: 800;
+    }
+
+    .featured-meta {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+
+      margin-top: 18px;
+
+      color: var(--text-muted);
+
+      font-size: 12px;
+    }
+
+    .featured-meta-separator {
+      opacity: 0.5;
+    }
+
+    .featured-description {
+      margin-top: 26px;
+
+      color: var(--text-soft);
+
+      font-size: 14px;
+      line-height: 1.8;
+
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .technology-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+
+      margin-top: 25px;
+    }
+
+    .technology {
+      padding: 6px 10px;
+
+      border: 1px solid var(--border);
+      border-radius: 999px;
+
+      color: var(--text-muted);
+
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .featured-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+
+      margin-top: 32px;
+    }
+
+
+    /* =========================================================
+       FILTER
+    ========================================================= */
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+
+      margin-bottom: 35px;
+    }
+
+    .filter-btn {
+      cursor: pointer;
+
+      padding: 9px 15px;
+
+      border: 1px solid var(--border);
+      border-radius: 999px;
+
+      background: transparent;
+
+      color: var(--text-muted);
+
+      font-size: 11px;
+      font-weight: 750;
+
+      transition: var(--transition);
+    }
+
+    .filter-btn:hover {
+      color: var(--text);
+      border-color: var(--border-hover);
+    }
+
+    .filter-btn.active {
+      color: var(--bg);
+      background: var(--text);
+      border-color: var(--text);
+    }
+
+
+    /* =========================================================
+       PROJECT GRID
+    ========================================================= */
+
+    .projects-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          2,
+          minmax(0, 1fr)
+        );
+
+      gap: 22px;
+    }
+
+    .project-card {
+      overflow: hidden;
+
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+
+      background: var(--surface);
+
+      transition:
+        transform var(--transition),
+        border-color var(--transition),
+        background var(--transition);
+
+      animation:
+        cardIn 0.55s
+        cubic-bezier(0.22, 1, 0.36, 1)
+        both;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--border-hover);
+
+      background: var(--surface-2);
+    }
+
+    .project-image-wrap {
+      position: relative;
+
+      aspect-ratio: 16 / 10;
+
+      overflow: hidden;
+
+      background: #0e0f13;
+    }
+
+    .project-image {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      transition:
+        transform 0.7s
+        cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .project-card:hover .project-image {
+      transform: scale(1.045);
+    }
+
+    .project-placeholder {
+      width: 100%;
+      height: 100%;
+
+      display: grid;
+      place-items: center;
+
+      color: var(--text-muted);
+
+      font-size: 12px;
+
+      background:
+        radial-gradient(
+          circle at center,
+          #1a1c22,
+          #0c0d10 70%
+        );
+    }
+
+    .project-featured-label {
+      position: absolute;
+
+      top: 14px;
+      left: 14px;
+
+      padding: 6px 9px;
+
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 999px;
+
+      color: #fff;
+
+      background: rgba(0,0,0,0.55);
+
+      backdrop-filter: blur(10px);
+
+      font-size: 9px;
+      font-weight: 800;
+
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .project-content {
+      padding: 25px;
+    }
+
+    .project-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 15px;
+
+      margin-bottom: 10px;
+    }
+
+    .project-category {
+      color: var(--text-muted);
+
+      font-size: 10px;
+      font-weight: 800;
+
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .project-year {
+      color: var(--text-muted);
+
+      font-size: 11px;
+    }
+
+    .project-title {
+      font-size: 24px;
+
+      line-height: 1.1;
+
+      letter-spacing: -0.035em;
+
+      font-weight: 760;
+    }
+
+    .project-description {
+      margin-top: 12px;
+
+      color: var(--text-soft);
+
+      font-size: 13px;
+      line-height: 1.7;
+
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+
+      margin-top: 18px;
+    }
+
+    .project-tech span {
+      padding: 5px 8px;
+
+      border-radius: 6px;
+
+      background: rgba(255,255,255,0.045);
+
+      color: var(--text-muted);
+
+      font-size: 9px;
+      font-weight: 700;
+    }
+
+    .project-actions {
+      display: flex;
+      gap: 8px;
+
+      margin-top: 22px;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+
+      padding: 9px 13px;
+
+      border: 1px solid var(--border);
+      border-radius: 8px;
+
+      color: var(--text-soft);
+
+      font-size: 11px;
+      font-weight: 750;
+
+      transition: var(--transition);
+    }
+
+    .project-link:hover {
+      color: var(--text);
+      border-color: var(--border-hover);
+      background: rgba(255,255,255,0.04);
+    }
+
+
+    /* =========================================================
+       EMPTY / LOADING
+    ========================================================= */
+
+    .state {
+      padding: 70px 20px;
+
+      text-align: center;
+
+      border: 1px dashed var(--border);
+      border-radius: var(--radius-md);
+
+      color: var(--text-muted);
+    }
+
+    .state-title {
+      color: var(--text-soft);
+
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .state-text {
+      max-width: 500px;
+
+      margin: 8px auto 0;
+
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .spinner {
+      width: 30px;
+      height: 30px;
+
+      margin: 0 auto 18px;
+
+      border:
+        2px solid
+        rgba(255,255,255,0.1);
+
+      border-top-color: var(--text);
+
+      border-radius: 50%;
+
+      animation:
+        spin 0.8s linear infinite;
+    }
+
+
+    /* =========================================================
+       CTA
+    ========================================================= */
+
+    .cta {
+      padding:
+        130px 0
+        150px;
+    }
+
+    .cta-box {
+      position: relative;
+
+      overflow: hidden;
+
+      padding:
+        75px 50px;
+
+      text-align: center;
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius:
+        var(--radius-lg);
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(255,255,255,0.055),
+          rgba(255,255,255,0.012) 55%
+        );
+    }
+
+    .cta-box::before {
+      content: "";
+
+      position: absolute;
+
+      width: 400px;
+      height: 400px;
+
+      left: 50%;
+      top: 50%;
+
+      transform:
+        translate(-50%, -50%);
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(255,255,255,0.055),
+          transparent 65%
+        );
+
+      pointer-events: none;
+    }
+
+    .cta-box > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-label {
+      color: var(--text-muted);
+
+      font-size: 11px;
+      font-weight: 800;
+
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .cta-title {
+      max-width: 700px;
+
+      margin: 18px auto 0;
+
+      font-size:
+        clamp(
+          38px,
+          6vw,
+          70px
+        );
+
+      line-height: 1;
+
+      letter-spacing: -0.055em;
+
+      font-weight: 800;
+    }
+
+    .cta-text {
+      max-width: 550px;
+
+      margin: 22px auto 0;
+
+      color: var(--text-soft);
+
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .cta-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      gap: 10px;
+
+      margin-top: 30px;
+    }
+
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    footer {
+      padding:
+        30px 0
+        45px;
+
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 20px;
+    }
+
+    .footer-copy {
+      color: var(--text-muted);
+
+      font-size: 11px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+
+      font-size: 11px;
+      font-weight: 650;
+
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--text);
+    }
+
+
+    /* =========================================================
+       ANIMATION
+    ========================================================= */
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes cardIn {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+
+    @media (max-width: 900px) {
+
+      .featured-card {
+        grid-template-columns: 1fr;
+      }
+
+      .featured-image-wrap {
+        min-height: 400px;
+      }
+
+      .featured-placeholder {
+        min-height: 400px;
+      }
+
+      .featured-content {
+        padding: 38px;
+      }
+
+    }
+
+
+    @media (max-width: 700px) {
+
+      .container {
+        width:
+          min(
+            calc(100% - 28px),
+            var(--max-width)
+          );
+      }
+
+      .navbar {
+        height: 68px;
+      }
+
+      .nav-inner {
+        width:
+          min(
+            calc(100% - 28px),
+            var(--max-width)
+          );
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .brand {
+        font-size: 14px;
+      }
+
+      .hero {
+        min-height: auto;
+
+        padding-top: 130px;
+        padding-bottom: 80px;
+      }
+
+      .hero h1 {
+        font-size:
+          clamp(
+            48px,
+            14vw,
+            72px
+          );
+      }
+
+      .hero-description {
+        font-size: 15px;
+      }
+
+      .section {
+        padding: 75px 0;
+      }
+
+      .section-header {
+        display: block;
+        margin-bottom: 30px;
+      }
+
+      .section-description {
+        margin-top: 15px;
+      }
+
+      .featured-image-wrap {
+        min-height: 280px;
+      }
+
+      .featured-placeholder {
+        min-height: 280px;
+      }
+
+      .featured-content {
+        padding: 28px 24px 30px;
+      }
+
+      .featured-content h3 {
+        font-size: 38px;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-content {
+        padding: 21px;
+      }
+
+      .project-title {
+        font-size: 22px;
+      }
+
+      .cta {
+        padding:
+          80px 0
+          100px;
+      }
+
+      .cta-box {
+        padding:
+          55px 24px;
+      }
+
+      .cta-title {
+        font-size: 43px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+    }
+
+
+    @media (prefers-reduced-motion: reduce) {
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- =======================================================
+       NAVIGATION
+  ======================================================== -->
+
+  <header class="navbar" id="navbar">
+
+    <div class="nav-inner">
+
+      <a
+        class="brand"
+        href="../index.html"
+        aria-label="Kembali ke halaman utama"
+      >
+
+        <span class="brand-mark">
+          W
+        </span>
+
+        <span>
+          WENDI NANG PUTRA
+        </span>
+
+      </a>
+
+
+      <nav class="nav-links">
+
+        <a
+          href="#top"
+          class="active"
+        >
+          Portfolio
+        </a>
+
+        <a href="#featured">
+          Featured
+        </a>
+
+        <a href="#projects">
+          Projects
+        </a>
+
+        <a href="#contact">
+          Contact
+        </a>
+
+      </nav>
+
+
+      <a
+        class="nav-back"
+        href="../index.html"
+      >
+        ← Back
+      </a>
+
+    </div>
+
+  </header>
+
+
+
+  <main id="top">
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="hero">
+
+      <div class="container">
+
+        <div class="hero-content">
+
+          <div class="eyebrow">
+
+            <span class="eyebrow-dot"></span>
+
+            Selected Work
+
+          </div>
+
+
+          <h1>
+
+            Ideas,
+
+            <span>
+              built into
+            </span>
+
+            digital experiences.
+
+          </h1>
+
+
+          <p class="hero-description">
+
+            Kumpulan project yang saya bangun,
+            eksplorasi teknologi, dan karya digital
+            yang menjadi bagian dari perjalanan saya.
+
+          </p>
+
+
+          <div class="hero-actions">
+
+            <a
+              class="btn btn-primary"
+              href="#projects"
+            >
+              Explore Projects
+              <span>↓</span>
+            </a>
+
+
+            <a
+              class="btn btn-secondary"
+              href="#contact"
+            >
+              Let's Talk
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FEATURED
+    ====================================================== -->
+
+    <section
+      class="section"
+      id="featured"
+    >
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <div>
+
+            <div class="section-label">
+              01 — Featured
+            </div>
+
+            <h2 class="section-title">
+              Selected project.
+            </h2>
+
+          </div>
+
+
+          <p class="section-description">
+
+            Project yang saya pilih sebagai bagian
+            utama dari portfolio.
+
+          </p>
+
+        </div>
+
+
+        <div
+          id="featuredWrapper"
+          class="featured-wrapper"
+        >
+
+          <div
+            id="featuredCard"
+            class="featured-card"
+          >
+
+            <!-- Filled by JavaScript -->
+
+          </div>
+
+        </div>
+
+
+        <div
+          id="featuredEmpty"
+          class="state"
+        >
+
+          <div class="state-title">
+            Belum ada featured project
+          </div>
+
+          <p class="state-text">
+            Project yang ditandai sebagai Featured
+            di database akan muncul di bagian ini.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         PROJECTS
+    ====================================================== -->
+
+    <section
+      class="section"
+      id="projects"
+    >
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <div>
+
+            <div class="section-label">
+              02 — Projects
+            </div>
+
+            <h2 class="section-title">
+              Things I've built.
+            </h2>
+
+          </div>
+
+
+          <p class="section-description">
+
+            Semua project yang sudah dipublikasikan
+            melalui sistem WIMA LAB.
+
+          </p>
+
+        </div>
+
+
+        <div
+          id="filters"
+          class="filters"
+        >
+
+          <button
+            class="filter-btn active"
+            data-filter="all"
+          >
+            ALL
+          </button>
+
+        </div>
+
+
+        <div
+          id="loadingState"
+          class="state"
+        >
+
+          <div class="spinner"></div>
+
+          <div class="state-title">
+            Memuat portfolio...
+          </div>
+
+          <p class="state-text">
+            Mengambil project terbaru dari server.
+          </p>
+
+        </div>
+
+
+        <div
+          id="errorState"
+          class="state"
+          style="display:none;"
+        >
+
+          <div class="state-title">
+            Portfolio belum dapat dimuat.
+          </div>
+
+          <p
+            id="errorMessage"
+            class="state-text"
+          >
+            Terjadi kesalahan saat menghubungi server.
+          </p>
+
+        </div>
+
+
+        <div
+          id="emptyState"
+          class="state"
+          style="display:none;"
+        >
+
+          <div class="state-title">
+            Belum ada project.
+          </div>
+
+          <p class="state-text">
+            Project yang berstatus Published akan
+            muncul di sini.
+          </p>
+
+        </div>
+
+
+        <div
+          id="projectsGrid"
+          class="projects-grid"
+          style="display:none;"
+        >
+
+          <!-- Projects inserted here -->
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CONTACT
+    ====================================================== -->
+
+    <section
+      class="cta"
+      id="contact"
+    >
+
+      <div class="container">
+
+        <div class="cta-box">
+
+          <div class="cta-label">
+            Let's work together
+          </div>
+
+
+          <h2 class="cta-title">
+
+            Have an idea?
+
+            <br>
+
+            Let's build it.
+
+          </h2>
+
+
+          <p class="cta-text">
+
+            Jika kamu memiliki ide, project,
+            atau sekadar ingin berdiskusi,
+            saya terbuka untuk terhubung.
+
+          </p>
+
+
+          <div class="cta-actions">
+
+            <a
+              class="btn btn-primary"
+              href="mailto:wendinangputra@gmail.com"
+            >
+              Contact Me
+              <span>↗</span>
+            </a>
+
+
+            <a
+              class="btn btn-secondary"
+              href="../index.html"
+            >
+              Back to Website
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+
+  <!-- =======================================================
+       FOOTER
+  ======================================================== -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-inner">
+
+        <div class="footer-copy">
+
+          © <span id="year"></span>
+          Wendi Nang Putra.
+          All rights reserved.
+
+        </div>
+
+
+        <div class="footer-links">
+
+          <a href="../index.html">
+            Home
+          </a>
+
+          <a href="#top">
+            Back to top ↑
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+
+  <!-- =======================================================
+       JAVASCRIPT
+  ======================================================== -->
+
+  <script>
+
+    /* =======================================================
+       CONFIGURATION
+    ======================================================== */
+
+    const API_URL =
+      'https://script.google.com/macros/s/AKfycbxB3uKiZSW7iC-VO0CwyOXyhWl6f4xi1D8m9RLkRCorSv3mqT8Di0cAGh4BRuuRarV76g/exec';
+
+
+    /* =======================================================
+       GLOBAL STATE
+    ======================================================== */
+
+    let allProjects = [];
+
+    let activeFilter = 'all';
+
+
+
+    /* =======================================================
+       DOM
+    ======================================================== */
+
+    const navbar =
+      document.getElementById('navbar');
+
+    const loadingState =
+      document.getElementById('loadingState');
+
+    const errorState =
+      document.getElementById('errorState');
+
+    const errorMessage =
+      document.getElementById('errorMessage');
+
+    const emptyState =
+      document.getElementById('emptyState');
+
+    const projectsGrid =
+      document.getElementById('projectsGrid');
+
+    const filtersContainer =
+      document.getElementById('filters');
+
+    const featuredWrapper =
+      document.getElementById('featuredWrapper');
+
+    const featuredCard =
+      document.getElementById('featuredCard');
+
+    const featuredEmpty =
+      document.getElementById('featuredEmpty');
+
+    const yearElement =
+      document.getElementById('year');
+
+
+
+    /* =======================================================
+       YEAR
+    ======================================================== */
+
+    yearElement.textContent =
+      new Date().getFullYear();
+
+
+
+    /* =======================================================
+       NAVBAR SCROLL
+    ======================================================== */
+
+    window.addEventListener(
+      'scroll',
+      function () {
+
+        if (window.scrollY > 20) {
+
+          navbar.classList.add('scrolled');
+
+        } else {
+
+          navbar.classList.remove('scrolled');
+
+        }
+
+      },
+      {
+        passive: true
+      }
+    );
+
+
+
+    /* =======================================================
+       ESCAPE HTML
+    ======================================================== */
+
+    function escapeHtml(value) {
+
+      return String(
+        value == null
+          ? ''
+          : value
+      )
+
+        .replace(
+          /&/g,
+          '&amp;'
+        )
+
+        .replace(
+          /</g,
+          '&lt;'
+        )
+
+        .replace(
+          />/g,
+          '&gt;'
+        )
+
+        .replace(
+          /"/g,
+          '&quot;'
+        )
+
+        .replace(
+          /'/g,
+          '&#039;'
+        );
+
+    }
+
+
+
+    /* =======================================================
+       URL SAFETY
+    ======================================================== */
+
+    function safeUrl(value) {
+
+      if (!value) {
+        return '';
+      }
+
+      const url =
+        String(value).trim();
+
+      if (!url) {
+        return '';
+      }
+
+      try {
+
+        const parsed =
+          new URL(
+            url,
+            window.location.href
+          );
+
+        if (
+          parsed.protocol === 'http:' ||
+          parsed.protocol === 'https:'
+        ) {
+
+          return parsed.href;
+
+        }
+
+      }
+
+      catch (error) {
+
+        console.warn(
+          'Invalid URL:',
+          value
+        );
+
+      }
+
+      return '';
+
+    }
+
+
+
+    /* =======================================================
+       IMAGE URL
+    ======================================================== */
+
+    function getImageUrl(project) {
+
+      if (
+        project &&
+        project.imageUrl
+      ) {
+
+        return safeUrl(
+          project.imageUrl
+        );
+
+      }
+
+      return '';
+
+    }
+
+
+
+    /* =======================================================
+       LOAD PROJECTS
+    ======================================================== */
+
+    function loadProjects() {
+
+      showLoading();
+
+      const callbackName =
+        'wimaPortfolioCallback_' +
+        Date.now() +
+        '_' +
+        Math.floor(
+          Math.random() * 100000
+        );
+
+
+      const script =
+        document.createElement('script');
+
+      let finished = false;
+
+
+      function cleanup() {
+
+        if (finished) {
+          return;
+        }
+
+        finished = true;
+
+        try {
+          delete window[callbackName];
+        }
+        catch (error) {}
+
+        if (
+          script &&
+          script.parentNode
+        ) {
+
+          script.parentNode.removeChild(
+            script
+          );
+
+        }
+
+      }
+
+
+      window[callbackName] =
+        function (response) {
+
+          cleanup();
+
+          handleProjectsResponse(
+            response
+          );
+
+        };
+
+
+      script.src =
+        API_URL +
+        '?action=projects' +
+        '&callback=' +
+        encodeURIComponent(
+          callbackName
+        );
+
+
+      script.async = true;
+
+
+      script.onerror =
+        function () {
+
+          cleanup();
+
+          showError(
+            'Tidak dapat terhubung ke server portfolio.'
+          );
+
+        };
+
+
+      document
+        .head
+        .appendChild(script);
+
+
+      setTimeout(
+        function () {
+
+          if (!finished) {
+
+            cleanup();
+
+            showError(
+              'Server terlalu lama memberikan respons.'
+            );
+
+          }
+
+        },
+        15000
+      );
+
+    }
+
+
+
+    /* =======================================================
+       HANDLE API RESPONSE
+    ======================================================== */
+
+    function handleProjectsResponse(
+      response
+    ) {
+
+      if (
+        !response ||
+        response.success !== true
+      ) {
+
+        showError(
+          response &&
+          response.message
+            ? response.message
+            : 'Data portfolio tidak valid.'
+        );
+
+        return;
+      }
+
+
+      if (
+        !Array.isArray(
+          response.data
+        )
+      ) {
+
+        showError(
+          'Format data portfolio tidak sesuai.'
+        );
+
+        return;
+      }
+
+
+      allProjects =
+        response.data;
+
+
+      allProjects.sort(
+        function (a, b) {
+
+          const featuredA =
+            a.featured === true
+              ? 1
+              : 0;
+
+          const featuredB =
+            b.featured === true
+              ? 1
+              : 0;
+
+
+          if (
+            featuredA !==
+            featuredB
+          ) {
+
+            return (
+              featuredB -
+              featuredA
+            );
+
+          }
+
+
+          const yearA =
+            Number(a.year) || 0;
+
+          const yearB =
+            Number(b.year) || 0;
+
+
+          return yearB - yearA;
+
+        }
+      );
+
+
+      hideLoading();
+
+      renderFeatured();
+
+      renderFilters();
+
+      renderProjects();
+
+    }
+
+
+
+    /* =======================================================
+       LOADING
+    ======================================================== */
+
+    function showLoading() {
+
+      loadingState.style.display =
+        'block';
+
+      errorState.style.display =
+        'none';
+
+      emptyState.style.display =
+        'none';
+
+      projectsGrid.style.display =
+        'none';
+
+    }
+
+
+    function hideLoading() {
+
+      loadingState.style.display =
+        'none';
+
+    }
+
+
+
+    /* =======================================================
+       ERROR
+    ======================================================== */
+
+    function showError(
+      message
+    ) {
+
+      loadingState.style.display =
+        'none';
+
+      projectsGrid.style.display =
+        'none';
+
+      emptyState.style.display =
+        'none';
+
+      errorState.style.display =
+        'block';
+
+      errorMessage.textContent =
+        message;
+
+    }
+
+
+
+    /* =======================================================
+       FEATURED PROJECT
+    ======================================================== */
+
+    function renderFeatured() {
+
+      const featuredProjects =
+        allProjects.filter(
+          function (project) {
+
+            return (
+              project.featured === true
+            );
+
+          }
+        );
+
+
+      if (
+        featuredProjects.length === 0
+      ) {
+
+        featuredWrapper.classList.remove(
+          'visible'
+        );
+
+        featuredEmpty.style.display =
+          'block';
+
+        return;
+
+      }
+
+
+      const project =
+        featuredProjects[0];
+
+
+      featuredEmpty.style.display =
+        'none';
+
+      featuredWrapper.classList.add(
+        'visible'
+      );
+
+
+      const imageUrl =
+        getImageUrl(project);
+
+
+      const technologies =
+        Array.isArray(
+          project.technologies
+        )
+          ? project.technologies
+          : [];
+
+
+      const technologyHtml =
+        technologies
+          .slice(0, 8)
+          .map(
+            function (technology) {
+
+              return `
+                <span class="technology">
+                  ${escapeHtml(technology)}
+                </span>
+              `;
+
+            }
+          )
+          .join('');
+
+
+      const imageHtml =
+        imageUrl
+
+          ? `
+            <img
+              class="featured-image"
+              src="${escapeHtml(imageUrl)}"
+              alt="${escapeHtml(project.title || 'Project')}"
+              loading="eager"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
+            >
+
+            <div
+              class="featured-placeholder"
+              style="display:none;"
+            >
+              Image unavailable
+            </div>
+          `
+
+          : `
+            <div class="featured-placeholder">
+              No image
+            </div>
+          `;
+
+
+      const demoUrl =
+        safeUrl(
+          project.demoUrl
+        );
+
+
+      const githubUrl =
+        safeUrl(
+          project.githubUrl
+        );
+
+
+      const actionsHtml = [];
+
+
+      if (demoUrl) {
+
+        actionsHtml.push(`
+          <a
+            class="btn btn-primary"
+            href="${escapeHtml(demoUrl)}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View Project
+            <span>↗</span>
+          </a>
+        `);
+
+      }
+
+
+      if (githubUrl) {
+
+        actionsHtml.push(`
+          <a
+            class="btn btn-secondary"
+            href="${escapeHtml(githubUrl)}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+            <span>↗</span>
+          </a>
+        `);
+
+      }
+
+
+      if (
+        actionsHtml.length === 0
+      ) {
+
+        actionsHtml.push(`
+          <span
+            class="btn btn-secondary"
+            style="opacity:.5;cursor:default;"
+          >
+            Project
+          </span>
+        `);
+
+      }
+
+
+      featuredCard.innerHTML = `
+
+        <div class="featured-image-wrap">
+
+          ${imageHtml}
+
+        </div>
+
+
+        <div class="featured-content">
+
+          <div class="featured-badge">
+            Featured Project
+          </div>
+
+
+          <h3>
+            ${escapeHtml(
+              project.title ||
+              'Untitled Project'
+            )}
+          </h3>
+
+
+          <div class="featured-meta">
+
+            ${
+              project.category
+                ? `
+                  <span>
+                    ${escapeHtml(
+                      project.category
+                    )}
+                  </span>
+                `
+                : ''
+            }
+
+
+            ${
+              project.category &&
+              project.year
+                ? `
+                  <span
+                    class="featured-meta-separator"
+                  >
+                    •
+                  </span>
+                `
+                : ''
+            }
+
+
+            ${
+              project.year
+                ? `
+                  <span>
+                    ${escapeHtml(
+                      project.year
+                    )}
+                  </span>
+                `
+                : ''
+            }
+
+          </div>
+
+
+          <p class="featured-description">
+
+            ${escapeHtml(
+              project.description ||
+              'Project digital yang saya bangun.'
+            )}
+
+          </p>
+
+
+          ${
+            technologyHtml
+              ? `
+                <div class="technology-list">
+                  ${technologyHtml}
+                </div>
+              `
+              : ''
+          }
+
+
+          <div class="featured-actions">
+
+            ${actionsHtml.join('')}
+
+          </div>
+
+        </div>
+
+      `;
+
+    }
+
+
+
+    /* =======================================================
+       FILTERS
+    ======================================================== */
+
+    function renderFilters() {
+
+      const categories =
+        allProjects
+
+          .map(
+            function (project) {
+
+              return String(
+                project.category || ''
+              ).trim();
+
+            }
+          )
+
+          .filter(
+            function (category) {
+
+              return category !== '';
+
+            }
+          );
+
+
+      const uniqueCategories =
+        Array.from(
+          new Set(categories)
+        );
+
+
+      filtersContainer.innerHTML = `
+
+        <button
+          class="filter-btn active"
+          data-filter="all"
+        >
+          ALL
+        </button>
+
+        ${
+          uniqueCategories
+            .map(
+              function (category) {
+
+                return `
+                  <button
+                    class="filter-btn"
+                    data-filter="${escapeHtml(category)}"
+                  >
+                    ${escapeHtml(
+                      category
+                    ).toUpperCase()}
+                  </button>
+                `;
+
+              }
+            )
+            .join('')
+        }
+
+      `;
+
+
+      filtersContainer
+        .querySelectorAll(
+          '.filter-btn'
+        )
+        .forEach(
+          function (button) {
+
+            button.addEventListener(
+              'click',
+              function () {
+
+                filtersContainer
+                  .querySelectorAll(
+                    '.filter-btn'
+                  )
+                  .forEach(
+                    function (btn) {
+
+                      btn.classList.remove(
+                        'active'
+                      );
+
+                    }
+                  );
+
+
+                button.classList.add(
+                  'active'
+                );
+
+
+                activeFilter =
+                  button.dataset.filter;
+
+
+                renderProjects();
+
+              }
+            );
+
+          }
+        );
+
+    }
+
+
+
+    /* =======================================================
+       PROJECTS
+    ======================================================== */
+
+    function renderProjects() {
+
+      let projects =
+        allProjects;
+
+
+      if (
+        activeFilter !== 'all'
+      ) {
+
+        projects =
+          allProjects.filter(
+            function (project) {
+
+              return (
+                String(
+                  project.category || ''
+                ).toLowerCase()
+                ===
+                String(
+                  activeFilter
+                ).toLowerCase()
+              );
+
+            }
+          );
+
+      }
+
+
+      if (
+        allProjects.length === 0
+      ) {
+
+        projectsGrid.style.display =
+          'none';
+
+        emptyState.style.display =
+          'block';
+
+        return;
+
+      }
+
+
+      if (
+        projects.length === 0
+      ) {
+
+        projectsGrid.style.display =
+          'none';
+
+        emptyState.style.display =
+          'block';
+
+        emptyState.querySelector(
+          '.state-title'
+        ).textContent =
+          'Tidak ada project.';
+
+        emptyState.querySelector(
+          '.state-text'
+        ).textContent =
+          'Belum ada project pada kategori ini.';
+
+        return;
+
+      }
+
+
+      emptyState.style.display =
+        'none';
+
+      projectsGrid.style.display =
+        'grid';
+
+
+      projectsGrid.innerHTML =
+        projects
+          .map(
+            function (project, index) {
+
+              return createProjectCard(
+                project,
+                index
+              );
+
+            }
+          )
+          .join('');
+
+    }
+
+
+
+    /* =======================================================
+       PROJECT CARD
+    ======================================================== */
+
+    function createProjectCard(
+      project,
+      index
+    ) {
+
+      const imageUrl =
+        getImageUrl(project);
+
+
+      const technologies =
+        Array.isArray(
+          project.technologies
+        )
+          ? project.technologies
+          : [];
+
+
+      const technologyHtml =
+        technologies
+          .slice(0, 6)
+          .map(
+            function (technology) {
+
+              return `
+                <span>
+                  ${escapeHtml(technology)}
+                </span>
+              `;
+
+            }
+          )
+          .join('');
+
+
+      const imageHtml =
+        imageUrl
+
+          ? `
+            <img
+              class="project-image"
+              src="${escapeHtml(imageUrl)}"
+              alt="${escapeHtml(project.title || 'Project')}"
+              loading="lazy"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
+            >
+
+            <div
+              class="project-placeholder"
+              style="display:none;"
+            >
+              Image unavailable
+            </div>
+          `
+
+          : `
+            <div class="project-placeholder">
+              No image
+            </div>
+          `;
+
+
+      const demoUrl =
+        safeUrl(
+          project.demoUrl
+        );
+
+
+      const githubUrl =
+        safeUrl(
+          project.githubUrl
+        );
+
+
+      let actionsHtml = '';
+
+
+      if (demoUrl) {
+
+        actionsHtml += `
+
+          <a
+            class="project-link"
+            href="${escapeHtml(demoUrl)}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View Project
+            <span>↗</span>
+          </a>
+
+        `;
+
+      }
+
+
+      if (githubUrl) {
+
+        actionsHtml += `
+
+          <a
+            class="project-link"
+            href="${escapeHtml(githubUrl)}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+            <span>↗</span>
+          </a>
+
+        `;
+
+      }
+
+
+      return `
+
+        <article
+          class="project-card"
+          style="animation-delay:${Math.min(index * 60, 500)}ms;"
+        >
+
+          <div class="project-image-wrap">
+
+            ${imageHtml}
+
+
+            ${
+              project.featured === true
+                ? `
+                  <div class="project-featured-label">
+                    Featured
+                  </div>
+                `
+                : ''
+            }
+
+          </div>
+
+
+          <div class="project-content">
+
+
+            <div class="project-top">
+
+              <span class="project-category">
+
+                ${
+                  escapeHtml(
+                    project.category ||
+                    'Project'
+                  )
+                }
+
+              </span>
+
+
+              ${
+                project.year
+                  ? `
+                    <span class="project-year">
+                      ${escapeHtml(
+                        project.year
+                      )}
+                    </span>
+                  `
+                  : ''
+              }
+
+            </div>
+
+
+            <h3 class="project-title">
+
+              ${escapeHtml(
+                project.title ||
+                'Untitled Project'
+              )}
+
+            </h3>
+
+
+            <p class="project-description">
+
+              ${escapeHtml(
+                project.description ||
+                'Project digital.'
+              )}
+
+            </p>
+
+
+            ${
+              technologyHtml
+                ? `
+                  <div class="project-tech">
+                    ${technologyHtml}
+                  </div>
+                `
+                : ''
+            }
+
+
+            ${
+              actionsHtml
+                ? `
+                  <div class="project-actions">
+                    ${actionsHtml}
+                  </div>
+                `
+                : ''
+            }
+
+
+          </div>
+
+        </article>
+
+      `;
+
+    }
+
+
+
+    /* =======================================================
+       START
+    ======================================================== */
+
+    document.addEventListener(
+      'DOMContentLoaded',
+      function () {
+
+        loadProjects();
+
+      }
+    );
+
+  </script>
+
+</body>
+</html>
